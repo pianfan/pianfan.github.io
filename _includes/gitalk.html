@@ -3,6 +3,7 @@
     <div id="gitalk-container"></div>
     <script>
         const gitalk = new Gitalk({
+          proxy: "{{ site.gitalk.proxy }}",
           clientID: "{{ site.gitalk.clientID }}",
           clientSecret: "{{ site.gitalk.clientSecret }}",
           repo: "{{ site.gitalk.repo }}",

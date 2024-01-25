@@ -12,7 +12,7 @@ description: "欢迎来到我的博客！"
 #
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: 
+avatar: https://github.com/pianfan/pianfan.github.io/blob/main/images/%E6%8A%96%E9%9F%B3AI_%E5%83%8F%E7%B4%A0%E9%A3%8E.jpg
 # 你的favicon（出现在浏览器tab上）图片URL，建议使用较小(64px × 64px)的图片
 favicon: https://github.com/pianfan/pianfan.github.io/blob/main/images/favicon.ico
 

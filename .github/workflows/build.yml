@@ -11,15 +11,20 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v4  # 或者最新的版本号
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4.0.1
       with:
-        node-version: '14'
-
-    - name: Install Dependencies
-      run: npm install
-
-    - name: Build and Test
-      run: npm run build
+        node-version: 10.15.1
+        
+    - run: npm install -g bats
+    
+    - run: bats -v
+      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.3.0
+      with:
+        name: 'my-blog'
+        path: '_site'
+        

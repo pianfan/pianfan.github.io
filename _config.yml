@@ -59,13 +59,6 @@ footer-text: Copyright (c) 2024 Pianfan
 # You can find your shortname on the Settings page of your Disqus account
 disqus: # fromendworld
 
-# Gitalk
-gitalk:
-  clientID: cba98a0db83eb062c0f8
-  clientSecret: 46400b2614fb5c4189f6c5f662baee088712b316
-  repo: pianfan.github.io
-  owner: pianfan
-
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
 url: https://pianfan.github.io

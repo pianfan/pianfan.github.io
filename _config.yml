@@ -12,9 +12,9 @@ description: "欢迎来到我的博客！"
 #
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://github.com/pianfan/pianfan.github.io/blob/main/images/%E6%8A%96%E9%9F%B3AI_%E5%83%8F%E7%B4%A0%E9%A3%8E.jpg
+avatar: https://pianfan.github.io/images/profile.jpg
 # 你的favicon（出现在浏览器tab上）图片URL，建议使用较小(64px × 64px)的图片
-favicon: https://github.com/pianfan/pianfan.github.io/blob/main/images/favicon.ico
+favicon: https://pianfan.github.io/images/favicon.ico
 
 # Tabs in header. There are 'Blog', 'About', 'Archive', 'Tags'
 # and URL Link(e.g. 'Theme' tab below) tabs. If you don't need one, just delete

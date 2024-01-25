@@ -61,7 +61,7 @@ disqus: # fromendworld
 
 # Gitalk
 gitalk:
-  proxy: https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token
+  proxy: https://proxy.pianfan.github.io/?https://github.com/login/oauth/access_token
   clientID: cba98a0db83eb062c0f8
   clientSecret: 46400b2614fb5c4189f6c5f662baee088712b316
   repo: pianfan.github.io

@@ -2,7 +2,7 @@
 layout: post
 title: "我的第一篇博客文章"
 date:   2024-1-25
-tags: [test]
+tags: 
 comments: true
 author: pianfan
 ---

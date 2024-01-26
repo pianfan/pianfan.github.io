@@ -13,7 +13,6 @@ navigation:
     url: /tags
 
 paginate: 8
-#paginate_path: "/blog/page:num/"
 
 excerpt_separator: <!-- more -->
 

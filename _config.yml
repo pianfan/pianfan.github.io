@@ -27,14 +27,6 @@ footer-links:
 
 footer-text: Copyright (c) 2024 Pianfan
 
-disqus: 
-
-gitalk:
-  clientID: cba98a0db83eb062c0f8
-  clientSecret: 46400b2614fb5c4189f6c5f662baee088712b316
-  repo: pianfan.github.io
-  owner: pianfan
-
 url: https://pianfan.github.io
 
 permalink: /:title/

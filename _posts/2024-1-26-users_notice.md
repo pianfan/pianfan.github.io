@@ -7,7 +7,7 @@ comments: true
 author: pianfan
 ---
 
-本站点暂不提供直接评论功能，如果您有相关需求，可以通过以下方式间接评论：
+本站点暂不支持直接评论，如果您有相关需求，可以通过以下方式间接评论：
 
 - 移步至[本博客的 GitHub 官方评论区](https://github.com/pianfan/pianfan.github.io/discussions)，在这里您可以自由发表各种类型的评论并与其他人进行互动。
   

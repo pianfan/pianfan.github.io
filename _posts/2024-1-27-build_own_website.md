@@ -11,7 +11,15 @@ author: pianfan
 <!-- more -->
 #### 目录
 
-[toc]
+- [Step 0. 准备工作](#step-0-准备工作)
+- [Step 1. 建立博客仓库](#step-1-建立博客仓库)
+- [Step 2. 修改仓库文件](#step-2-修改仓库文件)
+  - [修改 README.md文件](#修改-readmemd文件)
+  - [修改 _config.yml 文件](#修改-_configyml-文件)
+  - [删除 _posts 文件夹并重建](#删除-_posts-文件夹并重建)
+  - [删除 images 文件夹并重建](#删除-images-文件夹并重建)
+  - [修改 about.md文件](#修改-aboutmd文件)
+- [Step 3. 开始写你的第一篇文章](#step-3-开始写你的第一篇文章)
 
 ## Step 0. 准备工作
 

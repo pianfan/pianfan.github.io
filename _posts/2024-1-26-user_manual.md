@@ -7,17 +7,17 @@ comments: true
 author: pianfan
 ---
 
-#### 目录
+### 目录
 
 - [如何评论？](#如何评论)
 - [如何快速查找文章？](#如何快速查找文章)
 - [如何收藏文章？](#如何收藏文章)
 - [如何在新标签页中打开链接？](#如何在新标签页中打开链接)
-
+<!-- more -->
 ## 如何评论？
 
 **本站点暂不支持直接评论**，如果您有相关需求，可以通过以下方式间接评论：
-<!-- more -->
+
 - 移步至[本博客的 GitHub 官方评论区](https://github.com/pianfan/pianfan.github.io/discussions)，在这里您可以自由发表各种类型的评论并与其他人进行互动。
   
     ![评论类型](https://pianfan.github.io/images/discussion.png "评论类型")

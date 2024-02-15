@@ -11,6 +11,8 @@ navigation:
     url: /about
   - name: 分类
     url: /tags
+  - name: 表格
+    url: /table
 
 paginate: 8
 

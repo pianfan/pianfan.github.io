@@ -1,23 +1,14 @@
 ---
 layout: post
-title: "Wordbook"
-date:   2024-7-5
+title: "wordbook"
+date:   2024-1-27
 comments: true
 author: Kyrie
+
+subtitle: biology
+
 ---
 
-journalist  
-satellite  
-barrier 
-harness  
-conclusive  
-detect  
-ceiling
-hemisphere  
-precipitation  
-mediterranean
-cemet
-nomadic
-suspicsion
+journalist
 
-  
+

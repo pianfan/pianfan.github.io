@@ -4,28 +4,11 @@ description: "奶爸的托福听力记录"
 avatar: https://pianfan.github.io/images/avatar.png
 favicon: https://pianfan.github.io/images/favicon.ico
 
-navigation:
-  - name: 首页
-    url: /
-  - name: 关于
-    url: /about
-  - name: 分类
-    url: /tags
-
-paginate: 8
 
 excerpt_separator: <!-- more -->
 
-footer-links:
-  zhihu: 
-  email: xiongyunhan@outlook.com
-  facebook:
-  github: pianfan
-  rss: # just type anything here for a working RSS icon
-  twitter: 
-  youtube:
 
-footer-text: Copyright (c) 2024 Pianfan
+footer-text: Kyrie Zhang
 
 url: https://pianfan.github.io
 

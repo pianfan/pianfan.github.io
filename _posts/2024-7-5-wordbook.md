@@ -6,30 +6,18 @@ comments: true
 author: Kyrie
 ---
 
-journalist
-  
-satellite 
-  
-barrier
-  
-harness
-  
-conclusive
-  
-detect
-  
+journalist  
+satellite  
+barrier 
+harness  
+conclusive  
+detect  
 ceiling
-  
-hemisphere
-  
-precipitation
-  
+hemisphere  
+precipitation  
 mediterranean
-
 cemet
-
 nomadic
-
 suspicsion
 
   

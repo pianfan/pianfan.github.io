@@ -33,4 +33,60 @@ nomadic
 
 suspicion
 
+7.7
 
+Incredibly
+
+Compressed
+
+Composition x2
+
+Harness
+
+Erosion
+
+Conduct
+
+Inconclusive
+
+Descriptive
+
+Disturbance
+
+Collision
+
+Enormous
+
+Trigger
+
+Territory
+
+Interact
+
+Account for 
+
+Legacy
+
+Downside
+
+Have to do with sth
+
+Procedure
+
+Genuine
+
+Enthusiastic
+
+Mural
+
+Chaotic
+
+Precipitation 
+
+Mediterranean 
+
+Perspective 
+
+A variety of sth
+
+Asteroid

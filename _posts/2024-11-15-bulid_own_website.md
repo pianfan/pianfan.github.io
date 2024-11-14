@@ -1,13 +1,12 @@
 ---
 layout: post
 title: "P5课上指令攻略"
-date:   2024-11-15
-tags: [CO, P5]
+date:   2024-11-12
+tags: [web]
 comments: true
 author: BUAA-Yzx2023
 ---
 
-###### 说明：本教程只针对不了解网站搭建并且想要快速搭建起个人博客的新手，帮助建立网站的平台有很多，有一定网站开发基础的读者可另寻门路
 
 <!-- more -->
 

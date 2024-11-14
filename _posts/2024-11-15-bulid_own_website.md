@@ -2,7 +2,7 @@
 layout: post
 title: "P5课上指令攻略"
 date:   2024-11-12
-tags: [web]
+tags: [CO,P5]
 comments: true
 author: BUAA-Yzx2023
 ---

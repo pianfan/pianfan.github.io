@@ -1,4 +1,4 @@
-name: "Pianfan's blog"
+name: "BUAA-Yzx2023's blog"
 description: "计小袁的个人技术博客"
 
 avatar: https://BUAA-Yzx2023.github.io/images/avatar.png
@@ -16,11 +16,10 @@ paginate: 8
 
 excerpt_separator: <!-- more -->
 
-footer-links:
-  zhihu: 
-  email: xiongyunhan@outlook.com
+footer-links: 
+  email: 3196932484@qq.com
   facebook:
-  github: pianfan
+  github: BUAA-Yzx2023
   rss: # just type anything here for a working RSS icon
   twitter: 
   youtube:

@@ -24,9 +24,9 @@ footer-links:
   twitter: 
   youtube:
 
-footer-text: Copyright (c) 2024 Pianfan
+footer-text: Copyright (c) 2024 BUAA-Yzx2023
 
-url: https://pianfan.github.io
+url: https://BUAA-Yzx2023.github.io
 
 permalink: /:title/
 paginate_path: /page:num/

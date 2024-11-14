@@ -52,7 +52,7 @@ author: BUAA-Yzx2023
 
 GTL语言大致如下：
 
-```GTL
+```
 I：  
 	 temp1 ← GPR[rs]+GPR[rt]
 	 temp2 ← PC+4+sign_ext(offset||0^2)

@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
     <script src="//woshisb.eu.org/js/gitalk.m.js"></script>
     <script>
-        const gitalk = new Gitalk({
+        var gitalk = new Gitalk({
           clientID: "{{ site.gitalk.clientID }}",
           clientSecret: "{{ site.gitalk.clientSecret }}",
           repo: "{{ site.gitalk.repo }}",

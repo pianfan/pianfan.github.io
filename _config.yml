@@ -63,11 +63,11 @@ exclude:
 
 gitalk:
   enable: true
-  owner: BUAA-Yzx2023
-  admin: BUAA-Yzx2023
-  repo: BUAA-Yzx2023.github.io
-  ClientID: Ov23liNvLcz6D9p4Swco
-  ClientSecret: 779cb88b3d82a4845f2954a66ff4d30c5601234b
+  owner: 'BUAA-Yzx2023'
+  admin: ['BUAA-Yzx2023']
+  repo: 'BUAA-Yzx2023.github.io'
+  ClientID: 'Ov23liNvLcz6D9p4Swco'
+  ClientSecret: '779cb88b3d82a4845f2954a66ff4d30c5601234b'
   labels: 'gitalk'
   distractionFreeMode: true
 

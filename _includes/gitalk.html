@@ -4,20 +4,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
     <script src="//woshisb.eu.org/js/gitalk.m.js"></script>
     <script>
-        var gitalk = new Gitalk({
-          clientID: "{{ site.gitalk.clientID }}",
-          clientSecret: "{{ site.gitalk.clientSecret }}",
-          repo: "{{ site.gitalk.repo }}",
-          owner: "{{ site.gitalk.owner }}",
-          admin: ["{{ site.gitalk.admin }}"],
-          id: '{{ page.path }}',      // Ensure uniqueness and length less than 50
-          distractionFreeMode: true,  // Facebook-like distraction free mode
-          title: "{{ page.title }}",
-          language: "zh-CN",
-
-        })
+      var gitalk = new Gitalk({
+        clientID: '{{ site.gitalk.clientID }}',
+        clientSecret: '{{ site.gitalk.clientSecret }}',
+        repo: '{{ site.gitalk.repo }}',
+        owner: '{{ site.gitalk.owner }}',
+        admin: ['{{ site.gitalk.admin }}'], // 确保 admin 是一个数组
+        id: '{{ page.path }}', // 使用页面路径作为评论 ID，确保唯一性
+        distractionFreeMode: {{ site.gitalk.distractionFreeMode | default: false }}, // 启用无干扰模式
+        language: '{{ site.gitalk.language | default: "zh" }}' // 设置语言，如果未配置则使用默认的
+      });
         
-        gitalk.render('gitalk-container')
+        gitalk.render('gitalk-container');
     </script>
 </div>
 {% endif %}

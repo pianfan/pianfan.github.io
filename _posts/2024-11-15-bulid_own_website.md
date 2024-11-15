@@ -120,7 +120,7 @@ II:
 
 首先我们在M级增加`A3M_new`的组合逻辑。（这里DM_resultM在有些指令时可能是不定值，但此时`InstrOpM`一定不是`LWOC`，故不会影响条件判断）
 
-  <img src="https://cdn.jsdelivr.net/gh/BUAA-Yzx2023/ImageBed/202411151022967.png" style="zoom:50%;" />
+  <img src="https://cdn.jsdelivr.net/gh/BUAA-Yzx2023/ImageBed/202411151022967.png" style="zoom:80%;" />
 
 
 然后将 **暴力转发**、**暂停判断**、**MW 流水线寄存器**里所有的 `A3M` 替换成 `A3M_new` 即可

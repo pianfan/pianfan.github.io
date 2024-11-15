@@ -2,7 +2,7 @@
 layout: post
 title: "P5课上指令攻略"
 date:   2024-11-12
-tags: [CO,P5]
+tags: [CO]
 comments: true
 author: BUAA-Yzx2023
 ---
@@ -124,17 +124,6 @@ II:
 
 然后将 **暴力转发**、**暂停判断**、**MW 流水线寄存器**里所有的 `A3M` 替换成 `A3M_new` 即可
 
-- 暴力转发：
-
-   <img src="./../AppData/Roaming/Typora/typora-user-images/image-20241112112644435.png" alt="image-20241112112644435" style="zoom:50%;" />
-
-- 暂停判断：
-
-   <img src="./../AppData/Roaming/Typora/typora-user-images/image-20241112112730755.png" alt="image-20241112112730755" style="zoom:50%;" />
-
-- MW 流水线寄存器：
-
-   <img src="./../AppData/Roaming/Typora/typora-user-images/image-20241112112810863.png" alt="image-20241112112810863" style="zoom:50%;" />
 
  
 

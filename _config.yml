@@ -62,10 +62,10 @@ exclude:
   - README.md
 
 gitalk:
-  clientID: 'Ov23liAH1r1yD3tBz8CB'
-  clientSecret: '8fcc55d81d779b1249765016e17c273ac04515bb'
-  repo: 'blog-comments'
-  owner: 'Eternity-Sky'
-  admin: ['Eternity-Sky']
+  clientID: 'Ov23liNvLcz6D9p4Swco'
+  clientSecret: 'a42eb37b72cca919b4fe2732221d19ccd94f07e8'
+  repo: 'BUAA-Yzx2023.github.io'
+  owner: 'BUAA-Yzx2023'
+  admin: ['BUAA-Yzx2023']
   distractionFreeMode: false
 

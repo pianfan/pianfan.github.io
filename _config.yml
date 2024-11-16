@@ -1,17 +1,9 @@
-title: "奶爸的托福听力记录"
-avatar: images/IMG_1100.jpeg
-favicon: https://pianfan.github.io/images/favicon.ico  
-name: "奶爸的托福听力记录"
-description: "奶爸的托福听力记录"
-
-<iframe height=498 width=510 src="视频地址">
-excerpt_separator: <!-- more -->
+title: "The Website of Water Filter"
 
 
 footer-text: Kyrie Zhang
 
-url: https://pianfan.github.io
-
+url: https://pianfan.github.io:
 permalink: /:title/
 paginate_path: /page:num/
 

@@ -3,7 +3,6 @@ title: "The Website of Water Filter"
 
 footer-text: Kyrie Zhang
 
-url: https://pianfan.github.io:
 permalink: /:title/
 paginate_path: /page:num/
 

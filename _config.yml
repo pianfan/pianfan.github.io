@@ -67,7 +67,7 @@ gitalk:
   admin: ['BUAA-Yzx2023']
   repo: 'BUAA-Yzx2023.github.io'
   ClientID: 'Ov23liNvLcz6D9p4Swco'
-  ClientSecret: '779cb88b3d82a4845f2954a66ff4d30c5601234b'
+  ClientSecret: 'a42eb37b72cca919b4fe2732221d19ccd94f07e8'
   labels: 'Gitalk'
   distractionFreeMode: true
 

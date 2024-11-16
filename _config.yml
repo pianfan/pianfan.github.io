@@ -2,7 +2,8 @@ title: "The Website of Water Filter"
 
 
 footer-text: Kyrie Zhang
-
+baseurl: "/Water-Filter-"
+url: "https://kyriezhang02.github.io"
 permalink: /:title/
 paginate_path: /page:num/
 

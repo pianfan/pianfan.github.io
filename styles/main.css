@@ -1,0 +1,111 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #3498db;
+    animation: slideDown 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    perspective: 1000px;
+}
+
+li {
+    background-color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: cardIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    animation-fill-mode: both;
+}
+
+li:nth-child(1) { animation-delay: 0.2s; }
+li:nth-child(2) { animation-delay: 0.3s; }
+li:nth-child(3) { animation-delay: 0.4s; }
+li:nth-child(4) { animation-delay: 0.5s; }
+li:nth-child(5) { animation-delay: 0.6s; }
+
+li:hover {
+    transform: translateY(-5px) scale(1.03) rotateX(5deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 1);
+}
+
+a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) rotateX(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+} 

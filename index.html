@@ -3,23 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Website of Water Filter</title>
+    <title>AquaNova</title>
     <meta name="author" content="Kyrie">
     <link rel="stylesheet" href="styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
 </head>
 <body>
-    <header>
-        <h1>The Website of Water Filter</h1>
-    </header>
-    <main>
-        <p>Meet our amazing team:</p>
-        <ul>
-            <li><a href="teammates/kyrie.html">Kyrie</a></li>
-            <li><a href="teammates/abby.html">Abby</a></li>
-            <li><a href="teammates/nunu.html">Nunu</a></li>
-            <li><a href="teammates/chris.html">Chris</a></li>
-            <li><a href="teammates/kevin.html">Kevin</a></li>
+    <nav class="main-nav">
+        <div class="logo">AQUANOVA</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#innovation">Our Innovation</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="menu-toggle">☰</button>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">AQUANOVA</h1>
+            <div class="product-preview">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200" alt="人工珊瑚">
+                        </div>
+                        <div class="product-info">
+                            <h3>生态人工珊瑚</h3>
+                            <p>创新环保的水族箱过滤系统，集观赏性与实用性于一体</p>
+                            <ul class="features">
+                                <li>仿生珊瑚设计</li>
+                                <li>高效生物过滤</li>
+                                <li>美化水族环境</li>
+                                <li>延长换水周期</li>
+                            </ul>
+                            <div class="button-group">
+                                <button class="learn-more">了解更多</button>
+                                <a href="model-view.html" class="view-3d">查看3D模型</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200" alt="仿生水母">
+                        </div>
+                        <div class="product-info">
+                            <h3>仿生水母过滤器</h3>
+                            <p>灵感源自大自然的水质净化专家，集科技与艺术于一体</p>
+                            <ul class="features">
+                                <li>仿生脉动设计</li>
+                                <li>智能水质监测</li>
+                                <li>七彩氛围照明</li>
+                            </ul>
+                            <button class="learn-more">了解更多</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/300x200" alt="Kyrie">
+                    <h3>Kyrie</h3>
+                    <p class="role">Team Leader&Designer</p>
+                    <a href="teammates/kyrie.html" class="member-link">查看详情</a>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/300x200" alt="Abby">
+                    <h3>Abby</h3>
+                    <p class="role">Designer</p>
+                    <a href="teammates/abby.html" class="member-link">查看详情</a>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/300x200" alt="Nunu">
+                    <h3>Nunu</h3>
+                    <p class="role">Developer</p>
+                    <a href="teammates/nunu.html" class="member-link">查看详情</a>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/300x200" alt="Chris">
+                    <h3>Chris</h3>
+                    <p class="role">Engineer</p>
+                    <a href="teammates/chris.html" class="member-link">查看详情</a>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/300x200" alt="Kevin">
+                    <h3>Kevin</h3>
+                    <p class="role">Researcher</p>
+                    <a href="teammates/kevin.html" class="member-link">查看��情</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="product-showcase" id="innovation">
+            <h2>我们的产品</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="人工珊瑚">
+                    </div>
+                    <div class="product-info">
+                        <h3>生态人工珊瑚</h3>
+                        <p>创新环保的水族箱过滤系统，集观赏性与实用性于一体：四个特点</p>
+                        <ul class="features">
+                            <li>仿生珊瑚设计</li>
+                            <li>高生物过滤</li>
+                            <li>美化水族环境</li>
+                            <li>延长换水周期</li>
+                        </ul>
+                        <div class="button-group">
+                            <button class="learn-more">了解更多</button>
+                            <a href="model-view.html" class="view-3d">查看3D模型</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="仿生水母">
+                    </div>
+                    <div class="product-info">
+                        <h3>仿生水母过滤器</h3>
+                        <p>感源自大自然的水质净化专家，集科技与艺术于一体：三大特色</p>
+                        <ul class="features">
+                            <li>仿生脉动设计</li>
+                            <li>智能水质监测</li>
+                            <li>七彩氛围照明</li>
+                        </ul>
+                        <button class="learn-more">了解更多</button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <section class="contact-section" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <a href="mailto:Kyriezhang02@outlook.com" class="email-link">
+                <div class="email-icon">
+                    <span class="envelope">
+                        <span class="paper"></span>
+                    </span>
+                </div>
+                <span class="email-text">Kyriezhang02@outlook.com</span>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            
+            // 随机大小
+            const size = Math.random() * 30 + 10;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            
+            // 随机位置
+            const startPos = Math.random() * window.innerWidth;
+            bubble.style.left = `${startPos}px`;
+            
+            // 随机动画时长
+            const duration = Math.random() * 3 + 2;
+            bubble.style.animation = `bubbleFloat ${duration}s linear infinite`;
+            
+            document.querySelector('.hero').appendChild(bubble);
+            
+            // 在动画结束后移除气泡
+            setTimeout(() => {
+                bubble.remove();
+            }, duration * 1000);
+        }
+
+        // 定期创建气泡
+        setInterval(createBubble, 300);
+    </script>
+    <script src="scripts/model-viewer.js"></script>
 </body>
 </html>

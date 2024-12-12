@@ -1,3 +1,2 @@
 # pianfan.github.io
-
-My Personal Blog via GitHub
+My Personal Website on GitHub, thanks to pianfan.

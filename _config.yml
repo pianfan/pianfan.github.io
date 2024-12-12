@@ -1,16 +1,18 @@
-name: "Pianfan's blog"
-description: "翩帆的个人技术博客"
+name: "Xu Long 徐龙"
+description: "M.S. Student, Nanning Normal University"
 
-avatar: https://pianfan.github.io/images/avatar.png
-favicon: https://pianfan.github.io/images/favicon.ico
+avatar: https://xulong0826.github.io/images/avatar.png
+favicon: https://xulong0826.github.io/images/favicon.ico
 
 navigation:
-  - name: 首页
+  - name: Homepage
     url: /
-  - name: 关于
-    url: /about
-  - name: 分类
-    url: /tags
+  # - name: CV
+  #   url: /asset/kyqiu.pdf
+  - name: Blog
+    url: /blogs
+  - name: Google Scholar
+    url: https://scholar.google.com
 
 paginate: 8
 
@@ -18,16 +20,16 @@ excerpt_separator: <!-- more -->
 
 footer-links:
   zhihu: 
-  email: xiongyunhan@outlook.com
+  email: xulong_0826@qq.com
   facebook:
-  github: pianfan
+  github: xulong0826
   rss: # just type anything here for a working RSS icon
-  twitter: 
+  twitter: xulong
   youtube:
 
-footer-text: Copyright (c) 2024 Pianfan
+footer-text: Copyright (c) 2024 Xu Long
 
-url: https://pianfan.github.io
+url: https://xulong0826.github.io
 
 permalink: /:title/
 paginate_path: /page:num/

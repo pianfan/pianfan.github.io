@@ -8,9 +8,9 @@ navigation:
   - name: Homepage
     url: /
   # - name: CV
-  #   url: /asset/kyqiu.pdf
+  #   url: /asset/xulong.pdf
   - name: Blog
-    url: /blogs
+    url: /blog
   - name: Google Scholar
     url: https://scholar.google.com
 

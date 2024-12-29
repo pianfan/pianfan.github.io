@@ -333,16 +333,24 @@ body {
 }
 
 .product-image {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
+    margin: 0 -40px 40px;  /* 负边距让图片区域更宽 */
+    text-align: center;
+    background: #f8f9fa;
+    padding: 60px 20px;    /* 增加内边距使图片区域更高 */
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
 .product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+    max-width: 90%;        /* 控制图片最大宽度 */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.product-image img:hover {
+    transform: scale(1.02);  /* 添加轻微的悬停放大效果 */
 }
 
 .product-info {
@@ -707,5 +715,305 @@ body {
             transparent 100%
         );
     pointer-events: none;
+}
+
+.team-member img[alt="Nunu"] {
+    object-position: center 30%;  /* 将图片向上移动一点 */
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: #000;
+}
+
+.modal-body {
+    margin-top: 20px;
+}
+
+.modal-body h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.modal-body ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-body li {
+    margin-bottom: 25px;
+}
+
+.modal-body li strong {
+    display: block;
+    color: #3498db;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.modal-body li p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 详情页面样式 */
+.details-page {
+    padding: 100px 5% 50px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f6f9fc 0%, #f1f7fa 100%);
+}
+
+.details-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.details-content h1 {
+    color: #2c3e50;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.product-image {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.details-text h2 {
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2em;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 20px;
+}
+
+.feature-item {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item h3 {
+    color: #3498db;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.feature-item p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .details-content {
+        padding: 20px;
+    }
+}
+
+/* 调整移动端响应 */
+@media (max-width: 768px) {
+    .product-image {
+        margin: 0 -20px 30px;  /* 移动端调整负边距 */
+        padding: 40px 10px;    /* 移动端调整内边距 */
+    }
+    
+    .product-image img {
+        max-width: 95%;      /* 移动端图片可以更宽一些 */
+    }
+}
+
+/* 添加流程���部分的样式 */
+.process-section {
+    margin-top: 80px;  /* 增加上边距 */
+    padding-top: 0;    /* 移除上内边距 */
+}
+
+.process-section h2 {
+    color: #2c3e50;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 2em;
+}
+
+/* 调整图片容器的样式 */
+.process-section .product-image {
+    margin: 0 -40px;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.process-section .product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .process-section {
+        margin-top: 60px;  /* 移动端调整上边距 */
+    }
+    
+    .process-section .product-image {
+        margin: 0 -20px;
+        padding: 20px;
+    }
+}
+
+/* 商业计划部分样式 */
+.business-plan {
+    padding: 100px 5%;
+    background: linear-gradient(135deg, #f6f9fc 0%, #f1f7fa 100%);
+}
+
+.business-plan h2 {
+    text-align: center;
+    color: #1a237e;
+    margin-bottom: 60px;
+    font-size: 2.5em;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.plan-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.plan-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    padding: 20px;
+}
+
+.plan-item {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.plan-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.plan-icon {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.plan-item h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.plan-item p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1em;
+    text-align: center;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .plan-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .business-plan {
+        padding: 60px 5%;
+    }
+    
+    .plan-item {
+        padding: 25px;
+    }
 }
   

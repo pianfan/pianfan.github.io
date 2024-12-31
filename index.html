@@ -16,7 +16,7 @@
         <div class="logo">AQUANOVA</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="#innovation">Our Innovation</a></li>
             <li><a href="#business">Business Plan</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -27,77 +27,9 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 class="hero-title">AQUANOVA</h1>
-            <div class="product-preview">
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://via.placeholder.com/300x200" alt="人工珊瑚">
-                        </div>
-                        <div class="product-info">
-                            <h3>Ecological Artificial Coral</h3>
-                            <p>Innovative eco-friendly aquarium filtration system combining aesthetics and functionality</p>
-                            <ul class="features">
-                                <li>Real-time Water Quality Monitoring: AI monitors water quality through sensor data</li>
-                                <li>Predictive Maintenance: AI predicts potential water quality issues through historical data analysis</li>
-                                <li>Quantitative Regulation: Smart control of pollutants through precise analysis</li>
-                                <li>Adaptive Optimization: AI auto-adjusts based on water quality, season, and environment</li>
-                            </ul>
-                            <div class="button-group">
-                                <a href="coral-details.html" class="learn-more">Learn More</a>
-                                <a href="model-view.html" class="view-3d">View 3D Model</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://via.placeholder.com/300x200" alt="仿生水母">
-                        </div>
-                        <div class="product-info">
-                            <h3>仿生水母过滤器</h3>
-                            <p>灵感源自大自然的水质净化专家，集科技与艺术于一体</p>
-                            <ul class="features">
-                                <li>仿生脉动设计</li>
-                                <li>智能水质监测</li>
-                                <li>七彩氛围照明</li>
-                            </ul>
-                            <button class="learn-more">了解更多</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about-section" id="about">
-        <h2>About Us</h2>
-        <div class="about-content">
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="images/kyrie.jpg" alt="Kyrie">
-                    <h3>Kyrie</h3>
-                    <p class="role">Team Leader&Designer</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/abby.jpg" alt="Abby">
-                    <h3>Abby</h3>
-                    <p class="role">Designer</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/chris.jpg" alt="Chris">
-                    <h3>Chris</h3>
-                    <p class="role">Engineer</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/nunu.jpg" alt="Nunu">
-                    <h3>Nunu</h3>
-                    <p class="role">Developer</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/kevin.jpg" alt="Kevin">
-                    <h3>Kevin</h3>
-                    <p class="role">Researcher</p>
-                </div>
+            <div class="glowing-line"></div>
+            <div class="logo-image">
+                <img src="images/A.png" alt="AQUANOVA Logo">
             </div>
         </div>
     </section>
@@ -112,7 +44,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Ecological Artificial Coral</h3>
-                        <p>Innovative eco-friendly aquarium filtration system combining aesthetics and functionality: four features</p>
+                        <p>Innovative eco-friendly aquarium filtration system combining aesthetics and functionality</p>
                         <ul class="features">
                             <li>Real-time Water Quality Monitoring</li>
                             <li>Predictive Maintenance</li>
@@ -125,14 +57,13 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://via.placeholder.com/300x200" alt="仿生水母">
                     </div>
                     <div class="product-info">
                         <h3>仿生水母过滤器</h3>
-                        <p>感源自大自然的水质化专家，集科技与艺术于一体：三大特色</p>
+                        <p>灵感源自大自然的水质净化专家，集科技与艺术于一体</p>
                         <ul class="features">
                             <li>仿生脉动设计</li>
                             <li>智能水质监测</li>
@@ -211,35 +142,6 @@
         </div>
     </div>
 
-    <script>
-        function createBubble() {
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            
-            // 随机大小
-            const size = Math.random() * 30 + 10;
-            bubble.style.width = `${size}px`;
-            bubble.style.height = `${size}px`;
-            
-            // 随机位置
-            const startPos = Math.random() * window.innerWidth;
-            bubble.style.left = `${startPos}px`;
-            
-            // 随机动画时长
-            const duration = Math.random() * 3 + 2;
-            bubble.style.animation = `bubbleFloat ${duration}s linear infinite`;
-            
-            document.querySelector('.hero').appendChild(bubble);
-            
-            // 在动画结束后移除气泡
-            setTimeout(() => {
-                bubble.remove();
-            }, duration * 1000);
-        }
-
-        // 定期创建气泡
-        setInterval(createBubble, 300);
-    </script>
     <script src="scripts/model-viewer.js"></script>
     <script>
         // 获取模态框元素

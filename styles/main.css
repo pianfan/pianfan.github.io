@@ -920,21 +920,18 @@ h1 {
 
 /* 详情页面样式 */
 .details-page {
-    padding: 147px 20px 50px;  /* 将220px减少到约三分之二 (220 * 2/3 ≈ 147) */
+    padding: 147px 20px 50px;
     min-height: 100vh;
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
 }
 
 /* 产品介绍部分样式 */
 .product-intro {
+    min-height: 100vh;  /* 确保占满第一屏 */
     text-align: center;
-    margin-bottom: auto;
     position: relative;
     padding-bottom: 50px;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
@@ -947,10 +944,10 @@ h1 {
     height: 8px;
     background: #3498db;
     position: absolute;
-    bottom: 0;
+    bottom: 220px;  /* 修改这个值来调整线条位置，数值越大线条位置越靠上 */
     left: 0;
     transform-origin: left center;
-    animation: laserScanDetails 1.5s ease forwards 25.8s;  /* 改为25秒延迟 */
+    animation: laserScanDetails 1.5s ease forwards 25.8s;
     opacity: 0;
 }
 
@@ -976,9 +973,11 @@ h1 {
     }
 }
 
+
 /* AI功能部分样式 */
 .details-content {
-    margin-top: 120px;  /* 增加与上方发光线条的距离 */
+    margin-top: -190px;  /* 调整与上方内容的间距 */
+    padding-top: 110px;  /* 添加顶部内边距 */
 }
 
 .details-content h2 {
@@ -987,8 +986,6 @@ h1 {
     margin-bottom: 40px;
     text-align: center;
 }
-
-
 
 /* 产品描述容器 */
 .product-description {

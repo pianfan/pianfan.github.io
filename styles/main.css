@@ -889,5 +889,219 @@ body {
             0 0 70px rgba(30, 144, 255, 0.2);
     }
 }
+
+h1 {
+    color: #2c3e50;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Our Teammates 标题样式 */
+.about-content h1 {
+    color: rgba(173, 216, 230, 0.95);  /* 使用相同的蓝色 */
+    font-family: Arial, sans-serif;
+    font-size: 4em;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);  /* 添加发光效果 */
+    margin-bottom: 50px;
+}
+
+/* 详情页面样式 */
+.details-page {
+    padding: 220px 20px 50px;
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 产品介绍部分样式 */
+.product-intro {
+    text-align: center;
+    margin-bottom: auto;
+    position: relative;
+    padding-bottom: 50px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* AI功能部分样式 */
+.details-content {
+    margin-top: 120px;  /* 增加与上方发光线条的距离 */
+}
+
+.details-content h2 {
+    color: #fff;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* 发光线条样式 */
+.product-intro::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #3498db 50%, 
+        transparent 100%
+    );
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: glow 2s ease-in-out infinite;
+    box-shadow: 
+        0 0 10px #3498db,
+        0 0 20px #3498db;
+}
+
+/* 发光动画 */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #3498db,
+                   0 0 10px #3498db,
+                   0 0 15px #3498db;
+    }
+    50% {
+        box-shadow: 0 0 10px #3498db,
+                   0 0 20px #3498db,
+                   0 0 30px #3498db;
+    }
+    100% {
+        box-shadow: 0 0 5px #3498db,
+                   0 0 10px #3498db,
+                   0 0 15px #3498db;
+    }
+}
+
+/* 产品描述容器 */
+.product-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.3em;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    text-align: left;
+    margin-left: 200px;
+    margin-right: auto;
+    flex-grow: 1;  /* 允许伸展 */
+}
+
+/* 光标样式 */
+.typing-cursor {
+    display: inline-block;
+    width: 1px;
+    height: 1.4em;  /* 调整光标高度以匹配更大的字体 */
+    background-color: #3498db;
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+/* 光标闪烁动画 */
+@keyframes blink-caret {
+    from, to { opacity: 0 }
+    50% { opacity: 1 }
+}
+
+/* 功能特性网格 */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.feature-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.feature-icon {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.feature-item h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.feature-item ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.feature-item ul li {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.feature-item ul li::before {
+    content: "•";
+    color: #3498db;
+    position: absolute;
+    left: -15px;
+}
+
+/* 生产流程部分 */
+.process-section {
+    margin-top: 60px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.process-section h2 {
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.process-content {
+    max-width: 900px;  /* 限制内容最大宽度 */
+    margin: 0 auto;
+}
+
+.process-image {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.process-image img {
+    max-width: 80%;  /* 限制图片最大宽度 */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.process-description {
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1em;
+    line-height: 1.6;
+}
   
   

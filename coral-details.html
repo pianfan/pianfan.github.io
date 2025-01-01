@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>生态人工珊瑚 - 详细信息 | AquaNova</title>
+    <title>Ecological Artificial Coral - Details | AquaNova</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -18,80 +18,87 @@
     </nav>
 
     <div class="details-page">
-        <!-- 产品介绍部分 -->
+        <!-- Product Introduction -->
         <div class="product-intro">
             <h1>Ecological Artificial Coral</h1>
             <p class="product-description"></p>
         </div>
 
-        <!-- AI功能部分 -->
+        <!-- AI Features -->
         <div class="details-content">
-            <h2>AI 核心功能</h2>
+            <h2>AI Core Functions</h2>
             <div class="features-grid">
-                <!-- 实时监控功能 -->
+                <!-- Real-time Monitoring -->
                 <div class="feature-item">
                     <div class="feature-icon">🔍</div>
-                    <h3>实时水质监控</h3>
-                    <p>通过AI分析传感器数据：</p>
+                    <h3>Real-time Water Quality Monitoring</h3>
+                    <p>AI-powered sensor data analysis:</p>
                     <ul>
-                        <li>实时检测氨氮、硝酸盐等参数</li>
-                        <li>24小时持续监测水质状况</li>
-                        <li>即时通知异常情况</li>
+                        <li>Real-time detection of ammonia and nitrate levels</li>
+                        <li>24/7 water quality monitoring</li>
+                        <li>Instant anomaly notifications</li>
                     </ul>
                 </div>
 
-                <!-- 预测性维护 -->
+                <!-- Predictive Maintenance -->
                 <div class="feature-item">
                     <div class="feature-icon">📊</div>
-                    <h3>预测性维护</h3>
-                    <p>基于历史数据分析：</p>
+                    <h3>Predictive Maintenance</h3>
+                    <p>Historical data analysis:</p>
                     <ul>
-                        <li>预测潜在水质问题</li>
-                        <li>提供预防性建议</li>
-                        <li>降低维护成本</li>
+                        <li>Predict potential water quality issues</li>
+                        <li>Provide preventive recommendations</li>
+                        <li>Reduce maintenance costs</li>
                     </ul>
                 </div>
 
-                <!-- 定量调节功能 -->
+                <!-- Quantitative Regulation -->
                 <div class="feature-item">
                     <div class="feature-icon">⚖️</div>
-                    <h3>定量调节功能</h3>
-                    <p>智能化水质调节：</p>
+                    <h3>Quantitative Regulation</h3>
+                    <p>Smart water quality adjustment:</p>
                     <ul>
-                        <li>精准分析污染物含量</li>
-                        <li>自动调节过滤强度</li>
-                        <li>维持最佳水质平衡</li>
+                        <li>Precise pollutant content analysis</li>
+                        <li>Automatic filtration intensity control</li>
+                        <li>Maintain optimal water quality balance</li>
                     </ul>
                 </div>
 
-                <!-- 自适应优化 -->
+                <!-- Adaptive Optimization -->
                 <div class="feature-item">
                     <div class="feature-icon">🔄</div>
-                    <h3>自适应优化</h3>
-                    <p>环境适应性调节：</p>
+                    <h3>Adaptive Optimization</h3>
+                    <p>Environmental adaptation:</p>
                     <ul>
-                        <li>根据季节自动调整参数</li>
-                        <li>适应不同使用场景</li>
-                        <li>持续优化过滤效果</li>
+                        <li>Seasonal parameter adjustment</li>
+                        <li>Adapt to different usage scenarios</li>
+                        <li>Continuous filtration optimization</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- 生产流程部分 -->
+        <!-- Manufacturing Process -->
         <div class="process-section">
-            <h2>智能制造流程</h2>
+            <h2>Manufacturing Process</h2>
             <div class="process-content">
                 <div class="process-image">
-                    <img src="images/AIprocess.jpg" alt="AI辅助生产流程图">
+                    <img src="images/AIprocess.jpg" alt="AI-assisted Manufacturing Process" class="fullscreen-img" onclick="openFullscreen(this)">
                 </div>
                 <div class="process-description">
-                    <p>采用先进的AI辅助制造技术，确保每个产品都符合最高质量标准。</p>
+                    <p>Advanced AI-assisted manufacturing technology ensures each product meets the highest quality standards.</p>
                 </div>
             </div>
+        </div>
+
+        <!-- Fullscreen Modal -->
+        <div id="fullscreen-modal" class="fullscreen-modal" onclick="closeFullscreen()">
+            <span class="close-btn">&times;</span>
+            <img class="modal-content" id="fullscreen-image">
         </div>
     </div>
 
     <script src="scripts/typing-effect.js"></script>
+    <script src="scripts/fullscreen.js"></script>
 </body>
 </html> 

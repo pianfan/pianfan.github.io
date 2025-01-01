@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaNova</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="logo">AQUANOVA</div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#innovation">Our Innovation</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="details-page">
+        <!-- Product Introduction -->
+        <div class="product-intro jellyfish-line">
+            <h1>Bionic Jellyfish</h1>
+            <p class="product-description"></p>
+        </div>
+
+        <!-- AI Features -->
+        <div class="details-content">
+            <h2 style="font-family: Arial, sans-serif; font-size: 4em; font-weight: 900; color: rgba(173, 216, 230, 0.95); letter-spacing: 10px; text-transform: capitalize; text-shadow: 0 0 10px rgba(173, 216, 230, 0.8), 0 0 20px rgba(135, 206, 235, 0.5), 0 0 30px rgba(100, 149, 237, 0.3), 0 0 40px rgba(0, 191, 255, 0.3), 0 0 70px rgba(30, 144, 255, 0.2); animation: titleGlow 2s ease-in-out infinite;">Key Features</h2>
+            <div class="features-grid">
+                <!-- Biomimetic Design -->
+                <div class="feature-item">
+                    <div class="feature-icon">🦑</div>
+                    <h3>Biomimetic Design</h3>
+                    <p>Nature-inspired engineering:</p>
+                    <ul>
+                        <li>Mimics natural jellyfish movement</li>
+                        <li>Efficient propulsion system</li>
+                        <li>Adaptive swimming patterns</li>
+                    </ul>
+                </div>
+
+                <!-- Water Purification -->
+                <div class="feature-item">
+                    <div class="feature-icon">💧</div>
+                    <h3>Water Purification</h3>
+                    <p>Advanced filtration system:</p>
+                    <ul>
+                        <li>Removes microplastics and pollutants</li>
+                        <li>Continuous water circulation</li>
+                        <li>Self-cleaning mechanism</li>
+                    </ul>
+                </div>
+
+                <!-- Smart Sensors -->
+                <div class="feature-item">
+                    <div class="feature-icon">📡</div>
+                    <h3>Smart Sensors</h3>
+                    <p>Environmental monitoring:</p>
+                    <ul>
+                        <li>Real-time water quality detection</li>
+                        <li>Temperature and pH monitoring</li>
+                        <li>Pollution level tracking</li>
+                    </ul>
+                </div>
+
+                <!-- Energy Efficiency -->
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Energy Efficiency</h3>
+                    <p>Sustainable operation:</p>
+                    <ul>
+                        <li>Solar-powered system</li>
+                        <li>Long-lasting battery life</li>
+                        <li>Minimal maintenance required</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="process-section">
+            <h2 style="font-family: Arial, sans-serif; font-size: 4em; font-weight: 900; color: rgba(173, 216, 230, 0.95); letter-spacing: 10px; text-transform: capitalize; text-shadow: 0 0 10px rgba(173, 216, 230, 0.8), 0 0 20px rgba(135, 206, 235, 0.5), 0 0 30px rgba(100, 149, 237, 0.3), 0 0 40px rgba(0, 191, 255, 0.3), 0 0 70px rgba(30, 144, 255, 0.2); animation: titleGlow 2s ease-in-out infinite;">Technical Details</h2>
+            <div class="process-content">
+                <div class="process-image">
+                    <img src="images/jellyfish.jpg" alt="Bionic Jellyfish Technical Details" class="fullscreen-img" onclick="openFullscreen(this)">
+                </div>
+                <div class="process-description">
+                    <p>Our bionic jellyfish combines cutting-edge robotics with biomimetic design principles to create an efficient and sustainable water purification solution.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fullscreen Modal -->
+        <div id="fullscreen-modal" class="fullscreen-modal" onclick="closeFullscreen()">
+            <span class="close-btn">&times;</span>
+            <img class="modal-content" id="fullscreen-image">
+        </div>
+    </div>
+
+    <script src="scripts/jellyfish-typing.js"></script>
+    <script src="scripts/fullscreen.js"></script>
+</body>
+</html> 

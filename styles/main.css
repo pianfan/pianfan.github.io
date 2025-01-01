@@ -944,10 +944,10 @@ h1 {
     height: 8px;
     background: #3498db;
     position: absolute;
-    bottom: 220px;  /* 修改这个值来调整线条位置，数值越大线条位置越靠上 */
+    bottom: 220px;
     left: 0;
     transform-origin: left center;
-    animation: laserScanDetails 1.5s ease forwards 25.8s;
+    animation: laserScanDetails 1.5s ease forwards 29s;  /* 使用与珊瑚页面相同的延迟时间 */
     opacity: 0;
 }
 
@@ -1212,6 +1212,43 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* 水母页面的发光线条样式 */
+.jellyfish-line::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 8px;
+    background: #3498db;
+    position: absolute;
+    bottom: 180px;
+    left: 0;
+    transform-origin: left center;
+    animation: laserScanJellyfish 1.5s ease forwards 14s;  /* 提前到15秒 */
+    opacity: 0;
+}
+
+/* 水母页面的激光扫描动画 */
+@keyframes laserScanJellyfish {
+    0% {
+        opacity: 1;
+        transform: scaleX(0);
+        box-shadow: 
+            0 0 10px #3498db,
+            0 0 20px #3498db,
+            0 0 30px #3498db,
+            0 0 40px #3498db;
+    }
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+        box-shadow: 
+            0 0 10px #3498db,
+            0 0 20px #3498db,
+            0 0 30px #3498db,
+            0 0 40px #3498db;
+    }
 }
   
   

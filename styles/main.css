@@ -920,7 +920,7 @@ h1 {
 
 /* 详情页面样式 */
 .details-page {
-    padding: 220px 20px 50px;
+    padding: 147px 20px 50px;  /* 将220px减少到约三分之二 (220 * 2/3 ≈ 147) */
     min-height: 100vh;
     max-width: 1200px;
     margin: 0 auto;
@@ -1002,14 +1002,13 @@ h1 {
     text-align: left;
     margin-left: 200px;
     margin-right: auto;
-    flex-grow: 1;  /* 允许伸展 */
 }
 
 /* 光标样式 */
 .typing-cursor {
     display: inline-block;
     width: 1px;
-    height: 1.4em;  /* 调整光标高度以匹配更大的字体 */
+    height: 1.4em;
     background-color: #3498db;
     margin-left: 2px;
     vertical-align: middle;
@@ -1102,6 +1101,51 @@ h1 {
     color: rgba(255, 255, 255, 0.8);
     font-size: 1.1em;
     line-height: 1.6;
+}
+
+/* 产品介绍部分标题样式 */
+.product-intro h1 {
+    font-family: Arial, sans-serif;
+    font-size: 4em;
+    font-weight: 900;
+    color: rgba(173, 216, 230, 0.95);
+    letter-spacing: 10px;
+    text-transform: capitalize;
+    text-shadow: 
+        0 0 10px rgba(173, 216, 230, 0.8),
+        0 0 20px rgba(135, 206, 235, 0.5),
+        0 0 30px rgba(100, 149, 237, 0.3),
+        0 0 40px rgba(0, 191, 255, 0.3),
+        0 0 70px rgba(30, 144, 255, 0.2);
+    animation: titleGlow 2s ease-in-out infinite;
+}
+
+/* 标题发光动画 */
+@keyframes titleGlow {
+    0% {
+        text-shadow: 
+            0 0 10px rgba(173, 216, 230, 0.8),
+            0 0 20px rgba(135, 206, 235, 0.5),
+            0 0 30px rgba(100, 149, 237, 0.3),
+            0 0 40px rgba(0, 191, 255, 0.3),
+            0 0 70px rgba(30, 144, 255, 0.2);
+    }
+    50% {
+        text-shadow: 
+            0 0 15px rgba(173, 216, 230, 0.9),
+            0 0 25px rgba(135, 206, 235, 0.6),
+            0 0 35px rgba(100, 149, 237, 0.4),
+            0 0 45px rgba(0, 191, 255, 0.4),
+            0 0 75px rgba(30, 144, 255, 0.3);
+    }
+    100% {
+        text-shadow: 
+            0 0 10px rgba(173, 216, 230, 0.8),
+            0 0 20px rgba(135, 206, 235, 0.5),
+            0 0 30px rgba(100, 149, 237, 0.3),
+            0 0 40px rgba(0, 191, 255, 0.3),
+            0 0 70px rgba(30, 144, 255, 0.2);
+    }
 }
   
   

@@ -1,8 +1,8 @@
 name: "CircleCoder's blog"
 description: "计小袁的个人技术博客"
 
-avatar: https://BUAA-Yzx2023.github.io/images/avatar.webp
-favicon: https://BUAA-Yzx2023.github.io/images/favicon.ico
+avatar: https://github.com/CircleCoder05/CircleCoder.github.io/images/avatar.webp
+favicon: https://github.com/CircleCoder05/CircleCoder.github.io/images/favicon.ico
 
 navigation:
   - name: 首页
@@ -26,7 +26,7 @@ footer-links:
 
 footer-text: Copyright (c) 2024 BUAA-Yzx2023
 
-url: https://BUAA-Yzx2023.github.io
+url: https://github.com/CircleCoder05/CircleCoder.github.io
 
 permalink: /:title/
 paginate_path: /page:num/

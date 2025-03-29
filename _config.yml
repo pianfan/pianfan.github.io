@@ -1,5 +1,5 @@
 name: "CircleCoder's blog"
-description: "计小袁的个人技术博客"
+description: "CircleCoder的个人技术博客"
 
 avatar: https://CircleCoder05.github.io/images/avatar.webp
 favicon: https://CircleCoder05.github.io/images/favicon.ico
@@ -24,7 +24,7 @@ footer-links:
   twitter: 
   youtube:
 
-footer-text: Copyright (c) 2024 BUAA-Yzx2023
+footer-text: Copyright (c) 2024 CircleCoder
 
 url: https://CircleCoder05.github.io
 
@@ -64,8 +64,8 @@ exclude:
 gitalk:
   clientID: 'Ov23liNvLcz6D9p4Swco'
   clientSecret: 'a42eb37b72cca919b4fe2732221d19ccd94f07e8'
-  repo: 'BUAA-Yzx2023.github.io'
-  owner: 'BUAA-Yzx2023'
-  admin: ['BUAA-Yzx2023']
+  repo: 'CircleCoder05.github.io'
+  owner: 'CircleCoder05'
+  admin: ['CircleCoder05']
   distractionFreeMode: false
 

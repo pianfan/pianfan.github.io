@@ -1,8 +1,8 @@
 name: "CircleCoder's blog"
 description: "计小袁的个人技术博客"
 
-avatar: https://github.com/CircleCoder05/CircleCoder.github.io/images/avatar.webp
-favicon: https://github.com/CircleCoder05/CircleCoder.github.io/images/favicon.ico
+avatar: https://CircleCoder05.github.io/images/avatar.webp
+favicon: https://CircleCoder05.github.io/images/favicon.ico
 
 navigation:
   - name: 首页

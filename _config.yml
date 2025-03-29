@@ -26,7 +26,7 @@ footer-links:
 
 footer-text: Copyright (c) 2024 BUAA-Yzx2023
 
-url: https://github.com/CircleCoder05/CircleCoder.github.io
+url: https://CircleCoder05.github.io
 
 permalink: /:title/
 paginate_path: /page:num/

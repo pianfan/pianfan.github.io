@@ -1,3 +1,3 @@
-# pianfan.github.io
+# 7kmRunner.github.io
 
-My Personal Blog via GitHub
+个人博客，记录学习、生活，欢迎和我交流，minrainlee@gmail.com

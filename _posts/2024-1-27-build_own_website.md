@@ -53,7 +53,7 @@ author: pianfan
 
   ![点击笔](https://pianfan.github.io/images/pen.png)
 
-  .md 文件是 markdown 文件，使用的是 Markdown 语言。这一易学易用的语言将 HTML 里的一些常见标签都用带有特殊含义的符号来表示，大大方便了文档的书写，而且对代码类文本的支持度很高，因此深受程序员的喜爱。我们的博客文章也需要用 Markdown 进行写作。如果你还不了解这个语言，可以去看[菜鸟教程](https://www.runoob.com/markdown/md-tutorial.html)，非常简单。
+  .md 文件是 markdown 文件，使用的是 Markdown 语言。这一易学易用的语言将 HTML 里的一些常见标签都用带有特殊含义的符号来表示，大大方便了文档的书写，而且对代码类文本的支持度很高，因此深受程序员的喜爱。我们的博客文章也需要用 Markdown 进行写作。
 
   github 支持对 markdown 文件进行预览。当在 github 上对 markdown 文件进行编辑的时候，点击 Edit 旁边的 Preview，即可预览当前的页面效果。这在编辑过程中经常用来检查文章排版是否符合预期。
 

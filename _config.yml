@@ -21,16 +21,23 @@ footer-links:
   email: xiongyunhan@outlook.com
   facebook:
   github: pianfan
-  rss: # just type anything here for a working RSS icon
+  rss: welcome!
   twitter: 
   youtube:
 
-footer-text: Copyright (c) 2024 Pianfan
+footer-text: Copyright (c) 2024-2025 Pianfan
 
 url: https://pianfan.github.io
 
 permalink: /:title/
 paginate_path: /page:num/
+
+# Gitalk
+gitalk:
+  clientID: cba98a0db83eb062c0f8
+  clientSecret: 46400b2614fb5c4189f6c5f662baee088712b316
+  repo: pianfan.github.io
+  owner: pianfan
 
 # The release of Jekyll Now
 version: v1.2.0

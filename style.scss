@@ -132,10 +132,23 @@ ol, ul {
 
 ul {
   > li:before {
+    content: "\25CF";
     padding-right: $ul-bullets-right-space;
     font-family: $ul-bullets-font;
     font-size: $ul-bullets-font-size;
     line-height: $ul-bullets-font-line-height;
+  }
+
+  > li > ul {
+    > li:before {
+      content: "\25E6";
+    }
+  }
+
+  > li > ul > li > ul {
+    > li:before {
+      content: "\25AA";
+    }
   }
 }
 

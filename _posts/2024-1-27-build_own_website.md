@@ -8,7 +8,6 @@ author: pianfan
 ---
 
 ###### 说明：本教程只针对不了解网站搭建并且想要快速搭建起个人博客的新手，帮助建立网站的平台有很多，有一定网站开发基础的读者可另寻门路
-
 <!-- more -->
 
 ### 目录
@@ -34,6 +33,7 @@ author: pianfan
 点击链接 <https://github.com/pianfan/pianfan.github.io> 进入我的博客仓库地址，点击这里的 Fork。
 
 ![点击 Fork](https://pianfan.github.io/images/2024-1-27-build_own_website/fork.png)
+
 仓库名称填写 `username.github.io`，注意 `username` 指的是用户名不是昵称。
 
 ![设置仓库名称](https://pianfan.github.io/images/2024-1-27-build_own_website/repositoryname.png)
@@ -90,15 +90,21 @@ author: pianfan
 
     ![版权标注和网址](https://pianfan.github.io/images/2024-1-27-build_own_website/footer&url.png)
 
+  - **Gitalk 配置信息**
+
+    ![Gitalk 配置](https://pianfan.github.io/images/2024-1-27-build_own_website/gitalk.png)
+
+    Gitalk 用于给博客文章引入评论功能，配置方法请参考 <https://github.com/gitalk/gitalk?tab=readme-ov-file#usage>。
+
   - **其他**
 
     如果你不知道改了之后会有什么后果，不要去动它。
 
-- ### 删除 _posts 文件夹并重建
+- ### 清空 _posts 文件夹
 
-   _posts 文件夹里放的是博客文章，你以后的文章也要放在这里。现在你的 _posts 文件夹里面放的还是我的文章，**请把它们全部删除**，以免造成侵权。
+   _posts 文件夹里放的是博客文章，你以后的文章也要放在这里。现在你的 _posts 文件夹里面放的还是我的文章，请把它们全部删除，以免造成侵权。
 
-- ### 删除 images 文件夹并重建
+- ### 清空 images 文件夹
 
 - ### 修改 about.md 文件
 
@@ -108,9 +114,9 @@ author: pianfan
 
 ## Step 3. 开始写你的第一篇文章
 
-在 README.md 部分我有提到过怎么在 github 上编写 Markdown 文件，写文章也是一样的道理。
+在 README.md 部分我有提到过怎么在 github 上编写 Markdown 文件，写文章也是一样的道理。当然，你完全可以在其他地方编辑你的文章源码，再上传到博客仓库，这其实也是我更为推荐的方法。
 
-文章文件的命名也是有讲究的，请按照下面的例子呈现的格式命名：
+文章文件名请按照下面的例子呈现的格式命名：
 
     2024-1-25-letter_to_you.md
 

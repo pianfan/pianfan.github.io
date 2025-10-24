@@ -10,18 +10,6 @@ author: pianfan
 
 ###### 说明：本教程只针对不了解网站搭建并且想要快速搭建起个人博客的新手，帮助建立网站的平台有很多，有一定网站开发基础的读者可另寻门路<!-- more -->
 
-### 目录
-
-- [Step 0. 准备工作](#step-0-准备工作)
-- [Step 1. 建立博客仓库](#step-1-建立博客仓库)
-- [Step 2. 修改仓库文件](#step-2-修改仓库文件)
-  - [修改 README.md 文件](#修改-readmemd-文件)
-  - [修改 _config.yml 文件](#修改-_configyml-文件)
-  - [清空 _posts 文件夹](#清空-_posts-文件夹)
-  - [清空 images 文件夹](#清空-images-文件夹)
-  - [修改 about.md 文件](#修改-aboutmd-文件)
-- [Step 3. 开始写你的第一篇文章](#step-3-开始写你的第一篇文章)
-
 ## Step 0. 准备工作
 
 利用 GitHub Pages 免费获取你自己的网站域名只需要一个先决条件：拥有你自己的 github 账号。如果你目前还没有，可以去 [GitHub 官网](https://github.com)先注册一个。

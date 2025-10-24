@@ -441,8 +441,8 @@ nav {
 // content
 
 .wrapper-content {
-  float: right;
-  width: 70%;
+  float: left;
+  width: 80%;
 
   @include mobile {
     float: none;
@@ -530,12 +530,12 @@ nav {
 // TOC
 
 .toc {
-  width: 240px;
+  width: 320px;
   height: 100%;
-  left: 30%;
+  right: 0%;
   position: fixed;
   z-index: 4;
-  padding: 60px 20px 0 20px;
+  padding: 20px 20px 0 20px;
   
   &:before{
     content:"目录";
@@ -558,7 +558,7 @@ nav {
 
 @media screen and (max-width:2200px) and (min-width:1200px){
   .withtoc{
-    padding-left: 260px;
+    padding-left: 500px;
   }
 }
 

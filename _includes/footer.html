@@ -12,44 +12,49 @@
 </div>
 
 <script>
-// 主题切换逻辑
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
-const body = document.body;
+if (!window.themeToggle) {
+  // 主题切换逻辑
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const body = document.body;
 
-// 检查本地存储或系统偏好
-function initTheme() {
-  const savedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    body.classList.add('dark-mode');
-    updateIcon(true);
-  } else {
-    html.classList.remove('dark-mode');
-    updateIcon(false);
+  // 检查本地存储或系统偏好
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      body.classList.add('dark-mode');
+      updateIcon(true);
+    } else {
+      body.classList.remove('dark-mode');
+      updateIcon(false);
+    }
   }
+
+  // 更新图标
+  function updateIcon(isDark) {
+    themeIcon.setAttribute('d', isDark 
+      ? "M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A9,9 0 0,0 21,12A9,9 0 0,0 12,3M12,19A7,7 0 0,1 5,12A7,7 0 0,1 12,5A7,7 0 0,1 19,12A7,7 0 0,1 12,19Z"
+      : "M12,18c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S15.3,18,12,18zM12,8c-2.2,0-4,1.8-4,4s1.8,4,4,4s4-1.8,4-4S14.2,8,12,8z M12,2 c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z"
+    );
+  }
+
+  // 切换主题
+  function toggleTheme() {
+    const isDark = body.classList.toggle('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateIcon(isDark);
+  }
+
+  // 监听系统主题变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', initTheme);
+
+  // 初始化和绑定事件
+  initTheme();
+  themeToggle.addEventListener('click', toggleTheme);
+  
+  // 将变量存储到window对象，避免重复声明
+  window.themeToggle = themeToggle;
 }
-
-// 更新图标
-function updateIcon(isDark) {
-  themeIcon.setAttribute('d', isDark 
-    ? "M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A9,9 0 0,0 21,12A9,9 0 0,0 12,3M12,19A7,7 0 0,1 5,12A7,7 0 0,1 12,5A7,7 0 0,1 19,12A7,7 0 0,1 12,19Z"
-    : "M12,18c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S15.3,18,12,18zM12,8c-2.2,0-4,1.8-4,4s1.8,4,4,4s4-1.8,4-4S14.2,8,12,8z M12,2 c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z"
-  );
-}
-
-// 切换主题
-function toggleTheme() {
-  const isDark = body.classList.toggle('dark-mode');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  updateIcon(isDark);
-}
-
-// 监听系统主题变化
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', initTheme);
-
-// 初始化和绑定事件
-initTheme();
-themeToggle.addEventListener('click', toggleTheme);
 </script>

@@ -15,7 +15,7 @@
 // 主题切换逻辑
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
-const html = document.documentElement;
+const body = document.body;
 
 // 检查本地存储或系统偏好
 function initTheme() {
@@ -23,7 +23,7 @@ function initTheme() {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   
   if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    html.classList.add('dark-mode');
+    body.classList.add('dark-mode');
     updateIcon(true);
   } else {
     html.classList.remove('dark-mode');
@@ -41,7 +41,7 @@ function updateIcon(isDark) {
 
 // 切换主题
 function toggleTheme() {
-  const isDark = html.classList.toggle('dark-mode');
+  const isDark = body.classList.toggle('dark-mode');
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
   updateIcon(isDark);
 }

@@ -441,8 +441,8 @@ nav {
 // content
 
 .wrapper-content {
-  float: left;
-  width: 80%;
+  float: right;
+  width: 70%;
 
   @include mobile {
     float: none;
@@ -558,7 +558,7 @@ nav {
 
 @media screen and (max-width:2200px) and (min-width:1200px){
   .withtoc{
-    padding-left: 500px;
+    padding-right: 350px;
   }
 }
 

@@ -115,13 +115,14 @@ author: pianfan
     title: "文章标题"
     date: 2024-1-27
     tags: [tag1, tag2]
+    toc: true
     comments: true
     author: xxx
     ---
 
 - `tags` 是文章标签，可以有 0 个或多个。
 - `comments` 的值可取 `true` 或 `false`，用于控制是否开启文章评论区。
-
+- `toc` 也是一个布尔值，用于控制是否开启文章侧栏目录。
 ---
 
 本篇教程就到此结束啦！如果有任何问题，欢迎在下方评论区留言~

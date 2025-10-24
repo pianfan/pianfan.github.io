@@ -3,8 +3,47 @@
 // VARIABLES
 //
 
+// 基础主题切换变量
+:root {
+  // 浅色模式变量
+  --oc-gray-0: #f8f9fa;
+  --oc-gray-1: #f1f3f5;
+  --oc-gray-2: #e9ecef;
+  --oc-gray-3: #dee2e6;
+  --oc-gray-4: #ced4da;
+  --oc-gray-5: #adb5bd;
+  --oc-gray-6: #868e96;
+  --oc-gray-7: #495057;
+  --oc-gray-8: #343a40;
+  --oc-gray-9: #212529;
+  
+  --oc-blue-0: #e8f7ff;
+  --oc-blue-6: #228ae6;
+  --oc-blue-8: #1b6ec2;
+  --oc-indigo-9: #364fc7;
+}
+
+// 深色模式变量
+body.dark-mode {
+  --oc-gray-0: #212529;
+  --oc-gray-1: #343a40;
+  --oc-gray-2: #495057;
+  --oc-gray-3: #6c757d;
+  --oc-gray-4: #adb5bd;
+  --oc-gray-5: #ced4da;
+  --oc-gray-6: #dee2e6;
+  --oc-gray-7: #e9ecef;
+  --oc-gray-8: #f1f3f5;
+  --oc-gray-9: #f8f9fa;
+  
+  --oc-blue-0: #0f3460;
+  --oc-blue-6: #51cf66;
+  --oc-blue-8: #74b816;
+  --oc-indigo-9: #9775fa;
+}
+
 // Colors
-$blue: $oc-blue-8;
+$blue: var(--oc-blue-8);
 
 // Grays
 $black: #000;
@@ -28,38 +67,37 @@ $base-font-size: 16px;
 $small-font-size: 14px;
 
 // Colors
-$base-color: $oc-gray-8;
-$base-lighten-color: $oc-gray-6;
-$base-lightener-color: $oc-gray-4;
+$base-color: var(--oc-gray-8);
+$base-lighten-color: var(--oc-gray-6);
+$base-lightener-color: var(--oc-gray-4);
 
-$background-color: $oc-gray-0;
+$background-color: var(--oc-gray-0);
 $background-lighten-color: #f8f9fa6b;
 
 $text-color: $base-color;
-$link-color: $oc-blue-8;
-$link-lighten-color: $oc-blue-6;
-$link-bghv-color: $oc-blue-0;
-$divider-color: $oc-gray-1;
+$link-color: var(--oc-blue-8);
+$link-lighten-color: var(--oc-blue-6);
+$link-bghv-color: var(--oc-blue-0);
+$divider-color: var(--oc-gray-1);
 
-$error-color:$oc-blue-8;
+$error-color: var(--oc-blue-8);
 
-$table-border-color: $oc-gray-2;
-$table-background-color: $oc-gray-1;
+$table-border-color: var(--oc-gray-2);
+$table-background-color: var(--oc-gray-1);
 
 $blockquote-color: $base-lighten-color;
-$blockquote-border-color: $oc-gray-3;
+$blockquote-border-color: var(--oc-gray-3);
 
-$footnote-link-border-color: $oc-gray-1;
-$footnote-link-background-over-color: $oc-gray-1;
+$footnote-link-border-color: var(--oc-gray-1);
+$footnote-link-background-over-color: var(--oc-gray-1);
 
-// $selection-color: $oc-black;
-$selection-background-color: $oc-gray-3;
+$selection-background-color: var(--oc-gray-3);
 
-$tag-index-label-background-color: $oc-gray-2;
+$tag-index-label-background-color: var(--oc-gray-2);
 $tag-index-count-background-color: #868e961a;
 
-$footer-border-color: $oc-gray-2;
-$footer-background-color: $oc-gray-0;
+$footer-border-color: var(--oc-gray-2);
+$footer-background-color: var(--oc-gray-0);
 
 // List
 $li-bottom-space: 0.4em;

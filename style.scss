@@ -26,7 +26,7 @@ body {
 }
 
 .container {
-  margin: 0 auto;
+  margin: 0 0;
   max-width: 1000px;
   padding: 0 20px;
   width: 100%;
@@ -739,4 +739,60 @@ footer {
 @import "highlights";
 @import "gitalk";
 
+// 主题切换按钮
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $background-color;
+  border: 1px solid $divider-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 
+  &:hover {
+    background-color: $link-bghv-color;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: $base-color;
+  }
+}
+
+// 黑夜模式样式
+body.dark-mode {
+  --background-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --link-color: #61aeee;
+  --divider-color: #333;
+  --card-background: #2d2d2d;
+  
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+body.dark-mode .post,
+body.dark-mode .sidebar,
+body.dark-mode .search-container input {
+  background-color: var(--card-background);
+  color: var(--text-color);
+  border-color: var(--divider-color);
+}
+
+body.dark-mode a {
+  color: var(--link-color);
+}
+
+body.dark-mode .gt-container {
+  --gt-bg-color: #2d2d2d;
+  --gt-text-color: #e0e0e0;
+}

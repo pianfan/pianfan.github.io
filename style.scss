@@ -797,3 +797,60 @@ body.dark-mode .gt-container {
   --gt-bg-color: #2d2d2d;
   --gt-text-color: #e0e0e0;
 }
+
+body.dark-mode {
+  // 基础背景和文字
+  background-color: var(--oc-gray-0);
+  color: var(--oc-gray-8);
+
+  // 链接样式
+  a {
+    color: var(--oc-blue-6);
+    &:hover {
+      color: var(--oc-blue-8);
+    }
+  }
+
+  // 侧边栏
+  .wrapper-sidebar {
+    background-color: var(--oc-gray-0);
+    border-right-color: var(--oc-gray-2);
+  }
+
+  // 文章卡片
+  .post, .sidebar {
+    background-color: var(--oc-gray-1);
+    border-color: var(--oc-gray-2);
+  }
+
+  // 搜索框
+  .search-container input {
+    background-color: var(--oc-gray-1);
+    color: var(--oc-gray-8);
+    border-color: var(--oc-gray-3);
+  }
+
+  // 代码块
+  pre, code {
+    background-color: var(--oc-gray-2);
+    color: var(--oc-gray-9);
+  }
+
+  // 表格
+  table {
+    border-color: var(--oc-gray-3);
+    tbody tr:nth-child(odd) td {
+      background-color: var(--oc-gray-2);
+    }
+  }
+
+  // 分页按钮
+  .pagination a {
+    background-color: var(--oc-gray-1);
+    border-color: var(--oc-gray-3);
+    &:hover {
+      background-color: var(--oc-blue-0);
+      border-color: var(--oc-blue-6);
+    }
+  }
+}

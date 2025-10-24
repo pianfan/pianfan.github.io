@@ -12,22 +12,27 @@
 </div>
 
 <script>
-if (!window.themeToggle) {
-  // 主题切换逻辑
+document.addEventListener('DOMContentLoaded', function() {
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
-  const body = document.body;
+  const html = document.documentElement;
 
-  // 检查本地存储或系统偏好
+  // 检查元素是否存在
+  if (!themeToggle || !themeIcon) {
+    console.error('主题切换元素未找到');
+    return;
+  }
+
+  // 初始化主题
   function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      body.classList.add('dark-mode');
+      html.classList.add('dark-mode');
       updateIcon(true);
     } else {
-      body.classList.remove('dark-mode');
+      html.classList.remove('dark-mode');
       updateIcon(false);
     }
   }
@@ -42,19 +47,18 @@ if (!window.themeToggle) {
 
   // 切换主题
   function toggleTheme() {
-    const isDark = body.classList.toggle('dark-mode');
+    const isDark = html.classList.toggle('dark-mode');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     updateIcon(isDark);
+    // 手动触发重绘
+    html.offsetHeight;
   }
 
-  // 监听系统主题变化
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', initTheme);
-
-  // 初始化和绑定事件
-  initTheme();
+  // 绑定事件
   themeToggle.addEventListener('click', toggleTheme);
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', initTheme);
   
-  // 将变量存储到window对象，避免重复声明
-  window.themeToggle = themeToggle;
-}
+  // 初始化
+  initTheme();
+});
 </script>

@@ -74,11 +74,11 @@ $base-lightener-color: var(--oc-gray-4);
 $background-color: var(--oc-gray-0);
 $background-lighten-color: #f8f9fa6b;
 
-$text-color: $base-color;
+$text-color: var(--oc-gray-8);
 $link-color: var(--oc-blue-8);
 $link-lighten-color: var(--oc-blue-6);
 $link-bghv-color: var(--oc-blue-0);
-$divider-color: var(--oc-gray-1);
+$divider-color: var(--oc-gray-2);
 
 $error-color: var(--oc-blue-8);
 

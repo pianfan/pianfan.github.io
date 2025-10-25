@@ -12,10 +12,10 @@
 </div>
 
 <!-- 主题选择菜单 (默认隐藏) -->
-<div class="theme-menu" id="themeMenu">
+<div class="theme-menu" id="themeMenu" style="display: none;">
   <div class="theme-option" data-theme="system">跟随系统主题</div>
-  <div class="theme-option" data-theme="light">浅色主题</div>
-  <div class="theme-option" data-theme="dark">深色主题</div>
+  <div class="theme-option" data-theme="light">浅色模式</div>
+  <div class="theme-option" data-theme="dark">深色模式</div>
 </div>
 
 <style>
@@ -30,7 +30,6 @@
   border-radius: 8px;
   padding: 8px 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  display: none; /* 默认隐藏 */
   min-width: 160px;
 }
 
@@ -75,6 +74,9 @@
           return;
         }
 
+        // 初始隐藏菜单
+        this.themeMenu.style.display = 'none';
+
         this.bindEvents();
         this.initTheme();
       });
@@ -84,8 +86,8 @@
       // 点击切换按钮显示/隐藏菜单
       this.themeToggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        const isVisible = window.getComputedStyle(this.themeMenu).display === 'block';
-        this.themeMenu.style.display = isVisible ? 'none' : 'block';
+        const currentDisplay = this.themeMenu.style.display;
+        this.themeMenu.style.display = currentDisplay === 'block' ? 'none' : 'block';
         this.highlightActiveOption();
       });
 

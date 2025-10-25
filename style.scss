@@ -876,10 +876,6 @@ body.dark-mode {
     background-color: var(--oc-gray-2);
     border-color: var(--oc-gray-3);
     color: var(--oc-gray-8);
-    
-    &:hover {
-      background-color: var(--oc-gray-3);
-    }
   }
 
   .gt-container .gt-popup {
@@ -901,11 +897,7 @@ body.dark-mode {
   // 代码块适配
   .gt-container .highlight pre,
   .gt-container pre {
-    background-color: var(--oc-gray-3);
+    background-color: var(--oc-gray-1);
     color: var(--oc-gray-9);
-  }
-
-  .gt-container code {
-    background-color: rgba(73, 80, 87, 0.3);
   }
 }

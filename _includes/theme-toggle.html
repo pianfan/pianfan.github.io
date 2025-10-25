@@ -5,53 +5,12 @@
   </svg>
 </div>
 
-<!-- 主题选择菜单 (默认隐藏) -->
+<!-- 主题选择菜单 -->
 <div class="theme-menu" id="themeMenu">
   <div class="theme-option" data-theme="system">跟随系统主题</div>
   <div class="theme-option" data-theme="light">浅色模式</div>
   <div class="theme-option" data-theme="dark">深色模式</div>
 </div>
-
-<style>
-/* 主题菜单样式 */
-.theme-menu {
-  position: fixed;
-  bottom: 70px;
-  left: 20px;
-  z-index: 9998;
-  background-color: var(--card-background);
-  border: 1px solid var(--divider-color);
-  border-radius: 8px;
-  padding: 8px 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  min-width: 160px;
-  display: none;
-}
-
-/* 选项样式 */
-.theme-option {
-  padding: 10px 16px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.theme-option:hover {
-  background-color: var(--link-bghv-color);
-}
-
-.theme-option.active {
-  background-color: var(--link-bghv-color);
-  font-weight: bold;
-}
-
-/* 移动端适配 */
-@media (max-width: 768px) {
-  .theme-menu {
-    bottom: 60px;
-    left: 15px;
-  }
-}
-</style>
 
 <script>
 (function() {

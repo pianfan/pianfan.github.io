@@ -769,6 +769,45 @@ footer {
   }
 }
 
+/* 主题菜单样式 */
+.theme-menu {
+  position: fixed;
+  bottom: 70px;
+  left: 20px;
+  z-index: 9998;
+  background-color: var(--card-background);
+  border: 1px solid var(--divider-color);
+  border-radius: 8px;
+  padding: 8px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 160px;
+  display: none;
+}
+
+/* 选项样式 */
+.theme-option {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.theme-option:hover {
+  background-color: var(--link-bghv-color);
+}
+
+.theme-option.active {
+  background-color: var(--link-bghv-color);
+  font-weight: bold;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .theme-menu {
+    bottom: 60px;
+    left: 15px;
+  }
+}
+
 // 黑夜模式样式
 body.dark-mode {
   --text-color: #e0e0e0;

@@ -790,11 +790,11 @@ footer {
 }
 
 .theme-option:hover {
-  background-color: var(--link-bghv-color);
+  background-color: $link-bghv-color;
 }
 
 .theme-option.active {
-  background-color: var(--link-bghv-color);
+  background-color: $link-bghv-color;
   font-weight: bold;
 }
 

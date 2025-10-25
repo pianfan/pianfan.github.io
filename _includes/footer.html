@@ -22,7 +22,7 @@
 /* 主题菜单样式 */
 .theme-menu {
   position: fixed;
-  bottom: 70px; /* 位于切换按钮上方 */
+  bottom: 70px;
   left: 20px;
   z-index: 9998;
   background-color: var(--card-background);
@@ -63,25 +63,29 @@
 (function() {
   const ThemeManager = {
     init() {
-      // 获取DOM元素
-      this.themeToggle = document.getElementById('themeToggle');
-      this.themeIcon = document.getElementById('themeIcon');
-      this.themeMenu = document.getElementById('themeMenu');
-      this.themeOptions = document.querySelectorAll('.theme-option');
-      this.body = document.body;
+      document.addEventListener('DOMContentLoaded', () => {
+        this.themeToggle = document.getElementById('themeToggle');
+        this.themeIcon = document.getElementById('themeIcon');
+        this.themeMenu = document.getElementById('themeMenu');
+        this.themeOptions = document.querySelectorAll('.theme-option');
+        this.body = document.body;
 
-      // 绑定事件
-      this.bindEvents();
-      
-      // 初始化主题
-      this.initTheme();
+        if (!this.themeToggle || !this.themeMenu) {
+          console.error('主题切换按钮或菜单元素未找到');
+          return;
+        }
+
+        this.bindEvents();
+        this.initTheme();
+      });
     },
 
     bindEvents() {
       // 点击切换按钮显示/隐藏菜单
       this.themeToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // 防止事件冒泡
-        this.themeMenu.style.display = this.themeMenu.style.display === 'block' ? 'none' : 'block';
+        e.stopPropagation();
+        const isVisible = window.getComputedStyle(this.themeMenu).display === 'block';
+        this.themeMenu.style.display = isVisible ? 'none' : 'block';
         this.highlightActiveOption();
       });
 
@@ -184,11 +188,7 @@
     }
   };
 
-  // 页面加载完成后初始化
-  if (window.addEventListener) {
-    window.addEventListener('load', () => ThemeManager.init());
-  } else if (window.attachEvent) {
-    window.attachEvent('onload', () => ThemeManager.init());
-  }
+  // 启动初始化
+  ThemeManager.init();
 })();
 </script>

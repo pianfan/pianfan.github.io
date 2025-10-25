@@ -62,38 +62,33 @@
 (function() {
   const ThemeManager = {
     init() {
-      document.addEventListener('DOMContentLoaded', () => {
-        this.themeToggle = document.getElementById('themeToggle');
-        this.themeIcon = document.getElementById('themeIcon');
-        this.themeMenu = document.getElementById('themeMenu');
-        this.themeOptions = document.querySelectorAll('.theme-option');
-        this.body = document.body;
+      this.themeToggle = document.getElementById('themeToggle');
+      this.themeIcon = document.getElementById('themeIcon');
+      this.themeMenu = document.getElementById('themeMenu');
+      this.themeOptions = document.querySelectorAll('.theme-option');
+      this.body = document.body;
 
-        if (!this.themeToggle || !this.themeMenu) {
-          console.error('主题切换按钮或菜单元素未找到');
-          return;
-        }
+      if (!this.themeToggle || !this.themeMenu) {
+        console.error('主题切换按钮或菜单元素未找到');
+        return;
+      }
 
-        // 初始隐藏菜单
-        this.themeMenu.style.display = 'none';
+      // 初始隐藏菜单
+      this.themeMenu.style.display = 'none';
 
-        this.bindEvents();
-        this.initTheme();
-      });
+      this.bindEvents();
+      this.initTheme();
     },
 
     bindEvents() {
       // 点击切换按钮显示/隐藏菜单
       this.themeToggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        e.preventDefault();
-        if (e.target === this.themeToggle || this.themeToggle.contains(e.target)) {
-          const currentDisplay = this.themeMenu.style.display;
-          this.themeMenu.style.display = currentDisplay === 'block' ? 'none' : 'block';
-          this.highlightActiveOption();
-          console.log("主题切换按钮被点击");
-        }
-      });
+        const currentDisplay = this.themeMenu.style.display;
+        this.themeMenu.style.display = currentDisplay === 'block' ? 'none' : 'block';
+        this.highlightActiveOption();
+        console.log("主题切换按钮被点击");
+      }, { once: false });
 
       // 点击选项切换主题
       this.themeOptions.forEach(option => {
@@ -106,8 +101,10 @@
       });
 
       // 点击页面其他区域隐藏菜单
-      document.addEventListener('click', () => {
-        this.themeMenu.style.display = 'none';
+      document.addEventListener('click', (e) => {
+        if (!this.themeMenu.contains(e.target) && e.target !== this.themeToggle) {
+          this.themeMenu.style.display = 'none';
+        }
       });
 
       // 监听系统主题变化（仅在跟随系统模式下生效）

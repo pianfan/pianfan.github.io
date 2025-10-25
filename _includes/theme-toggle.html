@@ -22,11 +22,6 @@
       this.themeOptions = document.querySelectorAll('.theme-option');
       this.body = document.body;
 
-      if (!this.themeToggle || !this.themeMenu) {
-        console.error('主题切换按钮或菜单元素未找到');
-        return;
-      }
-
       // 初始隐藏菜单
       this.themeMenu.style.display = 'none';
 
@@ -41,7 +36,6 @@
         const currentDisplay = this.themeMenu.style.display;
         this.themeMenu.style.display = currentDisplay === 'block' ? 'none' : 'block';
         this.highlightActiveOption();
-        console.log("主题切换按钮被点击");
       }, { once: false });
 
       // 点击选项切换主题

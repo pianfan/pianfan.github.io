@@ -448,12 +448,12 @@
     color: $link-color;
   }
   .gt-container .gt-btn-preview:hover {
-    background-color: $background-color;
-    border-color: $link-color;
+    background-color: $background-lighten-color;
+    border-color: $link-lighten-color;
   }
   .gt-container .gt-btn-public:hover {
-    background-color: $link-color;
-    border-color: $link-color;
+    background-color: $link-lighten-color;
+    border-color: $link-lighten-color;
   }
   .gt-container .gt-error {
     text-align: center;
@@ -598,7 +598,7 @@
     transition: all 0.25s ease;
   }
   .gt-container .gt-header-textarea:hover {
-    background-color: $background-color;
+    background-color: $background-lighten-color;
   }
   .gt-container .gt-header-preview {
     padding: 0.75em;
@@ -696,7 +696,7 @@
             flex: 1;
     margin-left: 1.25em;
     padding: 0.75em 1em;
-    background-color: $background-color;
+    background-color: $background-lighten-color;
     border-radius: 5px;
     border: 1px solid $divider-color;
     overflow: auto;

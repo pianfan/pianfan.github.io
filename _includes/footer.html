@@ -11,81 +11,184 @@
   </svg>
 </div>
 
+<!-- 主题选择菜单 (默认隐藏) -->
+<div class="theme-menu" id="themeMenu">
+  <div class="theme-option" data-theme="system">跟随系统主题</div>
+  <div class="theme-option" data-theme="light">浅色主题</div>
+  <div class="theme-option" data-theme="dark">深色主题</div>
+</div>
+
+<style>
+/* 主题菜单样式 */
+.theme-menu {
+  position: fixed;
+  bottom: 70px; /* 位于切换按钮上方 */
+  right: 20px;
+  z-index: 9998;
+  background-color: var(--card-background);
+  border: 1px solid var(--divider-color);
+  border-radius: 8px;
+  padding: 8px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: none; /* 默认隐藏 */
+  min-width: 160px;
+}
+
+/* 选项样式 */
+.theme-option {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.theme-option:hover {
+  background-color: var(--link-bghv-color);
+}
+
+.theme-option.active {
+  background-color: var(--link-bghv-color);
+  font-weight: bold;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .theme-menu {
+    bottom: 60px;
+    right: 15px;
+  }
+}
+</style>
+
 <script>
-const ThemeManager = {
-  init() {
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    const body = document.body;
+(function() {
+  const ThemeManager = {
+    init() {
+      // 获取DOM元素
+      this.themeToggle = document.getElementById('themeToggle');
+      this.themeIcon = document.getElementById('themeIcon');
+      this.themeMenu = document.getElementById('themeMenu');
+      this.themeOptions = document.querySelectorAll('.theme-option');
+      this.body = document.body;
 
-    if (!themeToggle) {
-      console.error('未找到themeToggle元素');
-      return;
-    }
-    if (!themeIcon) {
-      console.error('未找到themeIcon元素');
-      return;
-    }
-
-    themeToggle.removeEventListener('click', this.toggleTheme.bind(this));
-    themeToggle.addEventListener('click', this.toggleTheme.bind(this));
-    console.log('主题切换事件已绑定');
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      console.log('系统主题变化:', e.matches ? '深色' : '浅色');
+      // 绑定事件
+      this.bindEvents();
+      
+      // 初始化主题
       this.initTheme();
-    });
+    },
 
-    this.initTheme();
-  },
+    bindEvents() {
+      // 点击切换按钮显示/隐藏菜单
+      this.themeToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // 防止事件冒泡
+        this.themeMenu.style.display = this.themeMenu.style.display === 'block' ? 'none' : 'block';
+        this.highlightActiveOption();
+      });
 
-  initTheme() {
-    try {
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      // 点击选项切换主题
+      this.themeOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const theme = option.getAttribute('data-theme');
+          this.setTheme(theme);
+          this.themeMenu.style.display = 'none';
+        });
+      });
+
+      // 点击页面其他区域隐藏菜单
+      document.addEventListener('click', () => {
+        this.themeMenu.style.display = 'none';
+      });
+
+      // 监听系统主题变化（仅在跟随系统模式下生效）
+      this.systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      this.systemThemeQuery.addEventListener('change', () => {
+        const currentTheme = localStorage.getItem('theme') || 'system';
+        if (currentTheme === 'system') {
+          this.initTheme();
+        }
+      });
+    },
+
+    // 初始化主题
+    initTheme() {
+      try {
+        const savedTheme = localStorage.getItem('theme') || 'system';
+        const prefersDark = this.systemThemeQuery.matches;
+        
+        // 根据保存的主题设置页面
+        if (savedTheme === 'system') {
+          // 跟随系统
+          this.body.classList.toggle('dark-mode', prefersDark);
+          this.updateIcon(prefersDark);
+        } else if (savedTheme === 'dark') {
+          // 深色主题
+          this.body.classList.add('dark-mode');
+          this.updateIcon(true);
+        } else {
+          // 浅色主题
+          this.body.classList.remove('dark-mode');
+          this.updateIcon(false);
+        }
+
+        this.highlightActiveOption();
+      } catch (e) {
+        console.error('初始化主题失败:', e);
+      }
+    },
+
+    // 设置主题
+    setTheme(theme) {
+      localStorage.setItem('theme', theme);
       
-      console.log('初始化主题 - 保存的主题:', savedTheme, '系统偏好:', prefersDark);
-      
-      const isDark = (!savedTheme && prefersDark) || savedTheme === 'dark';
-      if (isDark) {
-        document.body.classList.add('dark-mode');
+      if (theme === 'system') {
+        // 跟随系统
+        const prefersDark = this.systemThemeQuery.matches;
+        this.body.classList.toggle('dark-mode', prefersDark);
+        this.updateIcon(prefersDark);
+      } else if (theme === 'dark') {
+        // 深色主题
+        this.body.classList.add('dark-mode');
         this.updateIcon(true);
       } else {
-        document.body.classList.remove('dark-mode');
+        // 浅色主题
+        this.body.classList.remove('dark-mode');
         this.updateIcon(false);
       }
-    } catch (e) {
-      console.error('初始化主题失败:', e);
-    }
-  },
 
-  updateIcon(isDark) {
-    try {
-      const darkPath = "M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A9,9 0 0,0 21,12A9,9 0 0,0 12,3M12,19A7,7 0 0,1 5,12A7,7 0 0,1 12,5A7,7 0 0,1 19,12A7,7 0 0,1 12,19Z";
-      const lightPath = "M12,18c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S15.3,18,12,18zM12,8c-2.2,0-4,1.8-4,4s1.8,4,4,4s4-1.8,4-4S14.2,8,12,8z M12,2 c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z";
-      
-      document.getElementById('themeIcon').setAttribute('d', isDark ? darkPath : lightPath);
-      console.log('图标已更新为', isDark ? '深色' : '浅色');
-    } catch (e) {
-      console.error('更新图标失败:', e);
-    }
-  },
+      this.highlightActiveOption();
+    },
 
-  toggleTheme() {
-    try {
-      const isDark = document.body.classList.toggle('dark-mode');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      this.updateIcon(isDark);
-      console.log('主题已切换为', isDark ? '深色' : '浅色');
-    } catch (e) {
-      console.error('切换主题失败:', e);
+    // 更新图标
+    updateIcon(isDark) {
+      try {
+        const darkPath = "M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A9,9 0 0,0 21,12A9,9 0 0,0 12,3M12,19A7,7 0 0,1 5,12A7,7 0 0,1 12,5A7,7 0 0,1 19,12A7,7 0 0,1 12,19Z";
+        const lightPath = "M12,18c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S15.3,18,12,18zM12,8c-2.2,0-4,1.8-4,4s1.8,4,4,4s4-1.8,4-4S14.2,8,12,8z M12,2 c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z";
+        
+        this.themeIcon.setAttribute('d', isDark ? darkPath : lightPath);
+      } catch (e) {
+        console.error('更新图标失败:', e);
+      }
+    },
+
+    // 高亮当前选中的选项
+    highlightActiveOption() {
+      const currentTheme = localStorage.getItem('theme') || 'system';
+      this.themeOptions.forEach(option => {
+        if (option.getAttribute('data-theme') === currentTheme) {
+          option.classList.add('active');
+        } else {
+          option.classList.remove('active');
+        }
+      });
     }
+  };
+
+  // 页面加载完成后初始化
+  if (window.addEventListener) {
+    window.addEventListener('load', () => ThemeManager.init());
+  } else if (window.attachEvent) {
+    window.attachEvent('onload', () => ThemeManager.init());
   }
-};
-
-if (window.addEventListener) {
-  window.addEventListener('load', () => ThemeManager.init());
-} else if (window.attachEvent) {
-  window.attachEvent('onload', () => ThemeManager.init());
-}
+})();
 </script>

@@ -771,11 +771,8 @@ footer {
 
 // 黑夜模式样式
 body.dark-mode {
-  --background-color: #1a1a1a;
   --text-color: #e0e0e0;
-  --link-color: #61aeee;
   --divider-color: #333;
-  --card-background: #2d2d2d;
   
   background-color: var(--oc-gray-0);
   color: var(--oc-gray-8);
@@ -796,7 +793,6 @@ body.dark-mode {
 
   // 文章卡片和搜索框
   .post, .sidebar, .search-container input {
-    background-color: var(--card-background);
     color: var(--text-color);
     border-color: var(--divider-color);
   }

@@ -15,29 +15,26 @@
 document.addEventListener('DOMContentLoaded', function() {
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
-  const html = document.documentElement;
+  const body = document.body;
 
-  // 检查元素是否存在
   if (!themeToggle || !themeIcon) {
     console.error('主题切换元素未找到');
     return;
   }
 
-  // 初始化主题
   function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      html.classList.add('dark-mode');
+      body.classList.add('dark-mode');
       updateIcon(true);
     } else {
-      html.classList.remove('dark-mode');
+      body.classList.remove('dark-mode');
       updateIcon(false);
     }
   }
 
-  // 更新图标
   function updateIcon(isDark) {
     themeIcon.setAttribute('d', isDark 
       ? "M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A9,9 0 0,0 21,12A9,9 0 0,0 12,3M12,19A7,7 0 0,1 5,12A7,7 0 0,1 12,5A7,7 0 0,1 19,12A7,7 0 0,1 12,19Z"
@@ -45,20 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
     );
   }
 
-  // 切换主题
   function toggleTheme() {
-    const isDark = html.classList.toggle('dark-mode');
+    const isDark = body.classList.toggle('dark-mode');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     updateIcon(isDark);
-    // 手动触发重绘
-    html.offsetHeight;
+    body.offsetHeight;
   }
 
-  // 绑定事件
   themeToggle.addEventListener('click', toggleTheme);
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', initTheme);
   
-  // 初始化
   initTheme();
 });
 </script>

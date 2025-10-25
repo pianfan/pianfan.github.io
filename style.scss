@@ -777,29 +777,6 @@ body.dark-mode {
   --divider-color: #333;
   --card-background: #2d2d2d;
   
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-body.dark-mode .post,
-body.dark-mode .sidebar,
-body.dark-mode .search-container input {
-  background-color: var(--card-background);
-  color: var(--text-color);
-  border-color: var(--divider-color);
-}
-
-body.dark-mode a {
-  color: var(--link-color);
-}
-
-body.dark-mode .gt-container {
-  --gt-bg-color: #2d2d2d;
-  --gt-text-color: #e0e0e0;
-}
-
-body.dark-mode {
-  // 基础背景和文字
   background-color: var(--oc-gray-0);
   color: var(--oc-gray-8);
 
@@ -817,17 +794,11 @@ body.dark-mode {
     border-right-color: var(--oc-gray-2);
   }
 
-  // 文章卡片
-  .post, .sidebar {
-    background-color: var(--oc-gray-1);
-    border-color: var(--oc-gray-2);
-  }
-
-  // 搜索框
-  .search-container input {
-    background-color: var(--oc-gray-1);
-    color: var(--oc-gray-8);
-    border-color: var(--oc-gray-3);
+  // 文章卡片和搜索框
+  .post, .sidebar, .search-container input {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border-color: var(--divider-color);
   }
 
   // 代码块
@@ -852,5 +823,11 @@ body.dark-mode {
       background-color: var(--oc-blue-0);
       border-color: var(--oc-blue-6);
     }
+  }
+
+  // Gitalk 评论区适配
+  .gt-container {
+    --gt-bg-color: #2d2d2d;
+    --gt-text-color: #e0e0e0;
   }
 }

@@ -888,11 +888,11 @@ body.dark-mode {
   }
 
   .gt-container a.is--active {
-    color: var(--oc-indigo-9);
+    color: #ccc;
     cursor: default !important;
   }
   .gt-container a.is--active:hover {
-    color: var(--oc-indigo-9);
+    color: #ccc;
   }
 
   // 代码块适配

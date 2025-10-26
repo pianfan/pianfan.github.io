@@ -738,7 +738,7 @@ footer {
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
-@import "gitalk";
+// @import "gitalk";
 
 // 主题切换按钮
 .theme-toggle {
@@ -801,8 +801,14 @@ footer {
 
 /* 移动端适配 */
 @media (max-width: 768px) {
+  .theme-toggle {
+    bottom: 15px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+  }
   .theme-menu {
-    bottom: 60px;
+    bottom: 50px;
     left: 15px;
   }
 }

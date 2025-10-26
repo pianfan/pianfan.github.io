@@ -300,16 +300,13 @@
   .gt-container a:hover {
     color: $link-lighten-color;
   }
-  
-  /*
   .gt-container a.is--active {
-    color: #333;
+    color: var(--oc-indigo-9);
     cursor: default !important;
   }
   .gt-container a.is--active:hover {
-    color: #333;
+    color: var(--oc-indigo-9);
   }
-  */
   .gt-container .hide {
     display: none !important;
   }

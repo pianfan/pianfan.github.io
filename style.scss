@@ -775,7 +775,8 @@ footer {
   bottom: 70px;
   left: 20px;
   z-index: 9998;
-  background-color: var(--card-background);
+  background-color: $background-color;
+  opacity: 0.7;
   border: 1px solid var(--divider-color);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);

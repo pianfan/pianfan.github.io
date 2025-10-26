@@ -799,20 +799,6 @@ footer {
   font-weight: bold;
 }
 
-/* 移动端适配 */
-@media (max-width: 768px) {
-  .theme-toggle {
-    bottom: 15px;
-    left: 15px;
-    width: 30px;
-    height: 30px;
-  }
-  .theme-menu {
-    bottom: 50px;
-    left: 15px;
-  }
-}
-
 // 黑夜模式样式
 body.dark-mode {
   --text-color: #e0e0e0;
@@ -899,6 +885,14 @@ body.dark-mode {
   .gt-container .gt-btn-public {
     background-color: var(--oc-blue-8);
     border-color: var(--oc-blue-8);
+  }
+
+  .gt-container a.is--active {
+    color: var(--oc-indigo-9);
+    cursor: default !important;
+  }
+  .gt-container a.is--active:hover {
+    color: var(--oc-indigo-9);
   }
 
   // 代码块适配

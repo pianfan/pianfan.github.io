@@ -38,7 +38,7 @@ author: pianfan
 - $\mathbf{X}^{-1}$：矩阵的逆
 - $\odot$：按元素相乘
 - $[\cdot, \cdot]$：连结
-- $|\mathcal{X}|$：集合的基数
+- $\lvert \mathcal{X} \rvert$：集合的基数
 - $\|\cdot\|_p$：$L_p$ 正则
 - $\|\cdot\|$：$L_2$ 正则
 - $\langle\mathbf{x}, \mathbf{y}\rangle$：向量 $\mathbf{x}$ 和 $\mathbf{y}$ 的点积

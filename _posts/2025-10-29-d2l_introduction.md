@@ -10,7 +10,7 @@ author: pianfan
 
 *机器学习*（machine learning，ML）
 
-*深度学习*（deep learning，DL）
+*深度学习*（deep learning，DL）<!-- more -->
 
 ## 1.1. 日常生活中的机器学习
 *数据集*（dataset）

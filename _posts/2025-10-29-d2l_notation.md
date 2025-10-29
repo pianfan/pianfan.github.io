@@ -8,7 +8,7 @@ comments: true
 author: pianfan
 ---
 
-本书中使用的符号概述如下。
+本书中使用的符号概述如下。<!-- more -->
 
 ## 数字
 - $x$：标量

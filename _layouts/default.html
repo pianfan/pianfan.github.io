@@ -17,6 +17,14 @@
     </div>
 
     {% include analytics.html %}
+
+    <script>
+      window.onload = function() {
+        if (window.MathJax) {
+          MathJax.typeset();
+        }
+      };
+    </script>
   </body>
 
   {% if page.toc==true %}

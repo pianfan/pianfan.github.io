@@ -24,20 +24,15 @@
     })(document);
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>
     MathJax.config = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        packages: {'[+]': ['amsmath']}
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
       },
-      startup: {
-        pageReady: function() {
-          return MathJax.startup.defaultPageReady().then(function() {
-            MathJax.typeset();
-          });
-        }
+      svg: {
+        fontCache: 'global'
       }
     };
   </script>

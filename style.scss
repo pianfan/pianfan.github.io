@@ -901,4 +901,78 @@ body.dark-mode {
     background-color: var(--oc-gray-1);
     color: var(--oc-gray-9);
   }
+
+  // 代码高亮基础样式调整
+  .highlight {
+    background: var(--oc-gray-1) !important;
+    
+    .c, .cm, .c1, .cs { // 注释
+      color: #8a9199 !important;
+    }
+    .k, .o, .kc, .kd, .kp, .kr, .kt { // 关键字
+      color: #ff7b72 !important;
+    }
+    .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1, .ss { // 字符串
+      color: #a5d6ff !important;
+    }
+    .m, .mf, .mh, .mi, .mo, .il { // 数字
+      color: #79d3b3 !important;
+    }
+    .na, .nb, .nc, .no, .ni, .ne, .nf, .nn, .nt, .nv, .vc, .vg, .vi { // 名称
+      color: #d2a8ff !important;
+    }
+    .err { // 错误
+      color: #ffffff !important;
+      background-color: #f87171 !important;
+    }
+    .gd { // 删除
+      color: #f87171 !important;
+      background-color: #fee2e2 !important;
+    }
+    .gi { // 插入
+      color: #4ade80 !important;
+      background-color: #dcfce7 !important;
+    }
+  }
+
+  // Markdown代码块适配
+  .markdown-body {
+    code {
+      background-color: var(--oc-gray-2) !important;
+      color: var(--oc-gray-0) !important;
+    }
+    pre {
+      background-color: var(--oc-gray-2) !important;
+      color: var(--oc-gray-0) !important;
+      border-color: var(--oc-gray-3) !important;
+    }
+    .pl-c { color: #8a9199 !important; }
+    .pl-c1, .pl-s .pl-v { color: #7dd3fc !important; }
+    .pl-e, .pl-en { color: #d2a8ff !important; }
+    .pl-smi, .pl-s .pl-s1 { color: #e5e7eb !important; }
+    .pl-ent { color: #a7f3d0 !important; }
+    .pl-k { color: #ff7b72 !important; }
+    .pl-s, .pl-pds { color: #a5d6ff !important; }
+    .pl-v, .pl-smw { color: #fcd34d !important; }
+    .pl-bu { color: #f87171 !important; }
+    .pl-ii { 
+      color: #111827 !important;
+      background-color: #f87171 !important;
+    }
+    .pl-c2 { 
+      color: #111827 !important;
+      background-color: #f87171 !important;
+    }
+    .pl-sr .pl-cce { color: #a7f3d0 !important; }
+    .pl-ml { color: #fbbf24 !important; }
+    .pl-mh, .pl-mh .pl-en, .pl-ms { color: #7dd3fc !important; }
+    .pl-mi { color: #e5e7eb !important; }
+  }
+
+  // 行内代码样式增强
+  code.highlighter-rouge {
+    background-color: var(--oc-gray-2) !important;
+    color: #e5e7eb !important;
+    border: 1px solid var(--oc-gray-3) !important;
+  }
 }

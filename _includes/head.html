@@ -24,18 +24,12 @@
     })(document);
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>
-    MathJax.config = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      },
-      svg: {
-        fontCache: 'global'
-      }
+    MathJax = {
+      tex: {inlineMath: {'[+]': [['$', '$']]}}
     };
   </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
 
   <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
 

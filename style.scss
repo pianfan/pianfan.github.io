@@ -27,7 +27,7 @@ body {
 }
 
 .container {
-  margin: 0 0;
+  margin: 40px 0;
   max-width: 1000px;
   padding: 0 20px;
   width: 100%;
@@ -938,7 +938,6 @@ body.dark-mode {
   // Markdown代码块适配
   .markdown-body {
     code {
-      background-color: var(--oc-gray-2) !important;
       color: var(--oc-gray-0) !important;
     }
     pre {

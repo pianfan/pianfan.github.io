@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "关于《动手学深度学习（第二版）》学习笔记系列的通告"
-date: 2025-10-29
+date: 2025-10-27
 tags: [AI, notice]
 toc: false
 comments: true

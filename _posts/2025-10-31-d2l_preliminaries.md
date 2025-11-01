@@ -287,13 +287,13 @@ $$
 - 性质：$f(\alpha \mathbf{x}) = |\alpha| f(\mathbf{x})$；$f(\mathbf{x} + \mathbf{y}) \leq f(\mathbf{x}) + f(\mathbf{y})$；$
 f(\mathbf{x}) \geq 0$；$\forall i, [\mathbf{x}]_i = 0 \Leftrightarrow f(\mathbf{x})=0$。
 
-- $L_2$ 范数：$\|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^n x_i^2}$，代码 `torch.norm(u)`。
+- $L_2$ 范数：$\Vert\mathbf{x}\Vert_2 = \sqrt{\sum_{i=1}^n x_i^2}$，代码 `torch.norm(u)`。
 
-- $L_1$ 范数：$\|\mathbf{x}\|_1 = \sum_{i=1}^n \left|x_i \right|$，代码 `torch.abs(u).sum()`。
+- $L_1$ 范数：$\Vert\mathbf{x}\Vert_1 = \sum_{i=1}^n \left|x_i \right|$，代码 `torch.abs(u).sum()`。
 
-- $L_p$ 范数：$\|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}$。
+- $L_p$ 范数：$\Vert\mathbf{x}\Vert_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}$。
 
-- Frobenius 范数（矩阵）：$\|\mathbf{X}\|_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n x_{ij}^2}$，代码 `torch.norm(matrix)`。
+- Frobenius 范数（矩阵）：$\Vert\mathbf{X}\Vert_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n x_{ij}^2}$，代码 `torch.norm(matrix)`。
 
 ### 2.3.11. 小结
 

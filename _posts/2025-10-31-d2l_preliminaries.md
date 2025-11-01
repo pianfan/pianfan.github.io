@@ -243,7 +243,7 @@ $$
 #### 2.3.2.1. 长度、维度和形状
 向量只是一个数字数组，就像每个数组都有一个长度一样，每个向量也是如此。在数学表示法中，如果我们想说一个向量 $\mathbf{x}$ 由 $n$ 个实值标量组成，可以将其表示为 $\mathbf{x}\in\mathbb{R}^n$。向量的长度通常称为向量的*维度*（dimension）。
 
-我们可以通过调用 Python 的内置 len() 函数或张量的 .shape 属性来访问向量的长度。shape 是一个元素组，列出了张量沿每个轴的长度（维数）。对于只有一个轴的张量，形状只有一个元素。
+我们可以通过调用 Python 的内置 len() 函数或张量的 .shape 属性来访问向量的长度。形状（shape）是一个元素组，列出了张量沿每个轴的长度（维数）。对于只有一个轴的张量，形状只有一个元素。
 ```py
 x = torch.arange(4)
 len(x)  # 结果为 4
@@ -258,14 +258,14 @@ $$
 \begin{split}\mathbf{A}=\begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \\ \end{bmatrix}.\end{split}
 $$
 
-对于任意 $\mathbf{A} \in \mathbb{R}^{m \times n}$，$\mathbf{A}$ 的形状是（$m$, $n$）或 $m \times n$。当矩阵具有相同数量的行和列时，被称为方阵（square matrix）。
+对于任意 $\mathbf{A} \in \mathbb{R}^{m \times n}$，$\mathbf{A}$ 的形状是（$m$, $n$）或 $m \times n$。当矩阵具有相同数量的行和列时，被称为*方阵*（square matrix）。
 
 当调用函数来实例化张量时，我们可以通过指定两个分量 $m$ 和 $n$ 来创建一个形状为 $m \times n$ 的矩阵。
 ```py
 A = torch.arange(20).reshape(5, 4)
 ```
 
-我们可以通过行索引（$i$）和列索引（$j$）来访问矩阵中的标量元素 $a_{ij}$，例如 $[\mathbf{A}]_{ij}$。为了表示起来简单，只有在必要时才会将逗号插入到单独的索引中，例如 $a_{2,3j}$ 和 $[\mathbf{A}]_{2i-1,3}$。
+我们可以通过行索引（$i$）和列索引（$j$）来访问矩阵中的标量元素 $a_{ij}$，例如 $[\mathbf{A}]_{ij}$。为了表示起来简单，只有在必要时才会插入逗号以分隔行列索引。
 
 矩阵的*转置*（transpose）：交换矩阵的行和列，通常用 $\mathbf{a}^\top$ 来表示。在代码中使用 `A.T` 访问矩阵的转置。
 
@@ -460,7 +460,7 @@ $$
 $$
 \|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^n x_i^2},
 $$
-其中，在 $L_2$ 范数中常常省略下标 $2$，也就是说 $\|\mathbf{x}\|$ 等同于 $\|\mathbf{x}\|_2$。在代码中，我们可以按如下方式计算向量的 $L_2$ 范数。
+其中，在 $L_2$ 范数中常常省略下标 $2$，也就是说 $\Vert\mathbf{x}\Vert$ 等同于 $\Vert\mathbf{x}\Vert_2$。在代码中，我们可以按如下方式计算向量的 $L_2$ 范数。
 ```py
 u = torch.tensor([3.0, -4.0])
 torch.norm(u)  # 结果为 tensor(5.)
@@ -740,7 +740,7 @@ a.grad == d / a  # 结果为 tensor(True)
 *概率*（probability）可以被认为是将集合映射到真实值的函数。在给定的样本空间 $\mathcal{S}$ 中，事件 $\mathcal{A}$ 的概率，表示为 $P(\mathcal{A})$，满足以下属性：
   - 对于任意事件 $\mathcal{A}$，其概率从不会是负数，即 $P(\mathcal{A}) \geq 0$；
   - 整个样本空间的概率为 $1$，即 $P(\mathcal{S}) = 1$；
-  - 对于*互斥*（mutually exclusive）事件（对于所有 $i \neq j$ 都有 $\mathcal{A}_i \cap \mathcal{A}_j = \emptyset$）的任意一个可数序列 $\mathcal{A}_1, \mathcal{A}_2, \ldots$，序列中任意一个事件发生的概率等于它们各自发生的概率之和，即 $P(\bigcup_{i=1}^{\infty} \mathcal{A}_i) = \sum_{i=1}^{\infty} P(\mathcal{A}_i)$。
+  - 对于*互斥*（mutually exclusive）事件，它们的交集为空，即它们在任何一次试验中都不会同时发生。
 
 #### 2.6.1.2. 随机变量
 考虑一个随机变量 $X$，通过 $P(X=a)$，我们区分了随机变量 $X$ 和 $X$ 可以采取的值（例如 $a$）。为了简化符号，一方面，我们可以将 $P(X)$ 表示为随机变量 $X$ 上的分布。另一方面，我们可以简单用 $P(a)$ 表示随机变量取值 $a$ 的概率。

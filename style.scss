@@ -533,6 +533,7 @@ nav {
 .toc {
   width: 320px;
   height: 100%;
+  overflow-y: auto;
   right: 0%;
   position: fixed;
   z-index: 4;

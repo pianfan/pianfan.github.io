@@ -289,9 +289,9 @@ f(\mathbf{x}) \geq 0$；$\forall i, [\mathbf{x}]_i = 0 \Leftrightarrow f(\mathbf
 
 - $L_2$ 范数：$\Vert\mathbf{x}\Vert_2 = \sqrt{\sum_{i=1}^n x_i^2}$，代码 `torch.norm(u)`。
 
-- $L_1$ 范数：$\Vert\mathbf{x}\Vert_1 = \sum_{i=1}^n \left|x_i \right|$，代码 `torch.abs(u).sum()`。
+- $L_1$ 范数：$\Vert\mathbf{x}\Vert_1 = \sum_{i=1}^n \vert x_i \vert$，代码 `torch.abs(u).sum()`。
 
-- $L_p$ 范数：$\Vert\mathbf{x}\Vert_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}$。
+- $L_p$ 范数：$\Vert\mathbf{x}\Vert_p = \left(\sum_{i=1}^n \vert x_i \vert^p \right)^{1/p}$。
 
 - Frobenius 范数（矩阵）：$\Vert\mathbf{X}\Vert_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n x_{ij}^2}$，代码 `torch.norm(matrix)`。
 
@@ -497,9 +497,7 @@ $$
 
   - 对任意事件 $\mathcal{A}$，$P(\mathcal{A}) \geq 0$；
 
-  - 整个样本空间的概率为 $1$，即 $P(\mathcal{S}) = 1$；
-
-  - 对可数个**互斥（mutually exclusive）**事件 $\mathcal{A}_1, \mathcal{A}_2, \ldots$（$\mathcal{A}_i \cap \mathcal{A}_j = \emptyset$，$i \neq j$），有 $P(\bigcup_{i=1}^{\infty} \mathcal{A}_i) = \sum_{i=1}^{\infty} P(\mathcal{A}_i)$。
+  - 整个样本空间的概率为 $1$，即 $P(\mathcal{S}) = 1$。
 
 #### 2.6.1.2. 随机变量
 

@@ -235,9 +235,11 @@ X, y
 向量：可视为标量值组成的列表，这些标量值被称为向量的*元素*（element）或*分量*（component）。在数学表示法中，向量通常记为粗体、小写的符号（例如，$\mathbf{x}$、$\mathbf{y}$ 和 $\mathbf{z}$）。向量可用一维张量表示。
 
 我们可以使用下标来引用向量的任一元素，例如可以通过 $x_i$ 来引用第 $i$ 个元素。注意，元素 $x_i$ 是一个标量，所以我们在引用它时不会加粗。大量文献认为列向量是向量的默认方向，在本书中也是如此。在数学中，向量 $\mathbf{x}$ 可以写为：
+
 $$
 \begin{split}\mathbf{x} =\begin{bmatrix}x_{1}  \\x_{2}  \\ \vdots  \\x_{n}\end{bmatrix},\end{split}
 $$
+
 其中 $x_1,\ldots,x_n$ 是向量的元素。在代码中，我们通过张量的索引来访问任一元素。
 
 #### 2.3.2.1. 长度、维度和形状
@@ -254,6 +256,7 @@ x.shape  # 结果为 torch.Size([4])
 *矩阵*（matrix）：通常用粗体、大写字母来表示（例如，$\mathbf{X}$、$\mathbf{Y}$ 和 $\mathbf{Z}$），在代码中表示为具有两个轴的张量。
 
 数学表示法使用 $\mathbf{A} \in \mathbb{R}^{m \times n}$ 来表示矩阵，其由 $m$ 行和 $n$ 列的实值标量组成。我们可以将任意矩阵 $\mathbf{A} \in \mathbb{R}^{m \times n}$ 视为一个表格，其中每个元素 $a_{ij}$ 属于第 $i$ 行第 $j$ 列：
+
 $$
 \begin{split}\mathbf{A}=\begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \\ \end{bmatrix}.\end{split}
 $$
@@ -283,6 +286,7 @@ A, A + B
 ```
 
 *Hadamard积*（Hadamard product）：两个矩阵的按元素乘法（数学符号 $\odot$）。
+
 $$
 \begin{split}\mathbf{A} \odot \mathbf{B} =
 \begin{bmatrix}
@@ -351,6 +355,7 @@ torch.sum(x * y)
 *矩阵-向量积*（matrix-vector product）
 
 定义一个矩阵 $\mathbf{A} \in \mathbb{R}^{m \times n}$ 和一个向量 $\mathbf{x} \in \mathbb{R}^n$，让我们将矩阵 $\mathbf{A}$ 用它的行向量表示：
+
 $$
 \begin{split}\mathbf{A}=
 \begin{bmatrix}
@@ -360,7 +365,9 @@ $$
 \mathbf{a}^\top_m \\
 \end{bmatrix},\end{split}
 $$
+
 其中每个 $\mathbf{a}^\top_{i} \in \mathbb{R}^n$ 都是行向量，表示矩阵的第 $i$ 行。矩阵向量积 $\mathbf{A}\mathbf{x}$ 是一个长度为 $m$ 的列向量，其第 $i$ 个元素是点积 $\mathbf{a}^\top_i \mathbf{x}$：
+
 $$
 \begin{split}\mathbf{A}\mathbf{x}
 = \begin{bmatrix}
@@ -386,6 +393,7 @@ torch.mv(A, x)
 **矩阵-矩阵乘法**（matrix-matrix multiplication），可简称为**矩阵乘法**
 
 假设有两个矩阵 $\mathbf{A} \in \mathbb{R}^{n \times k}$ 和 $\mathbf{B} \in \mathbb{R}^{k \times m}$：
+
 $$
 \begin{split}\mathbf{A}=\begin{bmatrix}
  a_{11} & a_{12} & \cdots & a_{1k} \\
@@ -402,6 +410,7 @@ $$
 $$
 
 用行向量 $\mathbf{a}^\top_{i} \in \mathbb{R}^k$ 表示矩阵 $\mathbf{A}$ 的第 $i$ 行，并让列向量 $\mathbf{b}_{j} \in \mathbb{R}^k$ 作为矩阵 $\mathbf{B}$ 的第 $j$ 列。要生成矩阵积 $\mathbf{C} = \mathbf{A}\mathbf{B}$，最简单的方法是考虑 $\mathbf{A}$ 的行向量和 $\mathbf{B}$ 的列向量：
+
 $$
 \begin{split}\mathbf{A}=
 \begin{bmatrix}
@@ -416,6 +425,7 @@ $$
 $$
 
 当我们简单地将每个元素 $c_{ij}$ 计算为点积 $\mathbf{a}^\top_i \mathbf{b}_j$：
+
 $$
 \begin{split}\mathbf{C} = \mathbf{AB} = \begin{bmatrix}
 \mathbf{a}^\top_{1} \\
@@ -433,6 +443,7 @@ $$
 \mathbf{a}^\top_{n} \mathbf{b}_1 & \mathbf{a}^\top_{n}\mathbf{b}_2& \cdots& \mathbf{a}^\top_{n} \mathbf{b}_m
 \end{bmatrix}.\end{split}
 $$
+
 我们可以将矩阵-矩阵乘法 $\mathbf{AB}$ 看作简单地执行 $m$ 次矩阵-向量积，并将结果拼接在一起，形成一个 $n \times m$ 矩阵。在代码中，使用 `mm` 函数执行矩阵乘法。
 ```py
 torch.mm(A, B)
@@ -442,24 +453,29 @@ torch.mm(A, B)
 向量*范数*（norm）：将向量映射到标量的函数 $f$。
 
 给定任意向量 $\mathbf{x}$，向量范数要满足一些属性。第一个性质是：如果我们按常数因子 $\alpha$ 缩放向量的所有元素，其范数也会按相同常数因子的绝对值缩放：
+
 $$
 f(\alpha \mathbf{x}) = |\alpha| f(\mathbf{x}).
 $$
 
 第二个性质是熟悉的三角不等式：
+
 $$
 f(\mathbf{x} + \mathbf{y}) \leq f(\mathbf{x}) + f(\mathbf{y}).
 $$
 
 第三个性质简单地说范数必须是非负的：
+
 $$
 f(\mathbf{x}) \geq 0.
 $$
 
 范数听起来很像距离的度量。欧几里得距离和毕达哥拉斯定理中的非负性概念和三角不等式可能会给出一些启发。事实上，欧几里得距离是一个 $L_2$ 范数：假设 $n$ 维向量 $\mathbf{x}$ 中的元素是 $x_1,\ldots,x_n$，其 $L_2$ 范数是向量元素平方和的平方根：
+
 $$
 \|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^n x_i^2},
 $$
+
 其中，在 $L_2$ 范数中常常省略下标 $2$，也就是说 $\Vert\mathbf{x}\Vert$ 等同于 $\Vert\mathbf{x}\Vert_2$。在代码中，我们可以按如下方式计算向量的 $L_2$ 范数。
 ```py
 u = torch.tensor([3.0, -4.0])
@@ -467,6 +483,7 @@ torch.norm(u)  # 结果为 tensor(5.)
 ```
 
 深度学习中更经常使用 $L_2$ 范数的平方，也会经常遇到 $L_1$ 范数，它表示为向量元素的绝对值之和：
+
 $$
 \|\mathbf{x}\|_1 = \sum_{i=1}^n \left|x_i \right|.
 $$
@@ -477,14 +494,17 @@ torch.abs(u).sum()  # 结果为 tensor(7.)
 ```
 
 一般的，$L_p$ 范数可表示为：
+
 $$
 \|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}.
 $$
 
 类似于向量的 $L_2$ 范数，矩阵 $\mathbf{X} \in \mathbb{R}^{m \times n}$ 的 *Frobenius 范数*（Frobenius norm）是矩阵元素平方和的平方根：
+
 $$
 \|\mathbf{X}\|_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n x_{ij}^2}.
 $$
+
 Frobenius 范数满足向量范数的所有性质，它就像是矩阵形向量的 $L_2$ 范数。调用以下函数将计算矩阵的 Frobenius 范数。
 ```py
 torch.norm(torch.ones((4, 9)))  # 结果为 tensor(6.)
@@ -529,6 +549,7 @@ torch.norm(torch.ones((4, 9)))  # 结果为 tensor(6.)
 在深度学习中，我们通常选择对于模型参数可微的损失函数。简而言之，对于每个参数，如果我们把这个参数*增加*或*减少*一个无穷小的量，可以知道损失会以多快的速度增加或减少。
 
 假设我们有一个函数 $f: \mathbb{R} \rightarrow \mathbb{R}$，其输入和输出都是标量。如果 $f$ 的*导数*存在，这个极限被定义为
+
 $$
 f'(x) = \lim_{h \rightarrow 0} \frac{f(x+h) - f(x)}{h}.
 $$
@@ -536,9 +557,11 @@ $$
 如果 $f'(a)$ 存在，则称 $f$ 在 $a$ 处是*可微*（differentiable）的。如果 $f$ 在一个区间内的每个数上都是可微的，则此函数在此区间中是可微的。我们可以将导数 $f'(x)$ 解释为 $f(x)$ 相对于 $x$ 的*瞬时*（instantaneous）变化率。
 
 给定 $y=f(x)$，其中 $x$ 和 $y$ 分别是函数 $f$ 的自变量和因变量。以下表达式是等价的：
+
 $$
 f'(x) = y' = \frac{dy}{dx} = \frac{df}{dx} = \frac{d}{dx} f(x) = Df(x) = D_x f(x),
 $$
+
 其中符号 $\frac{d}{dx}$ 和 $D$ 是*微分*运算符，表示*微分*操作。我们可以使用以下规则来对常见函数求微分：
   - $DC = 0$（$C$ 是一个常数）
   - $Dx^n = nx^{n-1}$（*幂律*（power rule），$n$ 是任意实数）
@@ -548,21 +571,25 @@ $$
 假设函数 $f$ 和 $g$ 都是可微的，$C$ 是一个常数，有以下法则：
 
 *常数相乘法则*
+
 $$
 \frac{d}{dx} [Cf(x)] = C \frac{d}{dx} f(x),
 $$
 
 *加法法则*
+
 $$
 \frac{d}{dx} [f(x) + g(x)] = \frac{d}{dx} f(x) + \frac{d}{dx} g(x),
 $$
 
 *乘法法则*
+
 $$
 \frac{d}{dx} [f(x)g(x)] = f(x) \frac{d}{dx} [g(x)] + g(x) \frac{d}{dx} [f(x)],
 $$
 
 *除法法则*
+
 $$
 \frac{d}{dx} \left[\frac{f(x)}{g(x)}\right] = \frac{g(x) \frac{d}{dx} [f(x)] - f(x) \frac{d}{dx} [g(x)]}{[g(x)]^2}.
 $$
@@ -571,20 +598,24 @@ $$
 *多元函数*（multivariate function）
 
 设 $y = f(x_1, x_2, \ldots, x_n)$ 是一个具有 $n$ 个变量的函数。$y$ 关于第 $i$ 个参数 $x_i$ 的*偏导数*（partial derivative）为：
+
 $$
 \frac{\partial y}{\partial x_i} = \lim_{h \rightarrow 0} \frac{f(x_1, \ldots, x_{i-1}, x_i+h, x_{i+1}, \ldots, x_n) - f(x_1, \ldots, x_i, \ldots, x_n)}{h}.
 $$
 
 为了计算 $\frac{\partial y}{\partial x_i}$，我们可以简单地将 $x_1, \ldots, x_{i-1}, x_{i+1}, \ldots, x_n$ 看作常数，并计算 $y$ 关于 $x_i$ 的导数。对于偏导数的表示，以下是等价的：
+
 $$
 \frac{\partial y}{\partial x_i} = \frac{\partial f}{\partial x_i} = f_{x_i} = f_i = D_i f = D_{x_i} f.
 $$
 
 ### 2.4.3. 梯度
 我们可以连结一个多元函数对其所有变量的偏导数，以得到该函数的*梯度*（gradient）向量。具体而言，设函数 $f:\mathbb{R}^n\rightarrow\mathbb{R}$ 的输入是一个 $n$ 维向量 $\mathbf{x}=[x_1,x_2,\ldots,x_n]^\top$，并且输出是一个标量。函数 $f(\mathbf{x})$ 相对于 $\mathbf{x}$ 的梯度是一个包含 $n$ 个偏导数的向量：
+
 $$
 \nabla_{\mathbf{x}} f(\mathbf{x}) = \bigg[\frac{\partial f(\mathbf{x})}{\partial x_1}, \frac{\partial f(\mathbf{x})}{\partial x_2}, \ldots, \frac{\partial f(\mathbf{x})}{\partial x_n}\bigg]^\top,
 $$
+
 其中 $\nabla_{\mathbf{x}} f(\mathbf{x})$ 通常在没有歧义时被 $\nabla f(\mathbf{x})$ 取代。
 
 假设 $\mathbf{x}$ 为 $n$ 维向量，在微分多元函数时经常使用以下规则：
@@ -599,11 +630,13 @@ $$
 在深度学习中，多元函数通常是*复合*（composite）的，所以难以应用上述任何规则来微分这些函数。幸运的是，链式法则可以被用来微分复合函数。
 
 让我们先考虑单变量函数。假设函数 $y=f(u)$ 和 $u=g(x)$ 都是可微的，根据链式法则：
+
 $$
 \frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}.
 $$
 
 现在考虑更一般的场景，即函数具有任意数量的变量的情况。假设可微分函数 $y$ 有变量 $u_1, u_2, \ldots, u_m$，其中每个可微分函数 $u_i$ 都有变量 $x_1, x_2, \ldots, x_n$。注意，$y$ 是 $x_1, x_2， \ldots, x_n$ 的函数。对于任意 $i = 1, 2, \ldots, n$，链式法则给出：
+
 $$
 \frac{\partial y}{\partial x_i} = \frac{\partial y}{\partial u_1} \frac{\partial u_1}{\partial x_i} + \frac{\partial y}{\partial u_2} \frac{\partial u_2}{\partial x_i} + \cdots + \frac{\partial y}{\partial u_m} \frac{\partial u_m}{\partial x_i}
 $$
@@ -760,16 +793,20 @@ a.grad == d / a  # 结果为 tensor(True)
 *Bayes 定理*（Bayes’ theorem）
 
 根据*乘法法则*（multiplication rule），$P(A, B) = P(B \mid A) P(A)$。根据对称性，可得 $P(A, B) = P(A \mid B) P(B)$。假设 $P(B)>0$，容易得出
+
 $$
 P(A \mid B) = \frac{P(B \mid A) P(A)}{P(B)}.
 $$
+
 请注意，这里我们使用紧凑的表示法：其中 $P(A, B)$ 是一个联合分布，$P(A \mid B)$ 是一个条件分布。这种分布可以在给定值 $A = a, B=b$ 上进行求值。
 
 #### 2.6.2.4. 边际化
 *求和法则*（sum rule）：
+
 $$
 P(B) = \sum_{A} P(A, B),
 $$
+
 这也称为*边际化*（marginalization）。边际化结果的概率或分布称为*边际概率*（marginal probability）或*边际分布*（marginal distribution）。
 
 #### 2.6.2.5. 独立性
@@ -781,23 +818,28 @@ $$
 
 ### 2.6.3. 期望和方差
 一个随机变量 $X$ 的*期望*（expectation，或平均值（average））表示为
+
 $$
 E[X] = \sum_{x} x P(X = x).
 $$
 
 当函数 $f(x)$ 的输入是从分布 $P$ 中抽取的随机变量时，$f(x)$ 的期望值为
+
 $$
 E_{x \sim P}[f(x)] = \sum_x f(x) P(x).
 $$
 
 在许多情况下，我们希望衡量随机变量 $X$ 与其期望值的偏置。这可以通过方差来量化
+
 $$
 \mathrm{Var}[X] = E\left[(X - E[X])^2\right] =
 E[X^2] - E[X]^2.
 $$
+
 方差的平方根被称为*标准差*（standard deviation）。
 
 随机变量函数的方差衡量的是：当从该随机变量分布中采样不同值 $x$ 时，函数值偏离该函数的期望的程度：
+
 $$
 \mathrm{Var}[f(x)] = E\left[\left(f(x) - E[f(x)]\right)^2\right].
 $$

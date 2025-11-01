@@ -29,7 +29,11 @@ author: pianfan
 ---
 
 目前已更章节：
+
 - [符号](https://pianfan.github.io/d2l_notation/)
+
 - [1. 引言](https://pianfan.github.io/d2l_introduction/)
+
+- [2. 预备知识](https://pianfan.github.io/d2l_preliminaries/)
 
 后续章节持续更新中……

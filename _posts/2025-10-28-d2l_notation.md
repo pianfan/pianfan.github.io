@@ -11,6 +11,7 @@ author: pianfan
 本书中使用的符号概述如下。<!-- more -->
 
 ## 数字
+
 - $x$：标量
 - $\mathbf{x}$：向量
 - $\mathbf{X}$：矩阵
@@ -20,6 +21,7 @@ author: pianfan
 - $x_{ij}$, $[\mathbf{X}]_{ij}$：矩阵 $\mathbf{X}$ 第 $i$ 行第 $j$ 列的元素
 
 ## 集合论
+
 - $\mathcal{X}$：集合
 - $\mathbb{Z}$：整数集合
 - $\mathbb{R}$：实数集合
@@ -30,6 +32,7 @@ author: pianfan
 - $\mathcal{A} \setminus \mathcal{B}$：集合 $\mathcal{A}$ 与集合 $\mathcal{B}$ 相减，$\mathcal{B}$ 关于 $\mathcal{A}$ 的相对补集
 
 ## 函数和运算符
+
 - $f(\cdot)$：函数
 - $\log(\cdot)$：自然对数
 - $\exp(\cdot)$：指数函数
@@ -47,6 +50,7 @@ author: pianfan
 - $\stackrel{\mathrm{def}}{=}$：定义
 
 ## 微积分
+
 - $\frac{dy}{dx}$：$y$ 关于 $x$ 的导数
 - $\frac{\partial y}{\partial x}$：$y$ 关于 $x$ 的偏导数
 - $\nabla_{\mathbf{x}} y$：$y$ 关于 $\mathbf{x}$ 的梯度
@@ -54,6 +58,7 @@ author: pianfan
 - $\int f(x)\;dx$：$f$ 关于 $x$ 的不定积分
 
 ## 概率与信息论
+
 - $P(\cdot)$：概率分布
 - $z \sim P$：随机变量 $z$ 具有概率分布 $P$
 - $P(X \mid Y)$：$X \mid Y$ 的条件概率
@@ -69,6 +74,7 @@ author: pianfan
 - $D_{\mathrm{KL}}(P\|Q)$：$P$ 和 $Q$ 的 KL-散度
 
 ## 复杂度
+
 - $\mathcal{O}$：大 O 标记
 
 ---

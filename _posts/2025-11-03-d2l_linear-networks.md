@@ -30,8 +30,6 @@ author: pianfan
 
 - 总体损失：$L(\mathbf{w}, b) = \frac{1}{n}\sum_{i=1}^n l^{(i)}(\mathbf{w}, b)$
 
-- 目标：找到 $\mathbf{w}^*, b^* = \operatorname*{argmin}_{\mathbf{w}, b}\ L(\mathbf{w}, b)$
-
 #### 3.1.1.3. 解析解
 
 **解析解（analytical solution）**：$\mathbf{w}^* = (\mathbf X^\top \mathbf X)^{-1}\mathbf X^\top \mathbf{y}$（将偏置并入权重向量时）
@@ -40,9 +38,9 @@ author: pianfan
 
 **小批量随机梯度下降（minibatch stochastic gradient descent）**：
 
-  - 迭代更新：$(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b)$
+  - 迭代更新：$(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{\vert\mathcal{B}\vert} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b)$
 
-  - 其中 $\eta$ 为**学习率（learning rate）**，$|\mathcal{B}|$ 为**批量大小（batch size）**，均为**超参数（hyperparameter）**
+  - 其中 $\eta$ 为**学习率（learning rate）**，$\vert\mathcal{B}\vert$ 为**批量大小（batch size）**，均为**超参数（hyperparameter）**
 
 #### 3.1.1.5. 用模型进行预测
 
@@ -235,7 +233,7 @@ for epoch in range(num_epochs):
 
 公式：$\hat{y}_j = \frac{\exp(o_j)}{\sum_k \exp(o_k)}$
 
-特性：不改变 logits 的排序，预测时 $\operatorname*{argmax}_j \hat y_j = \operatorname*{argmax}_j o_j$
+特性：不改变 logits 的排序
 
 ### 3.4.4. 小批量样本的矢量化
 

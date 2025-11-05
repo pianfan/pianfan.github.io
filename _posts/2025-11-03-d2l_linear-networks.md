@@ -320,3 +320,175 @@ for epoch in range(num_epochs):
     - 返回训练集和测试集的迭代器
     - 可通过 `resize` 参数调整图像尺寸
 
+## 3.6. softmax 回归的从零开始实现
+
+使用 Fashion-MNIST 数据集
+
+批量大小设为 256：batch_size = 256
+
+加载数据迭代器：`train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size)`
+
+### 3.6.1. 初始化模型参数
+
+输入维度：784（28×28 图像展平）
+
+输出维度：10（10 个类别）
+
+权重 `W`：形状 (784, 10)，用均值 0、标准差 0.01 的正态分布初始化，需计算梯度
+
+偏置 `b`：形状 (10)，初始化为 0，需计算梯度
+
+```py
+num_inputs = 784
+num_outputs = 10
+W = torch.normal(0, 0.01, size=(num_inputs, num_outputs), requires_grad=True)
+b = torch.zeros(num_outputs, requires_grad=True)
+```
+
+### 3.6.2. 定义 softmax 操作
+
+公式：$\mathrm{softmax}(\mathbf{X})_{ij} = \frac{\exp(\mathbf{X}_{ij})}{\sum_k \exp(\mathbf{X}_{ik})}$
+
+实现：先对输入元素指数化，再按行求和得到归一化常数，最后每行元素除以对应归一化常数
+
+```py
+def softmax(X):
+    X_exp = torch.exp(X)
+    partition = X_exp.sum(1, keepdim=True)
+    return X_exp / partition
+```
+
+### 3.6.3. 定义模型
+
+将输入展平为向量，再通过矩阵乘法和偏置相加得到 logits，最后应用 softmax
+
+```py
+def net(X):
+    return softmax(torch.matmul(X.reshape((-1, W.shape[0])), W) + b)
+```
+
+### 3.6.4. 定义损失函数
+
+取真实标签对应的预测概率的负对数
+
+```py
+def cross_entropy(y_hat, y):
+    return - torch.log(y_hat[range(len(y_hat)), y])
+```
+
+### 3.6.5. 分类精度
+
+计算预测类别（取每行最大概率索引）与真实标签匹配的比例
+
+```py
+def accuracy(y_hat, y):
+    if len(y_hat.shape) > 1 and y_hat.shape[1] > 1:
+        y_hat = y_hat.argmax(axis=1)
+    cmp = y_hat.type(y.dtype) == y
+    return float(cmp.type(y.dtype).sum())
+```
+
+计算模型在数据集上的精度
+
+```py
+def evaluate_accuracy(net, data_iter):
+    if isinstance(net, torch.nn.Module):
+        net.eval()  # 设为评估模式
+    metric = Accumulator(2)  # 正确预测数、总预测数
+    with torch.no_grad():
+        for X, y in data_iter:
+            metric.add(accuracy(net(X), y), y.numel())
+    return metric[0] / metric[1]
+```
+
+### 3.6.6. 训练
+
+1. 单轮训练：迭代训练数据，计算梯度并更新参数，记录损失和精度
+
+    ```py
+    def train_epoch_ch3(net, train_iter, loss, updater):
+        if isinstance(net, torch.nn.Module):
+            net.train()  # 设为训练模式
+        metric = Accumulator(3)  # 训练损失总和、训练精度总和、样本数
+        for X, y in train_iter:
+            y_hat = net(X)
+            l = loss(y_hat, y)
+            if isinstance(updater, torch.optim.Optimizer):
+                updater.zero_grad()
+                l.mean().backward()
+                updater.step()
+            else:
+                l.sum().backward()
+                updater(X.shape[0])
+                metric.add(float(l.sum()), accuracy(y_hat, y), y.numel())
+        return metric[0] / metric[2], metric[1] / metric[2]
+    ```
+
+2. 多轮训练：迭代多个 epoch，每轮结束评估模型在测试集上的精度并可视化
+
+    ```py
+    def train_ch3(net, train_iter, test_iter, loss, num_epochs, updater):
+        animator = Animator(xlabel='epoch', xlim=[1, num_epochs], ylim=[0.3, 0.9],
+                            legend=['train loss', 'train acc', 'test acc'])
+        for epoch in range(num_epochs):
+            train_metrics = train_epoch_ch3(net, train_iter, loss, updater)
+            test_acc = evaluate_accuracy(net, test_iter)
+            animator.add(epoch + 1, train_metrics + (test_acc,))
+    ```
+
+3. 优化器：使用小批量随机梯度下降，学习率 0.1
+
+    ```py
+    lr = 0.1
+    def updater(batch_size):
+        return d2l.sgd([W, b], lr, batch_size)
+    ```
+
+4. 训练配置：迭代 10 个 epoch
+
+    ```py
+    num_epochs = 10
+    train_ch3(net, train_iter, test_iter, cross_entropy, num_epochs, updater)
+    ```
+
+### 3.6.7. 预测
+
+对测试集图像进行预测并对比真实标签
+
+```py
+def predict_ch3(net, test_iter, n=6):
+    for X, y in test_iter:
+        break
+    trues = d2l.get_fashion_mnist_labels(y)
+    preds = d2l.get_fashion_mnist_labels(net(X).argmax(axis=1))
+    titles = [true +'\n' + pred for true, pred in zip(trues, preds)]
+    d2l.show_images(X[0:n].reshape((n, 28, 28)), 1, n, titles=titles[0:n])
+```
+
+## 3.7. softmax 回归的简洁实现
+
+批量大小设为 256
+
+使用 `d2l.load_data_fashion_mnist` 加载 Fashion-MNIST 数据集，获取训练迭代器 `train_iter` 和测试迭代器 `test_iter`
+
+### 3.7.1. 初始化模型参数
+
+网络为 `Sequential`，包含展平层（`nn.Flatten()`）和全连接层（`nn.Linear(784, 10)`）
+
+权重初始化：使用正态分布（`nn.init.normal_`），标准差 0.01
+
+### 3.7.2. 重新审视 Softmax 的实现
+
+采用 `nn.CrossEntropyLoss()`，内部结合 softmax 和交叉熵计算，避免数值稳定性问题
+
+### 3.7.3. 优化算法
+
+使用小批量随机梯度下降，学习率 0.1
+
+通过 `torch.optim.SGD(net.parameters(), lr=0.1)` 定义优化器
+
+### 3.7.4. 训练
+
+训练轮次 `num_epochs = 10`
+
+调用 `d2l.train_ch3` 函数进行模型训练，输入网络、数据迭代器、损失函数、轮次和优化器

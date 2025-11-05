@@ -347,9 +347,7 @@ b = torch.zeros(num_outputs, requires_grad=True)
 
 ### 3.6.2. 定义 softmax 操作
 
-公式：$\mathrm{softmax}(\mathbf{X})_{ij} = \frac{\exp(\mathbf{X}_{ij})}{\sum_k \exp(\mathbf{X}_{ik})}$
-
-实现：先对输入元素指数化，再按行求和得到归一化常数，最后每行元素除以对应归一化常数
+先对输入元素指数化，再按行求和得到归一化常数，最后每行元素除以对应归一化常数
 
 ```py
 def softmax(X):

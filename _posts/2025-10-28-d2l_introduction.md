@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "《动手学深度学习（第二版）》学习笔记之 1. 引言"
-date: 2025-10-29
+date: 2025-10-28
 tags: [AI, notes]
 toc: true
 comments: true

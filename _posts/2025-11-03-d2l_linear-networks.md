@@ -202,10 +202,10 @@ for epoch in range(num_epochs):
 
 2. 每轮遍历所有迷你批次：
 
-  - 前向传播：计算预测值 `net(X)` 和损失 `l = loss(net(X), y)`
-  - 梯度清零：`trainer.zero_grad()`
-  - 反向传播：`l.backward()`
-  - 参数更新：`trainer.step()`
+    - 前向传播：计算预测值 `net(X)` 和损失 `l = loss(net(X), y)`
+    - 梯度清零：`trainer.zero_grad()`
+    - 反向传播：`l.backward()`
+    - 参数更新：`trainer.step()`
 
 3. 每轮结束计算总损失并输出
 
@@ -279,44 +279,44 @@ for epoch in range(num_epochs):
 
 1. 数据转换
 
-```py
-trans = transforms.ToTensor()  # 转换为32位浮点张量，像素值归一化到[0,1]
-```
+    ```py
+    trans = transforms.ToTensor()  # 转换为32位浮点张量，像素值归一化到[0,1]
+    ```
 
 2. 加载数据集
 
-```py
-mnist_train = torchvision.datasets.FashionMNIST(
-    root="../data", train=True, transform=trans, download=True)
-mnist_test = torchvision.datasets.FashionMNIST(
-    root="../data", train=False, transform=trans, download=True)
-```
+    ```py
+    mnist_train = torchvision.datasets.FashionMNIST(
+        root="../data", train=True, transform=trans, download=True)
+    mnist_test = torchvision.datasets.FashionMNIST(
+        root="../data", train=False, transform=trans, download=True)
+    ```
 
 3. 数据迭代器
 
-```py
-train_iter = data.DataLoader(mnist_train, batch_size, shuffle=True,
-                             num_workers=get_dataloader_workers())
-```
+    ```py
+    train_iter = data.DataLoader(mnist_train, batch_size, shuffle=True,
+                                num_workers=get_dataloader_workers())
+    ```
 
-  - `batch_size`：每次读取的批量大小
-  - `shuffle=True`：训练集随机打乱
-  - 多进程读取：通常使用 4 个进程
+    - `batch_size`：每次读取的批量大小
+    - `shuffle=True`：训练集随机打乱
+    - 多进程读取：通常使用 4 个进程
 
 ### 3.5.3. 核心函数
 
 1. 标签转换函数
 
-```py
-def get_fashion_mnist_labels(labels):  # 将数字标签转换为文本标签
-```
+    ```py
+    def get_fashion_mnist_labels(labels):  # 将数字标签转换为文本标签
+    ```
 
 2. 数据加载封装函数
 
-```py
-def load_data_fashion_mnist(batch_size, resize=None):  # 下载并加载数据，支持图像resize
-```
+    ```py
+    def load_data_fashion_mnist(batch_size, resize=None):  # 下载并加载数据，支持图像resize
+    ```
 
-  - 返回训练集和测试集的迭代器
-  - 可通过 `resize` 参数调整图像尺寸
+    - 返回训练集和测试集的迭代器
+    - 可通过 `resize` 参数调整图像尺寸
 

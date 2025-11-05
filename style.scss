@@ -836,16 +836,6 @@ body.dark-mode {
     }
   }
 
-  // 分页按钮
-  .pagination a {
-    background-color: var(--oc-gray-1);
-    border-color: var(--oc-gray-3);
-    &:hover {
-      background-color: var(--oc-blue-0);
-      border-color: var(--oc-blue-6);
-    }
-  }
-
   // Gitalk 评论区适配
   .gt-container {
     --gt-bg-color: var(--oc-gray-1);

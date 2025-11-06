@@ -98,9 +98,9 @@ X += Y        # 复合赋值运算符原地更新X
 
 ### 2.1.6. 转换为其他 Python 对象
 
-- 张量与 NumPy 数组转换：`X.numpy()`（张量转 NumPy 数组）、`torch.tensor(A)`（NumPy 数组转张量），转换后共享内存
+张量与 NumPy 数组转换：`X.numpy()`（张量转 NumPy 数组）、`torch.tensor(A)`（NumPy 数组转张量），转换后共享内存
 
-- 大小为 1 的张量转 Python 标量：使用 `item()` 函数或强制类型转换（如 `float(a)`、`int(a)`）
+大小为 1 的张量转 Python 标量：使用 `item()` 函数或强制类型转换（如 `float(a)`、`int(a)`）
 
 ## 2.2. 数据预处理
 
@@ -162,17 +162,17 @@ y = torch.tensor(outputs.values)
 
 ### 2.3.1. 标量
 
-- **标量（scalar）**：仅包含一个数值，可用只有一个元素的张量表示
+**标量（scalar）**：仅包含一个数值，可用只有一个元素的张量表示
 
-- 标量**变量（variable）**：表示未知的标量值，由普通小写字母表示（例如，$x$、$y$、$z$）
+标量**变量（variable）**：表示未知的标量值，由普通小写字母表示（例如，$x$、$y$、$z$）
 
-- $\mathbb{R}$ 表示所有实值标量的集合，$x \in \mathbb{R}$ 表示 $x$ 是实值标量
+$\mathbb{R}$ 表示所有实值标量的集合，$x \in \mathbb{R}$ 表示 $x$ 是实值标量
 
 ### 2.3.2. 向量
 
-- 向量：标量值组成的列表，元素（分量）为标量，可用一维张量表示，数学中记为粗体小写符号（例如，$\mathbf{x}$、$\mathbf{y}$、$\mathbf{z}$）
+向量：标量值组成的列表，元素（分量）为标量，可用一维张量表示，数学中记为粗体小写符号（例如，$\mathbf{x}$、$\mathbf{y}$、$\mathbf{z}$）
 
-- 元素引用：通过下标引用，如第 $i$ 个元素表示为 $x_i$（标量，不加粗）。默认列向量，数学表示为：
+元素引用：通过下标引用，如第 $i$ 个元素表示为 $x_i$（标量，不加粗）。默认列向量，数学表示为：
 
 $$
 \begin{split}\mathbf{x} =\begin{bmatrix}x_{1}  \\x_{2}  \\ \vdots  \\x_{n}\end{bmatrix},\end{split}
@@ -180,41 +180,41 @@ $$
 
 #### 2.3.2.1. 长度、维度和形状
 
-- 维度：向量的长度，$n$ 维向量 $\mathbf{x}$ 可表示为 $\mathbf{x} \in \mathbb{R}^n$
+维度：向量的长度，$n$ 维向量 $\mathbf{x}$ 可表示为 $\mathbf{x} \in \mathbb{R}^n$
 
-- 长度访问：`len(x)`（`x` 为向量张量）
+长度访问：`len(x)`（`x` 为向量张量）
 
-- 形状：张量沿各轴的长度，一维张量形状为单元素元组，如 `x.shape`（`x` 为向量张量）
+形状：张量沿各轴的长度，一维张量形状为单元素元组，如 `x.shape`（`x` 为向量张量）
 
 ### 2.3.3. 矩阵
 
-- 矩阵：二维数组，数学中记为粗体大写字母（例如，$\mathbf{X}$、$\mathbf{Y}$、$\mathbf{Z}$），代码中为二维张量
+矩阵：二维数组，数学中记为粗体大写字母（例如，$\mathbf{X}$、$\mathbf{Y}$、$\mathbf{Z}$），代码中为二维张量
 
-- 数学表示：$\mathbf{A} \in \mathbb{R}^{m \times n}$ 表示 $m$ 行 $n$ 列实值矩阵。元素 $a_{ij}$ 位于第 $i$ 行第 $j$ 列：
+数学表示：$\mathbf{A} \in \mathbb{R}^{m \times n}$ 表示 $m$ 行 $n$ 列实值矩阵。元素 $a_{ij}$ 位于第 $i$ 行第 $j$ 列：
 
 $$
 \begin{split}\mathbf{A}=\begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \\ \end{bmatrix}.\end{split}
 $$
 
-- 形状：$(m, n)$ 或 $m \times n$，行列数相同的为**方阵（square matrix）**
+形状：$(m, n)$ 或 $m \times n$，行列数相同的为**方阵（square matrix）**
 
-- 创建：`A = torch.arange(20, dtype=torch.float32).reshape(5, 4)`
+创建：`A = torch.arange(20, dtype=torch.float32).reshape(5, 4)`
 
-- 元素访问：通过行索引 $i$ 和列索引 $j$，如 $[\mathbf{A}]_{ij}$
+元素访问：通过行索引 $i$ 和列索引 $j$，如 $[\mathbf{A}]_{ij}$
 
-- **转置（transpose）**：交换行列，记为 $\mathbf{A}^\top$，代码中为 `A.T`，满足 $(\mathbf{A}^\top)^\top = \mathbf{A}$、$\mathbf{A}^\top + \mathbf{B}^\top = (\mathbf{A} + \mathbf{B})^\top$
+**转置（transpose）**：交换行列，记为 $\mathbf{A}^\top$，代码中为 `A.T`，满足 $(\mathbf{A}^\top)^\top = \mathbf{A}$、$\mathbf{A}^\top + \mathbf{B}^\top = (\mathbf{A} + \mathbf{B})^\top$
 
-- **对称矩阵（symmetric matrix）**：方阵中 $\mathbf{A} = \mathbf{A}^\top$
+**对称矩阵（symmetric matrix）**：方阵中 $\mathbf{A} = \mathbf{A}^\top$
 
 ### 2.3.4. 张量
 
-- 张量：描述任意数量轴的 $n$ 维数组，数学中用特殊字体大写字母表示（如，$\mathsf{X}$、$\mathsf{Y}$、$\mathsf{Z}$）
+张量：描述任意数量轴的 $n$ 维数组，数学中用特殊字体大写字母表示（如，$\mathsf{X}$、$\mathsf{Y}$、$\mathsf{Z}$）
 
 ### 2.3.5. 张量算法的基本性质
 
-- 同形状张量按元素二元运算结果形状不变
+同形状张量按元素二元运算结果形状不变
 
-- **Hadamard积（Hadamard product）**：两矩阵按元素乘法，记为 $\odot$：
+**Hadamard积（Hadamard product）**：两矩阵按元素乘法，记为 $\odot$：
 
 $$
 \begin{split}\mathbf{A} \odot \mathbf{B} =
@@ -226,27 +226,27 @@ $$
 \end{bmatrix}.\end{split}
 $$
 
-- 标量与张量运算：不改变张量形状，每个元素与标量运算
+标量与张量运算：不改变张量形状，每个元素与标量运算
 
 ### 2.3.6. 降维
 
-- 求和：`sum()`，默认沿所有轴降为标量，可指定轴，如 `A.sum(dim=0)`（沿轴 0 求和）、`A.sum(dim=[0, 1])`（沿轴 0 和 1 求和）
+求和：`sum()`，默认沿所有轴降为标量，可指定轴，如 `A.sum(dim=0)`（沿轴 0 求和）、`A.sum(dim=[0, 1])`（沿轴 0 和 1 求和）
 
-- 平均值：`mean()`，或总和除以元素总数（`A.sum() / A.numel()`），可指定轴
+平均值：`mean()`，或总和除以元素总数（`A.sum() / A.numel()`），可指定轴
 
 #### 2.3.6.1. 非降维求和
 
-- 保持轴数：`sum(dim=..., keepdims=True)`
+保持轴数：`sum(dim=..., keepdims=True)`
 
-- 累积和：`cumsum(dim=...)`，不降低维度
+累积和：`cumsum(dim=...)`，不降低维度
 
 ### 2.3.7. 点积（Dot Product）
 
-- 定义：两向量 $\mathbf{x},\mathbf{y}\in\mathbb{R}^d$ 的点积为 $\mathbf{x}^\top \mathbf{y} = \sum_{i=1}^{d} x_i y_i$，代码中为 `torch.dot(x, y)`，等价于 `torch.sum(x * y)`
+两向量 $\mathbf{x},\mathbf{y}\in\mathbb{R}^d$ 的点积为 $\mathbf{x}^\top \mathbf{y} = \sum_{i=1}^{d} x_i y_i$，代码中为 `torch.dot(x, y)`，等价于 `torch.sum(x * y)`
 
 ### 2.3.8. 矩阵-向量积
 
-- 定义：矩阵 $\mathbf{A} \in \mathbb{R}^{m \times n}$ 与向量 $\mathbf{x} \in \mathbb{R}^n$ 的积为长度 $m$ 的列向量，第 $i$ 元素为 $\mathbf{a}^\top_i \mathbf{x}$（$\mathbf{a}^\top_i$ 为 $\mathbf{A}$ 第 $i$ 行）：
+定义：矩阵 $\mathbf{A} \in \mathbb{R}^{m \times n}$ 与向量 $\mathbf{x} \in \mathbb{R}^n$ 的积为长度 $m$ 的列向量，第 $i$ 元素为 $\mathbf{a}^\top_i \mathbf{x}$（$\mathbf{a}^\top_i$ 为 $\mathbf{A}$ 第 $i$ 行）：
 
 $$
 \begin{split}\mathbf{A}\mathbf{x}
@@ -264,36 +264,32 @@ $$
 \end{bmatrix}.\end{split}
 $$
 
-- 代码：`torch.mv(A, x)`，要求 $\mathbf{A}$ 列数与 $\mathbf{x}$ 长度相同
+代码：`torch.mv(A, x)`，要求 $\mathbf{A}$ 列数与 $\mathbf{x}$ 长度相同
 
 ### 2.3.9. 矩阵-矩阵乘法
 
-- 定义：矩阵 $\mathbf{A} \in \mathbb{R}^{n \times k}$ 与 $\mathbf{B} \in \mathbb{R}^{k \times m}$ 的积 $\mathbf{C} = \mathbf{A}\mathbf{B} \in \mathbb{R}^{n \times m}$，元素 $c_{ij} = \mathbf{a}^\top_i \mathbf{b}_j$（$\mathbf{a}^\top_i$ 为 $\mathbf{A}$ 第 $i$ 行，$\mathbf{b}_j$ 为 $\mathbf{B}$ 第 $j$ 列）
+定义：矩阵 $\mathbf{A} \in \mathbb{R}^{n \times k}$ 与 $\mathbf{B} \in \mathbb{R}^{k \times m}$ 的积 $\mathbf{C} = \mathbf{A}\mathbf{B} \in \mathbb{R}^{n \times m}$，元素 $c_{ij} = \mathbf{a}^\top_i \mathbf{b}_j$（$\mathbf{a}^\top_i$ 为 $\mathbf{A}$ 第 $i$ 行，$\mathbf{b}_j$ 为 $\mathbf{B}$ 第 $j$ 列）
 
-- 代码：`torch.mm(A, B)`
+代码：`torch.mm(A, B)`
 
 ### 2.3.10. 范数
 
-- 性质：$f(\alpha \mathbf{x}) = |\alpha| f(\mathbf{x})$；$f(\mathbf{x} + \mathbf{y}) \leq f(\mathbf{x}) + f(\mathbf{y})$；$
+性质：$f(\alpha \mathbf{x}) = |\alpha| f(\mathbf{x})$；$f(\mathbf{x} + \mathbf{y}) \leq f(\mathbf{x}) + f(\mathbf{y})$；$
 f(\mathbf{x}) \geq 0$；$\forall i, [\mathbf{x}]_i = 0 \Leftrightarrow f(\mathbf{x})=0$
 
-- $L_2$ 范数：$\Vert\mathbf{x}\Vert_2 = \sqrt{\sum_{i=1}^n x_i^2}$，代码 `torch.norm(u)`
+$L_2$ 范数：$\Vert\mathbf{x}\Vert_2 = \sqrt{\sum_{i=1}^n x_i^2}$，代码 `torch.norm(u)`
 
-- $L_1$ 范数：$\Vert\mathbf{x}\Vert_1 = \sum_{i=1}^n \vert x_i \vert$，代码 `torch.abs(u).sum()`
+$L_1$ 范数：$\Vert\mathbf{x}\Vert_1 = \sum_{i=1}^n \vert x_i \vert$，代码 `torch.abs(u).sum()`
 
-- $L_p$ 范数：$\Vert\mathbf{x}\Vert_p = \left(\sum_{i=1}^n \vert x_i \vert^p \right)^{1/p}$
+$L_p$ 范数：$\Vert\mathbf{x}\Vert_p = \left(\sum_{i=1}^n \vert x_i \vert^p \right)^{1/p}$
 
-- Frobenius 范数（矩阵）：$\Vert\mathbf{X}\Vert_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n x_{ij}^2}$，代码 `torch.norm(matrix)`
+Frobenius 范数（矩阵）：$\Vert\mathbf{X}\Vert_F = \sqrt{\sum_{i=1}^m \sum_{j=1}^n x_{ij}^2}$，代码 `torch.norm(matrix)`
 
 ## 2.4. 微积分
-
-**逼近法（method of exhaustion）**
 
 **积分学（integral calculus）**
 
 **微分学（differential calculus）**
-
-**损失函数（loss function）**
 
 拟合模型的任务可分解为两个关键问题：
 
@@ -419,15 +415,15 @@ $$
 
 ### 2.5.2. 非标量变量的反向传播
 
-- 非标量变量调用 `backward()` 时，需传入 `gradient` 参数（通常为全 1 向量），实际是计算各元素偏导数的和
+非标量变量调用 `backward()` 时，需传入 `gradient` 参数（通常为全 1 向量），实际是计算各元素偏导数的和
 
-- 示例：`y = x * x` 求导时，可通过 `y.sum().backward()` 实现
+示例：`y = x * x` 求导时，可通过 `y.sum().backward()` 实现
 
 ### 2.5.3. 分离计算
 
-- 使用 `detach()` 方法可将变量从计算图中分离，得到的新变量值与原变量相同，但梯度不会反向流经该变量
+使用 `detach()` 方法可将变量从计算图中分离，得到的新变量值与原变量相同，但梯度不会反向流经该变量
 
-- 示例：`u = y.detach()` 后，计算 `z = u * x` 的梯度时，`u` 被视为常数
+示例：`u = y.detach()` 后，计算 `z = u * x` 的梯度时，`u` 被视为常数
 
 ## 2.6. 概率
 
@@ -435,23 +431,23 @@ $$
 
 ### 2.6.1. 基本概率论
 
-- **大数定律（law of large numbers）**：随着试验次数增加，事件发生的频率会逐渐接近其真实概率
+**大数定律（law of large numbers）**：随着试验次数增加，事件发生的频率会逐渐接近其真实概率
 
-- **抽样（sampling）**：从概率分布中抽取样本的过程
+**抽样（sampling）**：从概率分布中抽取样本的过程
 
-- **分布（distribution）**：对**随机变量（random variable）**取值概率的分配
+**分布（distribution）**：对**随机变量（random variable）**取值概率的分配
 
-- **多项分布（multinomial distribution）**：为离散选择分配概率的分布
+**多项分布（multinomial distribution）**：为离散选择分配概率的分布
 
 #### 2.6.1.1. 概率论公理
 
-- **样本空间（结果空间）**：随机试验所有可能结果的集合，记为 $\mathcal{S}$
+**样本空间（结果空间）**：随机试验所有可能结果的集合，记为 $\mathcal{S}$
 
-- **结果（outcome）**：样本空间中的元素
+**结果（outcome）**：样本空间中的元素
 
-- **事件（event）**：样本空间的子集，即一组可能的结果
+**事件（event）**：样本空间的子集，即一组可能的结果
 
-- **概率（probability）**：将事件映射到实数的函数，满足：
+**概率（probability）**：将事件映射到实数的函数，满足：
 
   - 对任意事件 $\mathcal{A}$，$P(\mathcal{A}) \geq 0$
 
@@ -459,11 +455,11 @@ $$
 
 #### 2.6.1.2. 随机变量
 
-- 随机变量是在随机试验中取值不确定的量
+随机变量是在随机试验中取值不确定的量
 
-- $P(X=a)$ 表示随机变量 $X$ 取 $a$ 值的概率；$P(X)$ 表示 $X$ 的分布；$P(a)$ 可简化表示随机变量取 $a$ 的概率
+$P(X=a)$ 表示随机变量 $X$ 取 $a$ 值的概率；$P(X)$ 表示 $X$ 的分布；$P(a)$ 可简化表示随机变量取 $a$ 的概率
 
-- **离散（discrete）**随机变量和**连续（continuous）**随机变量的区别：连续随机变量取特定值的概率为 0，需用**密度（density）**描述取值可能性，区间内取值概率非零
+**离散（discrete）**随机变量和**连续（continuous）**随机变量的区别：连续随机变量取特定值的概率为 0，需用**密度（density）**描述取值可能性，区间内取值概率非零
 
 ### 2.6.2. 处理多个随机变量
 
@@ -481,18 +477,18 @@ $$
 
 #### 2.6.2.4. 边际化
 
-- **求和法则（边际化）**：$P(B) = \sum_{A} P(A, B)$，由此得到的概率或分布称为**边际概率（marginal probability）**或**边际分布（marginal distribution）**
+**求和法则（边际化）**：$P(B) = \sum_{A} P(A, B)$，由此得到的概率或分布称为**边际概率（marginal probability）**或**边际分布（marginal distribution）**
 
 #### 2.6.2.5. 独立性
 
-- **独立（independence）**：若 $P(B \mid A) = P(B)$（或 $P(A \mid B) = P(A)$，或 $P(A, B) = P(A)P(B)$），则 $A$ 与 $B$ 独立，记为 $A \perp B$
+**独立（independence）**：若 $P(B \mid A) = P(B)$（或 $P(A \mid B) = P(A)$，或 $P(A, B) = P(A)P(B)$），则 $A$ 与 $B$ 独立，记为 $A \perp B$
 
-- **条件独立**：给定 $C$ 时，若 $P(A, B \mid C) = P(A \mid C)P(B \mid C)$，则 $A$ 与 $B$ 条件独立，记为 $A \perp B \mid C$
+**条件独立**：给定 $C$ 时，若 $P(A, B \mid C) = P(A \mid C)P(B \mid C)$，则 $A$ 与 $B$ 条件独立，记为 $A \perp B \mid C$
 
 ### 2.6.3. 期望和方差
 
-- **期望（expectation）**：随机变量 $X$ 的期望 $E[X] = \sum_{x} x P(X = x)$；函数 $f(x)$ 的期望 $E_{x \sim P}[f(x)] = \sum_x f(x) P(x)$
+**期望（expectation）**：随机变量 $X$ 的期望 $E[X] = \sum_{x} x P(X = x)$；函数 $f(x)$ 的期望 $E_{x \sim P}[f(x)] = \sum_x f(x) P(x)$
 
-- **方差**：衡量随机变量与期望的偏离程度，$\mathrm{Var}[X] = E\left[(X - E[X])^2\right] = E[X^2] - E[X]^2$。其平方根为**标准差（standard deviation）**
+**方差**：衡量随机变量与期望的偏离程度，$\mathrm{Var}[X] = E\left[(X - E[X])^2\right] = E[X^2] - E[X]^2$。其平方根为**标准差（standard deviation）**
 
-- 随机变量函数的方差：$\mathrm{Var}[f(x)] = E\left[\left(f(x) - E[f(x)]\right)^2\right]$
+随机变量函数的方差：$\mathrm{Var}[f(x)] = E\left[\left(f(x) - E[f(x)]\right)^2\right]$

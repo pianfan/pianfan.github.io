@@ -20,15 +20,15 @@ author: pianfan
 
 #### 3.1.1.1. 线性模型
 
-- 单样本预测：$\hat{y} = \mathbf{w}^\top \mathbf{x} + b$，其中 $\mathbf{w}$ 为权重向量，$b$ 为偏置
+单样本预测：$\hat{y} = \mathbf{w}^\top \mathbf{x} + b$，其中 $\mathbf{w}$ 为权重向量，$b$ 为偏置
 
-- 批量预测：${\hat{\mathbf{y}}} = \mathbf{X} \mathbf{w} + b$，$\mathbf{X}$ 为设计矩阵 $(n \times d)$
+批量预测：${\hat{\mathbf{y}}} = \mathbf{X} \mathbf{w} + b$，$\mathbf{X}$ 为设计矩阵 $(n \times d)$
 
 #### 3.1.1.2. 损失函数
 
-- 单个样本损失：$l^{(i)}(\mathbf{w}, b) = \frac{1}{2} \left(\hat{y}^{(i)} - y^{(i)}\right)^2$（平方误差）
+单个样本损失：$l^{(i)}(\mathbf{w}, b) = \frac{1}{2} \left(\hat{y}^{(i)} - y^{(i)}\right)^2$（平方误差）
 
-- 总体损失：$L(\mathbf{w}, b) = \frac{1}{n}\sum_{i=1}^n l^{(i)}(\mathbf{w}, b)$
+总体损失：$L(\mathbf{w}, b) = \frac{1}{n}\sum_{i=1}^n l^{(i)}(\mathbf{w}, b)$
 
 #### 3.1.1.3. 解析解
 
@@ -60,11 +60,7 @@ author: pianfan
 
 #### 3.1.4.1. 神经网络图
 
-- 线性回归可视为单神经元神经网络
-
-- 属于全连接层结构
-
-- 不计输入层时，层数为 1
+线性回归可视为单神经元神经网络，属于全连接层结构，不计输入层时层数为 1
 
 ## 3.2. 线性回归的从零开始实现
 
@@ -98,11 +94,7 @@ def data_iter(batch_size, features, labels):
 
 ### 3.2.3. 初始化模型参数
 
-权重随机初始化（正态分布，均值 0，标准差 0.01）
-
-偏置初始化为 0
-
-需记录梯度用于更新
+权重随机初始化（正态分布，均值 0，标准差 0.01），偏置初始化为 0，需记录梯度用于更新
 
 ```py
 w = torch.normal(0, 0.01, size=(2,1), requires_grad=True)

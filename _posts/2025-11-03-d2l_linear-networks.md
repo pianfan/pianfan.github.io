@@ -5,7 +5,7 @@ date: 2025-11-03
 tags: [AI, notes]
 toc: true
 comments: true
-author: pianfan
+author: Pianfan
 ---
 
 在深入探讨深度神经网络之前，我们需要先掌握神经网络训练的基础知识，包括定义简单神经网络架构、处理数据、指定损失函数以及训练模型<!-- more -->

@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "《动手学深度学习（第二版）》学习笔记之 2. 预备知识"
-date: 2025-10-30
+date: 2025-10-29
 tags: [AI, notes]
 toc: true
 comments: true
-author: pianfan
+author: Pianfan
 ---
 
 要学习深度学习，首先需要先掌握一些基本技能，如数据处理、线性代数、微积分和概率<!-- more -->
@@ -175,7 +175,7 @@ $\mathbb{R}$ 表示所有实值标量的集合，$x \in \mathbb{R}$ 表示 $x$ �
 元素引用：通过下标引用，如第 $i$ 个元素表示为 $x_i$（标量，不加粗）。默认列向量，数学表示为：
 
 $$
-\begin{split}\mathbf{x} =\begin{bmatrix}x_{1}  \\x_{2}  \\ \vdots  \\x_{n}\end{bmatrix},\end{split}
+\begin{split}\mathbf{x} =\begin{bmatrix}x_{1}  \\x_{2}  \\ \vdots  \\x_{n}\end{bmatrix}\end{split}
 $$
 
 #### 2.3.2.1. 长度、维度和形状
@@ -193,7 +193,7 @@ $$
 数学表示：$\mathbf{A} \in \mathbb{R}^{m \times n}$ 表示 $m$ 行 $n$ 列实值矩阵。元素 $a_{ij}$ 位于第 $i$ 行第 $j$ 列：
 
 $$
-\begin{split}\mathbf{A}=\begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \\ \end{bmatrix}.\end{split}
+\begin{split}\mathbf{A}=\begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \\ \end{bmatrix}\end{split}
 $$
 
 形状：$(m, n)$ 或 $m \times n$，行列数相同的为**方阵（square matrix）**
@@ -223,7 +223,7 @@ $$
     a_{21}  b_{21} & a_{22}  b_{22} & \dots  & a_{2n}  b_{2n} \\
     \vdots & \vdots & \ddots & \vdots \\
     a_{m1}  b_{m1} & a_{m2}  b_{m2} & \dots  & a_{mn}  b_{mn}
-\end{bmatrix}.\end{split}
+\end{bmatrix}\end{split}
 $$
 
 标量与张量运算：不改变张量形状，每个元素与标量运算
@@ -261,7 +261,7 @@ $$
  \mathbf{a}^\top_{2} \mathbf{x} \\
 \vdots\\
  \mathbf{a}^\top_{m} \mathbf{x}\\
-\end{bmatrix}.\end{split}
+\end{bmatrix}\end{split}
 $$
 
 代码：`torch.mv(A, x)`，要求 $\mathbf{A}$ 列数与 $\mathbf{x}$ 长度相同
@@ -304,15 +304,15 @@ Frobenius 范数（矩阵）：$\Vert\mathbf{X}\Vert_F = \sqrt{\sum_{i=1}^m \sum
 设函数 $f: \mathbb{R} \rightarrow \mathbb{R}$，其输入和输出均为标量。若 $f$ 的**导数**存在，定义为：
 
 $$
-f'(x) = \lim_{h \rightarrow 0} \frac{f(x+h) - f(x)}{h}.
+f'(x) = \lim_{h \rightarrow 0} \frac{f(x+h) - f(x)}{h}
 $$
 
 若 $f'(a)$ 存在，则 $f$ 在 $a$ 处**可微（differentiable）**；若 $f$ 在某区间内每一点都可微，则该函数在该区间可微。导数 $f'(x)$ 可解释为 $f(x)$ 相对于 $x$ 的**瞬时（instantaneous）变化率**
 
-对于 $y=f(x)$（$x$ 为自变量，$y$ 为因变量），以下导数表示等价：
+对于 $y=f(x)$（$x$ 为自变量，$y$ 为因变量），以下导数表示与 $f'(x)$ 等价：
 
 $$
-f'(x) = y' = \frac{dy}{dx} = \frac{df}{dx} = \frac{d}{dx} f(x) = Df(x) = D_x f(x),
+y' = \frac{dy}{dx} = \frac{df}{dx} = \frac{d}{dx} f(x) = Df(x) = D_x f(x)
 $$
 
 其中 $\frac{d}{dx}$ 和 $D$ 为**微分**运算符，表示微分操作。常见函数的微分规则：
@@ -327,41 +327,41 @@ $$
 **常数相乘法则**
 
 $$
-\frac{d}{dx} [Cf(x)] = C \frac{d}{dx} f(x),
+\frac{d}{dx} [Cf(x)] = C \frac{d}{dx} f(x)
 $$
 
 **加法法则**
 
 $$
-\frac{d}{dx} [f(x) + g(x)] = \frac{d}{dx} f(x) + \frac{d}{dx} g(x),
+\frac{d}{dx} [f(x) + g(x)] = \frac{d}{dx} f(x) + \frac{d}{dx} g(x)
 $$
 
 **乘法法则**
 
 $$
-\frac{d}{dx} [f(x)g(x)] = f(x) \frac{d}{dx} [g(x)] + g(x) \frac{d}{dx} [f(x)],
+\frac{d}{dx} [f(x)g(x)] = f(x) \frac{d}{dx} [g(x)] + g(x) \frac{d}{dx} [f(x)]
 $$
 
 **除法法则**
 
 $$
-\frac{d}{dx} \left[\frac{f(x)}{g(x)}\right] = \frac{g(x) \frac{d}{dx} [f(x)] - f(x) \frac{d}{dx} [g(x)]}{[g(x)]^2}.
+\frac{d}{dx} \left[\frac{f(x)}{g(x)}\right] = \frac{g(x) \frac{d}{dx} [f(x)] - f(x) \frac{d}{dx} [g(x)]}{[g(x)]^2}
 $$
 
 ### 2.4.2. 偏导数
 
 **多元函数（multivariate function）**
 
-设 $y = f(x_1, x_2, \ldots, x_n)$ 为 $n$ 变量函数，$y$ 关于第 $i$ 个参数 $x_i$ 的**偏导数（partial derivative）**为：
+设 $y = f(x_1, x_2, \ldots, x_n)$ 为 $n$ 变量函数，$y$ 关于第 $i$ 个参数 $x_i$ 的**偏导数（partial derivative）** $\frac{\partial y}{\partial x_i}$ 为：
 
 $$
-\frac{\partial y}{\partial x_i} = \lim_{h \rightarrow 0} \frac{f(x_1, \ldots, x_{i-1}, x_i+h, x_{i+1}, \ldots, x_n) - f(x_1, \ldots, x_i, \ldots, x_n)}{h}.
+\lim_{h \rightarrow 0} \frac{f(x_1, \ldots, x_i+h, \ldots, x_n) - f(x_1, \ldots, x_i, \ldots, x_n)}{h}
 $$
 
 计算 $\frac{\partial y}{\partial x_i}$ 时，可将 $x_1, \ldots, x_{i-1}, x_{i+1}, \ldots, x_n$ 视为常数，求 $y$ 对 $x_i$ 的导数。偏导数的等价表示：
 
 $$
-\frac{\partial y}{\partial x_i} = \frac{\partial f}{\partial x_i} = f_{x_i} = f_i = D_i f = D_{x_i} f.
+\frac{\partial y}{\partial x_i} = \frac{\partial f}{\partial x_i} = f_{x_i} = f_i = D_i f = D_{x_i} f
 $$
 
 ### 2.4.3. 梯度
@@ -369,7 +369,7 @@ $$
 多元函数对所有变量的偏导数可组成该函数的**梯度（gradient）**向量。设函数 $f:\mathbb{R}^n\rightarrow\mathbb{R}$，输入为 $n$ 维向量 $\mathbf{x}=[x_1,x_2,\ldots,x_n]^\top$，输出为标量，则 $f(\mathbf{x})$ 相对于 $\mathbf{x}$ 的梯度为含 $n$ 个偏导数的向量：
 
 $$
-\nabla_{\mathbf{x}} f(\mathbf{x}) = \bigg[\frac{\partial f(\mathbf{x})}{\partial x_1}, \frac{\partial f(\mathbf{x})}{\partial x_2}, \ldots, \frac{\partial f(\mathbf{x})}{\partial x_n}\bigg]^\top,
+\nabla_{\mathbf{x}} f(\mathbf{x}) = \bigg[\frac{\partial f(\mathbf{x})}{\partial x_1}, \frac{\partial f(\mathbf{x})}{\partial x_2}, \ldots, \frac{\partial f(\mathbf{x})}{\partial x_n}\bigg]^\top
 $$
 
 无歧义时可简写为 $\nabla f(\mathbf{x})$
@@ -390,7 +390,7 @@ $$
 单变量函数场景：若 $y=f(u)$ 和 $u=g(x)$ 均可微，则：
 
 $$
-\frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}.
+\frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}
 $$
 
 多变量函数场景：设可微函数 $y$ 依赖变量 $u_1, u_2, \ldots, u_m$，每个可微函数 $u_i$ 依赖变量 $x_1, x_2, \ldots, x_n$（即 $y$ 是 $x_1, x_2， \ldots, x_n$ 的函数），则对任意 $i = 1, 2, \ldots, n$：

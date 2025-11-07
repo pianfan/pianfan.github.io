@@ -5,7 +5,7 @@ date: 2024-01-27
 tags: [tutorial]
 toc: true
 comments: true
-author: pianfan
+author: Pianfan
 ---
 
 ###### 说明：本教程只针对不了解网站搭建并且想要快速搭建起个人博客的新手，帮助建立网站的平台有很多，有一定网站开发基础的读者可另寻门路<!-- more -->
@@ -27,6 +27,10 @@ author: pianfan
 ![设置仓库名称](https://pianfan.github.io/images/build_own_website/repositoryname.png)
 
 点击 Create fork，完成创建。这样你就有了你的第一个博客仓库，**以后的操作都在你自己的仓库进行**。
+
+这个地方也不要忘记改成你自己的网址哦~
+
+![设置网址](https://pianfan.github.io/images/build_own_website/modifywebsite.png)
 
 ## Step 2. 修改仓库文件
 
@@ -122,9 +126,9 @@ author: pianfan
     author: xxx
     ---
 
-- `tags` 是文章标签，可以有 0 个或多个。
-- `toc` 用于控制是否开启文章侧栏目录。
-- `comments` 用于控制是否开启文章评论区。
+  - `tags` 是文章标签，可以有 0 个或多个。
+  - `toc` 用于控制是否开启文章侧栏目录。
+  - `comments` 用于控制是否开启文章评论区。
 
 ---
 

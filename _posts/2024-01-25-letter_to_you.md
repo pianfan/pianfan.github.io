@@ -5,7 +5,7 @@ date: 2024-01-25
 tags: [notice]
 toc: false
 comments: true
-author: pianfan
+author: Pianfan
 ---
 
 欢迎你来到我的博客，不论你是谁。我并不关心你的身份，你也不必关注我的身份。实际上我只是中国千千万万计算机相关专业大学生中普通的一员而已。但所谓英雄不论出处，在这里，我们只关心技术。<!-- more -->

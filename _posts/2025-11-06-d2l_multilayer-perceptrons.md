@@ -283,52 +283,52 @@ $$
 
 1. 手动实现 dropout 层：
 
-```py
-def dropout_layer(X, dropout):
-    assert 0 <= dropout <= 1
-    if dropout == 1:
-        return torch.zeros_like(X)
-    if dropout == 0:
-        return X
-    mask = (torch.rand(X.shape) > dropout).float()
-    return mask * X / (1.0 - dropout)
-```
+    ```py
+    def dropout_layer(X, dropout):
+        assert 0 <= dropout <= 1
+        if dropout == 1:
+            return torch.zeros_like(X)
+        if dropout == 0:
+            return X
+        mask = (torch.rand(X.shape) > dropout).float()
+        return mask * X / (1.0 - dropout)
+    ```
 
 2. 含 dropout 的网络定义：
 
-```py
-class Net(nn.Module):
-    def __init__(self, num_inputs, num_outputs, num_hiddens1, num_hiddens2):
-        super(Net, self).__init__()
-        self.lin1 = nn.Linear(num_inputs, num_hiddens1)
-        self.lin2 = nn.Linear(num_hiddens1, num_hiddens2)
-        self.lin3 = nn.Linear(num_hiddens2, num_outputs)
-        self.relu = nn.ReLU()
+    ```py
+    class Net(nn.Module):
+        def __init__(self, num_inputs, num_outputs, num_hiddens1, num_hiddens2):
+            super(Net, self).__init__()
+            self.lin1 = nn.Linear(num_inputs, num_hiddens1)
+            self.lin2 = nn.Linear(num_hiddens1, num_hiddens2)
+            self.lin3 = nn.Linear(num_hiddens2, num_outputs)
+            self.relu = nn.ReLU()
 
-    def forward(self, X):
-        H1 = self.relu(self.lin1(X.reshape((-1, self.num_inputs))))
-        if self.training:  # 仅训练时应用
-            H1 = dropout_layer(H1, dropout1)
-        H2 = self.relu(self.lin2(H1))
-        if self.training:
-            H2 = dropout_layer(H2, dropout2)
-        return self.lin3(H2)
-```
+        def forward(self, X):
+            H1 = self.relu(self.lin1(X.reshape((-1, self.num_inputs))))
+            if self.training:  # 仅训练时应用
+                H1 = dropout_layer(H1, dropout1)
+            H2 = self.relu(self.lin2(H1))
+            if self.training:
+                H2 = dropout_layer(H2, dropout2)
+            return self.lin3(H2)
+    ```
 
 3. 简洁实现（使用内置层）：
 
-```py
-net = nn.Sequential(
-    nn.Flatten(),
-    nn.Linear(784, 256),
-    nn.ReLU(),
-    nn.Dropout(dropout1),  # 内置dropout层
-    nn.Linear(256, 256),
-    nn.ReLU(),
-    nn.Dropout(dropout2),
-    nn.Linear(256, 10)
-)
-```
+    ```py
+    net = nn.Sequential(
+        nn.Flatten(),
+        nn.Linear(784, 256),
+        nn.ReLU(),
+        nn.Dropout(dropout1),  # 内置dropout层
+        nn.Linear(256, 256),
+        nn.ReLU(),
+        nn.Dropout(dropout2),
+        nn.Linear(256, 10)
+    )
+    ```
 
 ## 4.7. 前向传播、反向传播和计算图
 
@@ -446,7 +446,7 @@ $L_2$ 正则化项：$s = \frac{\lambda}{2} \left(\|\mathbf{W}^{(1)}\|_F^2 + \|\
 
     - 通过逻辑回归训练二分类器区分源 / 目标分布估计 $h(\mathbf{x})$，得 $\beta_i = \exp(h(\mathbf{x}_i))$
 
-    - 加权经验风险最小化：$\mathop{\mathrm{minimize}}_f \frac{1}{n} \sum_{i=1}^n \beta_i l(f(\mathbf{x}_i), y_i)$
+    - 加权经验风险最小化
 
 2. **标签偏移纠正**
 
@@ -464,7 +464,7 @@ $L_2$ 正则化项：$s = \frac{\lambda}{2} \left(\|\mathbf{W}^{(1)}\|_F^2 + \|\
 
 **批处理学习**：用固定训练集训练模型后部署，不再更新
 
-**在线学习**：数据逐次到达，模型持续更新（$f_t \rightarrow \mathbf{x}_t \rightarrow f_t(\mathbf{x}_t) \rightarrow y_t \rightarrow f_{t+1}$）
+**在线学习**：数据逐次到达，模型持续更新
 
 **多臂老虎机（Bandits）**：有限动作集的在线学习特例
 

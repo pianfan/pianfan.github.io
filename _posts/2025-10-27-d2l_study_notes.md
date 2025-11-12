@@ -20,4 +20,6 @@ author: Pianfan
 
 - [4. 多层感知机](https://pianfan.github.io/d2l_multilayer-perceptrons/)
 
+- [5. 深度学习计算](https://pianfan.github.io/d2l_deep-learning-computation/)
+
 后续章节持续更新中……

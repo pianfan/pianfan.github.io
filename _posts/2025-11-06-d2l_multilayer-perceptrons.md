@@ -33,7 +33,7 @@ $$
 \end{aligned}\end{split}
 $$
 
-  - 此形式等价于线性模型，无实际增益
+    - 此形式等价于线性模型，无实际增益
 
 含激活函数的 MLP 计算：
 
@@ -44,7 +44,7 @@ $$
 \end{aligned}\end{split}
 $$
 
-  - $\sigma$ 为非线性激活函数，使模型摆脱线性限制
+    - $\sigma$ 为非线性激活函数，使模型摆脱线性限制
 
 ### 4.1.2. 激活函数
 
@@ -120,35 +120,35 @@ PyTorch 实现：`torch.tanh(x)`
 
 网络结构：
 
-  ```py
-  net = nn.Sequential(nn.Flatten(),  # 展平输入
-                      nn.Linear(784, 256),  # 隐藏层：784→256
-                      nn.ReLU(),  # ReLU激活函数
-                      nn.Linear(256, 10))  # 输出层：256→10
-  ```
+    ```py
+    net = nn.Sequential(nn.Flatten(),  # 展平输入
+                        nn.Linear(784, 256),  # 隐藏层：784→256
+                        nn.ReLU(),  # ReLU激活函数
+                        nn.Linear(256, 10))  # 输出层：256→10
+    ```
 
 权重初始化：
 
-  ```py
-  def init_weights(m):
-      if type(m) == nn.Linear:
-          nn.init.normal_(m.weight, std=0.01)
-  net.apply(init_weights)
-  ```
+    ```py
+    def init_weights(m):
+        if type(m) == nn.Linear:
+            nn.init.normal_(m.weight, std=0.01)
+    net.apply(init_weights)
+    ```
 
 训练配置:
 
-  - 超参数：批量大小 256，学习率 0.1，训练轮次 10
+    - 超参数：批量大小 256，学习率 0.1，训练轮次 10
 
-  - 损失函数：`nn.CrossEntropyLoss()`
+    - 损失函数：`nn.CrossEntropyLoss()`
 
-  - 优化器：`torch.optim.SGD(net.parameters(), lr=lr)`
+    - 优化器：`torch.optim.SGD(net.parameters(), lr=lr)`
 
 训练过程:
 
-  - 数据加载：`d2l.load_data_fashion_mnist(batch_size)`
+    - 数据加载：`d2l.load_data_fashion_mnist(batch_size)`
 
-  - 训练函数：`d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)`
+    - 训练函数：`d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)`
 
 ## 4.4. 模型选择、欠拟合和过拟合
 
@@ -170,10 +170,10 @@ PyTorch 实现：`torch.tanh(x)`
 
 影响模型复杂性（模型泛化）的因素：
 
-  1. 可调整参数数量（**自由度**）
-  2. 参数取值范围
-  3. 训练迭代次数
-  4. 训练样本数量
+    1. 可调整参数数量（**自由度**）
+    2. 参数取值范围
+    3. 训练迭代次数
+    4. 训练样本数量
 
 ### 4.4.2. 模型选择
 
@@ -219,13 +219,13 @@ PyTorch 实现：`torch.tanh(x)`
 
 小批量随机梯度下降更新公式：
 
-  $$
-  \begin{aligned}
-  \mathbf{w} & \leftarrow \left(1- \eta\lambda \right) \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \mathbf{x}^{(i)} \left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right)
-  \end{aligned}
-  $$
+$$
+\begin{aligned}
+\mathbf{w} & \leftarrow \left(1- \eta\lambda \right) \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \mathbf{x}^{(i)} \left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right)
+\end{aligned}
+$$
 
-  权重在更新时被向零方向衰减
+    - 权重在更新时被向零方向衰减
 
 ### 4.5.1. 从零开始实现
 
@@ -332,11 +332,11 @@ $$
 
 ## 4.7. 前向传播、反向传播和计算图
 
-**前向传播（Forward Propagation）**：按从输入层到输出层的顺序计算并存储神经网络的中间变量（含输出）
+**前向传播（forward propagation）**：按从输入层到输出层的顺序计算并存储神经网络的中间变量（含输出）
 
-**反向传播（Backward Propagation）**：按从输出到输入层的反向顺序，根据微积分链式法则计算神经网络参数的梯度，存储所需中间变量（偏导数）
+**反向传播（backward propagation）**：按从输出到输入层的反向顺序，根据微积分链式法则计算神经网络参数的梯度，存储所需中间变量（偏导数）
 
-**计算图（Computational Graph）**：可视化计算中算子与变量的依赖关系，方块表示变量，圆圈表示算子
+**计算图**：可视化计算中算子与变量的依赖关系，方块表示变量，圆圈表示算子
 
 ### 4.7.1. 前向传播关键公式
 
@@ -416,7 +416,7 @@ $L_2$ 正则化项：$s = \frac{\lambda}{2} \left(\|\mathbf{W}^{(1)}\|_F^2 + \|\
 
 ### 4.9.1. 分布偏移的类型
 
-1. **协变量偏移（Covariate Shift）**
+1. **协变量偏移（covariate shift）**
 
     - 输入分布变化（$p_S(\mathbf{x}) \neq p_T(\mathbf{x})$）
 
@@ -424,7 +424,7 @@ $L_2$ 正则化项：$s = \frac{\lambda}{2} \left(\|\mathbf{W}^{(1)}\|_F^2 + \|\
 
     - 适用于 $\mathbf{x}$ 导致 $y$ 的场景
 
-2. **标签偏移（Label Shift）**
+2. **标签偏移（label shift）**
 
     - 标签边缘分布变化（$p_S(y) \neq p_T(y)$）
 
@@ -432,7 +432,7 @@ $L_2$ 正则化项：$s = \frac{\lambda}{2} \left(\|\mathbf{W}^{(1)}\|_F^2 + \|\
 
     - 适用于 $y$ 导致 $\mathbf{x}$ 的场景
 
-3. **概念偏移（Concept Shift）**
+3. **概念偏移（concept shift）**
 
     - 标签定义本身发生变化（$p(y \mid \mathbf{x})$ 改变）
 
@@ -466,7 +466,7 @@ $L_2$ 正则化项：$s = \frac{\lambda}{2} \left(\|\mathbf{W}^{(1)}\|_F^2 + \|\
 
 **在线学习**：数据逐次到达，模型持续更新
 
-**多臂老虎机（Bandits）**：有限动作集的在线学习特例
+**老虎机（bandits）**：有限动作集的在线学习特例
 
 **控制**：环境会记忆并基于历史行为响应
 

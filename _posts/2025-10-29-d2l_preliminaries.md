@@ -449,9 +449,9 @@ $$
 
 **概率（probability）**：将事件映射到实数的函数，满足：
 
-    - 对任意事件 $\mathcal{A}$，$P(\mathcal{A}) \geq 0$
+- 对任意事件 $\mathcal{A}$，$P(\mathcal{A}) \geq 0$
 
-    - 整个样本空间的概率为 $1$，即 $P(\mathcal{S}) = 1$
+- 整个样本空间的概率为 $1$，即 $P(\mathcal{S}) = 1$
 
 #### 2.6.1.2. 随机变量
 

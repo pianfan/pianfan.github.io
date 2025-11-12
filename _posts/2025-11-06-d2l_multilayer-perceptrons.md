@@ -33,7 +33,7 @@ $$
 \end{aligned}\end{split}
 $$
 
-    - 此形式等价于线性模型，无实际增益
+- 此形式等价于线性模型，无实际增益
 
 含激活函数的 MLP 计算：
 
@@ -44,7 +44,7 @@ $$
 \end{aligned}\end{split}
 $$
 
-    - $\sigma$ 为非线性激活函数，使模型摆脱线性限制
+- $\sigma$ 为非线性激活函数，使模型摆脱线性限制
 
 ### 4.1.2. 激活函数
 
@@ -120,35 +120,35 @@ PyTorch 实现：`torch.tanh(x)`
 
 网络结构：
 
-    ```py
-    net = nn.Sequential(nn.Flatten(),  # 展平输入
-                        nn.Linear(784, 256),  # 隐藏层：784→256
-                        nn.ReLU(),  # ReLU激活函数
-                        nn.Linear(256, 10))  # 输出层：256→10
-    ```
+```py
+net = nn.Sequential(nn.Flatten(),  # 展平输入
+                    nn.Linear(784, 256),  # 隐藏层：784→256
+                    nn.ReLU(),  # ReLU激活函数
+                    nn.Linear(256, 10))  # 输出层：256→10
+```
 
 权重初始化：
 
-    ```py
-    def init_weights(m):
-        if type(m) == nn.Linear:
-            nn.init.normal_(m.weight, std=0.01)
-    net.apply(init_weights)
-    ```
+```py
+def init_weights(m):
+    if type(m) == nn.Linear:
+        nn.init.normal_(m.weight, std=0.01)
+net.apply(init_weights)
+```
 
 训练配置:
 
-    - 超参数：批量大小 256，学习率 0.1，训练轮次 10
+- 超参数：批量大小 256，学习率 0.1，训练轮次 10
 
-    - 损失函数：`nn.CrossEntropyLoss()`
+- 损失函数：`nn.CrossEntropyLoss()`
 
-    - 优化器：`torch.optim.SGD(net.parameters(), lr=lr)`
+- 优化器：`torch.optim.SGD(net.parameters(), lr=lr)`
 
 训练过程:
 
-    - 数据加载：`d2l.load_data_fashion_mnist(batch_size)`
+- 数据加载：`d2l.load_data_fashion_mnist(batch_size)`
 
-    - 训练函数：`d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)`
+- 训练函数：`d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)`
 
 ## 4.4. 模型选择、欠拟合和过拟合
 
@@ -170,10 +170,10 @@ PyTorch 实现：`torch.tanh(x)`
 
 影响模型复杂性（模型泛化）的因素：
 
-    1. 可调整参数数量（**自由度**）
-    2. 参数取值范围
-    3. 训练迭代次数
-    4. 训练样本数量
+1. 可调整参数数量（**自由度**）
+2. 参数取值范围
+3. 训练迭代次数
+4. 训练样本数量
 
 ### 4.4.2. 模型选择
 
@@ -225,7 +225,7 @@ $$
 \end{aligned}
 $$
 
-    - 权重在更新时被向零方向衰减
+- 权重在更新时被向零方向衰减
 
 ### 4.5.1. 从零开始实现
 

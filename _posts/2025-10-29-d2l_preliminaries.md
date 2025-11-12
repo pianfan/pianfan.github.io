@@ -77,8 +77,8 @@ X.sum()  # 求张量所有元素的和
 
 **广播机制（broadcasting mechanism）**处理不同形状张量的按元素运算，步骤为：
 
-    1. 扩展一个或两个张量（复制元素），使形状相同
-    2. 执行按元素操作
+1. 扩展一个或两个张量（复制元素），使形状相同
+2. 执行按元素操作
 
 通常沿长度为 1 的轴广播
 
@@ -293,9 +293,9 @@ Frobenius 范数（矩阵）：$\Vert\mathbf{X}\Vert_F = \sqrt{\sum_{i=1}^m \sum
 
 拟合模型的任务可分解为两个关键问题：
 
-    - **优化（optimization）**：用模型拟合观测数据的过程
+- **优化（optimization）**：用模型拟合观测数据的过程
 
-    - **泛化（generalization）**：指导生成有效性超出训练数据集的模型的数学原理与实践智慧
+- **泛化（generalization）**：指导生成有效性超出训练数据集的模型的数学原理与实践智慧
 
 ### 2.4.1. 导数和微分
 
@@ -317,10 +317,10 @@ $$
 
 其中 $\frac{d}{dx}$ 和 $D$ 为**微分**运算符，表示微分操作。常见函数的微分规则：
 
-    - $DC = 0$（$C$ 为常数）
-    - $Dx^n = nx^{n-1}$（**幂律（power rule）**，$n$ 为任意实数）
-    - $De^x = e^x$
-    - $D\ln(x) = 1/x$
+- $DC = 0$（$C$ 为常数）
+- $Dx^n = nx^{n-1}$（**幂律（power rule）**，$n$ 为任意实数）
+- $De^x = e^x$
+- $D\ln(x) = 1/x$
 
 设函数 $f$、$g$ 均可微，$C$ 为常数，微分法则如下：
 
@@ -376,10 +376,10 @@ $$
 
 设 $\mathbf{x}$ 为 $n$ 维向量，多元函数微分常用规则：
 
-    - 对 $\mathbf{A} \in \mathbb{R}^{m \times n}$，$\nabla_{\mathbf{x}} \mathbf{A} \mathbf{x} = \mathbf{A}^\top$
-    - 对 $\mathbf{A} \in \mathbb{R}^{n \times m}$，$\nabla_{\mathbf{x}} \mathbf{x}^\top \mathbf{A} = \mathbf{A}$
-    - 对 $\mathbf{A} \in \mathbb{R}^{n \times n}$，$\nabla_{\mathbf{x}} \mathbf{x}^\top \mathbf{A} \mathbf{x} = (\mathbf{A} + \mathbf{A}^\top)\mathbf{x}$
-    - $\nabla_{\mathbf{x}} \|\mathbf{x} \|^2 = \nabla_{\mathbf{x}} \mathbf{x}^\top \mathbf{x} = 2\mathbf{x}$
+- 对 $\mathbf{A} \in \mathbb{R}^{m \times n}$，$\nabla_{\mathbf{x}} \mathbf{A} \mathbf{x} = \mathbf{A}^\top$
+- 对 $\mathbf{A} \in \mathbb{R}^{n \times m}$，$\nabla_{\mathbf{x}} \mathbf{x}^\top \mathbf{A} = \mathbf{A}$
+- 对 $\mathbf{A} \in \mathbb{R}^{n \times n}$，$\nabla_{\mathbf{x}} \mathbf{x}^\top \mathbf{A} \mathbf{x} = (\mathbf{A} + \mathbf{A}^\top)\mathbf{x}$
+- $\nabla_{\mathbf{x}} \|\mathbf{x} \|^2 = \nabla_{\mathbf{x}} \mathbf{x}^\top \mathbf{x} = 2\mathbf{x}$
 
 对任意矩阵 $\mathbf{X}$，$\nabla_{\mathbf{X}} \|\mathbf{X} \|_F^2 = 2\mathbf{X}$。梯度在深度学习优化算法设计中很有用
 

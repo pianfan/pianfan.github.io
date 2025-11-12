@@ -16,11 +16,11 @@ author: Pianfan
 
 块的关键功能：
 
-    - 接收输入数据（前向传播函数参数）
-    - 生成输出（前向传播函数返回值）
-    - 自动计算输出对输入的梯度（反向传播）
-    - 存储和访问必要参数
-    - 初始化模型参数
+- 接收输入数据（前向传播函数参数）
+- 生成输出（前向传播函数返回值）
+- 自动计算输出对输入的梯度（反向传播）
+- 存储和访问必要参数
+- 初始化模型参数
 
 ### 5.1.1. 自定义块
 
@@ -28,8 +28,8 @@ author: Pianfan
 
 必须实现：
 
-    - `__init__`：初始化父类及定义层（调用 `super().__init__()`）
-    - `forward`：定义前向传播逻辑
+- `__init__`：初始化父类及定义层（调用 `super().__init__()`）
+- `forward`：定义前向传播逻辑
 
 ```py
 class MLP(nn.Module):
@@ -82,8 +82,8 @@ class MySequential(nn.Module):
 
 所有参数：
 
-    - `net.named_parameters()`：返回 (参数名，参数) 迭代器
-    - `net.state_dict()`：返回包含所有参数的字典
+- `net.named_parameters()`：返回 (参数名，参数) 迭代器
+- `net.state_dict()`：返回包含所有参数的字典
 
 嵌套块参数：通过嵌套索引访问，如 `rgnet[0][1][0].bias.data`
 
@@ -164,9 +164,9 @@ class MyLinear(nn.Module):
 
 加载参数：
 
-    1. 先实例化与原模型相同架构的模型（如 `clone = MLP()`）
-    2. 加载参数：`clone.load_state_dict(torch.load("文件名"))`
-    3. 切换评估模式：`clone.eval()`
+1. 先实例化与原模型相同架构的模型（如 `clone = MLP()`）
+2. 加载参数：`clone.load_state_dict(torch.load("文件名"))`
+3. 切换评估模式：`clone.eval()`
 
 ## 5.5. GPU
 
@@ -176,9 +176,9 @@ class MyLinear(nn.Module):
 
 设备查询：
 
-    - 可用 GPU 数量：`torch.cuda.device_count()`
+- 可用 GPU 数量：`torch.cuda.device_count()`
 
-    - 设备获取函数：
+- 设备获取函数：
 
     ```py
     def try_gpu(i=0):  # 若存在则返回gpu(i)，否则返回cpu
@@ -201,9 +201,8 @@ GPU 存储：创建时指定设备，如 `X = torch.ones(2, 3, device=try_gpu())
 
 复制操作：
 
-    - 跨设备传输：`Z = X.cuda(1)`（将 X 复制到第 2 个 GPU）
-
-    - 同一设备复制：`Z.cuda(1)` 若 Z 已在 cuda:1，则返回自身不复制
+- 跨设备传输：`Z = X.cuda(1)`（将 X 复制到第 2 个 GPU）
+- 同一设备复制：`Z.cuda(1)` 若 Z 已在 cuda:1，则返回自身不复制
 
 注意：设备间数据传输缓慢，应尽量避免
 

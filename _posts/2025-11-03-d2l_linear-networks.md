@@ -38,9 +38,9 @@ author: Pianfan
 
 **小批量随机梯度下降（minibatch stochastic gradient descent）**：
 
-    - 迭代更新：$(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{\vert\mathcal{B}\vert} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b)$
+- 迭代更新：$(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{\vert\mathcal{B}\vert} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b)$
 
-    - 其中 $\eta$ 为**学习率（learning rate）**，$\vert\mathcal{B}\vert$ 为**批量大小（batch size）**，均为**超参数（hyperparameter）**
+- 其中 $\eta$ 为**学习率（learning rate）**，$\vert\mathcal{B}\vert$ 为**批量大小（batch size）**，均为**超参数（hyperparameter）**
 
 #### 3.1.1.5. 用模型进行预测
 
@@ -135,10 +135,10 @@ def sgd(params, lr, batch_size):
 
 迭代过程：
 
-    1. 读取小批量数据
-    2. 计算模型预测与损失
-    3. 反向传播计算梯度
-    4. 梯度下降更新参数
+1. 读取小批量数据
+2. 计算模型预测与损失
+3. 反向传播计算梯度
+4. 梯度下降更新参数
 
 ```py
 lr = 0.03

@@ -206,7 +206,7 @@ GPU 存储：创建时指定设备，如 `X = torch.ones(2, 3, device=try_gpu())
 
 注意：设备间数据传输缓慢，应尽量避免
 
-### 5.5.3. 神经网络与GPU
+### 5.5.3. 神经网络与 GPU
 
 模型部署到 GPU：`net = net.to(device=try_gpu())`
 

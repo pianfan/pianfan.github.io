@@ -855,6 +855,10 @@ body.dark-mode {
     border-color: var(--oc-gray-3);
     color: var(--oc-gray-8);
   }
+  .gt-container .gt-comment-content:hover {
+    -webkit-box-shadow: 0 0.425em 1.75em 0 #949494;
+            box-shadow: 0 0.425em 1.75em 0 #949494;
+  }
 
   .gt-container .gt-popup {
     background-color: var(--oc-gray-1);

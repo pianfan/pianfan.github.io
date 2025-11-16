@@ -22,4 +22,6 @@ author: Pianfan
 
 - [5. 深度学习计算](https://pianfan.github.io/d2l_deep-learning-computation/)
 
+- [6. 卷积神经网络](https://pianfan.github.io/d2l_convolutional-neural-networks/)
+
 后续章节持续更新中……

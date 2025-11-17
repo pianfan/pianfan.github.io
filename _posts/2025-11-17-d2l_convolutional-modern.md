@@ -96,7 +96,7 @@ def vgg_block(num_convs, in_channels, out_channels):
     return nn.Sequential(*layers)
 ```
 
-### 7.2.2. VGG网络
+### 7.2.2. VGG 网络
 
 分为两部分：卷积部分 + 全连接部分
 
@@ -164,7 +164,7 @@ def nin_block(in_channels, out_channels, kernel_size, strides, padding):
 
 - 最后用 NiN 块将通道数转为类别数（10 类）
 
-- 用自适应平均池化（AdaptiveAvgPool2d ((1,1))）替代全连接层
+- 用自适应平均池化（`AdaptiveAvgPool2d((1, 1))`）替代全连接层
 
 - 最终展平为二维输出（批量大小 × 类别数）
 

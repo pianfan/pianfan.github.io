@@ -736,11 +736,6 @@ footer {
   }
 }
 
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
-@import "highlights";
-// @import "gitalk";
-
 // 主题切换按钮
 .theme-toggle {
   position: fixed;
@@ -952,3 +947,7 @@ body.dark-mode {
     border: 1px solid var(--oc-gray-3) !important;
   }
 }
+
+// Settled on moving the import of syntax highlighting to the bottom of the CSS
+// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
+@import "highlights";

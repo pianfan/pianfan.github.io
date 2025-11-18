@@ -24,4 +24,6 @@ author: Pianfan
 
 - [6. 卷积神经网络](https://pianfan.github.io/d2l_convolutional-neural-networks/)
 
+- [7. 现代卷积神经网络](https://pianfan.github.io/d2l_convolutional-modern/)
+
 后续章节持续更新中……

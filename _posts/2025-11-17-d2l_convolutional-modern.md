@@ -261,7 +261,13 @@ net = nn.Sequential(
 
 操作：对小批量数据进行均值和方差标准化，再应用可学习的拉伸（$\gamma$）和偏移（$\beta$）参数
 
-公式：$\mathrm{BN}(\mathbf{x}) = \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}$，其中 $\hat{\boldsymbol{\mu}}_\mathcal{B}$ 为小批量均值，$\hat{\boldsymbol{\sigma}}_\mathcal{B}$ 为小批量标准差（加 $\epsilon$ 防除零）
+公式：
+
+$$
+\mathrm{BN}(\mathbf{x}) = \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}
+$$
+
+其中 $\hat{\boldsymbol{\mu}}_\mathcal{B}$ 为小批量均值，$\hat{\boldsymbol{\sigma}}_\mathcal{B}$ 为小批量标准差（加 $\epsilon$ 防除零）
 
 ### 7.5.2. 关键特性
 
@@ -277,9 +283,9 @@ net = nn.Sequential(
 
 ### 7.5.3. 实现细节
 
-全连接层：在特征维度计算均值和方差，形状为 $(1, num\_features)$
+全连接层：在特征维度计算均值和方差，形状为 (1, num_features)
 
-卷积层：在通道维度计算均值和方差（含所有空间位置），形状为 $(1, num\_features, 1, 1)$
+卷积层：在通道维度计算均值和方差（含所有空间位置），形状为 (1, num_features, 1, 1)
 
 PyTorch 实现：
 

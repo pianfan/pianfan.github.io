@@ -261,13 +261,7 @@ net = nn.Sequential(
 
 操作：对小批量数据进行均值和方差标准化，再应用可学习的拉伸（$\gamma$）和偏移（$\beta$）参数
 
-公式：
-
-$$
-\mathrm{BN}(\mathbf{x}) = \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}
-$$
-
-其中 $\hat{\boldsymbol{\mu}}_\mathcal{B}$ 为小批量均值，$\hat{\boldsymbol{\sigma}}_\mathcal{B}$ 为小批量标准差（加 $\epsilon$ 防除零）
+公式：$\mathrm{BN}(\mathbf{x}) = \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}$
 
 ### 7.5.2. 关键特性
 

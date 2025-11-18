@@ -255,3 +255,173 @@ net = nn.Sequential(
 
 ## 7.5. 批量规范化
 
+### 7.5.1. 核心概念
+
+批量规范化：训练深层网络时，对各层输入进行标准化处理，加速收敛，稳定训练
+
+操作：对小批量数据进行均值和方差标准化，再应用可学习的拉伸（$\gamma$）和偏移（$\beta$）参数
+
+公式：$\mathrm{BN}(\mathbf{x}) = \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}$，其中 $\hat{\boldsymbol{\mu}}_\mathcal{B}$ 为小批量均值，$\hat{\boldsymbol{\sigma}}_\mathcal{B}$ 为小批量标准差（加 $\epsilon$ 防除零）
+
+### 7.5.2. 关键特性
+
+训练/预测模式差异：
+
+- 训练：用当前小批量均值和方差
+
+- 预测：用训练过程中累积的移动平均均值和移动平均方差
+
+正则化作用：小批量统计带来的噪声可减少过拟合
+
+批量大小影响：需足够大（通常 50~100），否则效果差
+
+### 7.5.3. 实现细节
+
+全连接层：在特征维度计算均值和方差，形状为 $(1, num\_features)$
+
+卷积层：在通道维度计算均值和方差（含所有空间位置），形状为 $(1, num\_features, 1, 1)$
+
+PyTorch 实现：
+
+- 自定义层：`class BatchNorm(nn.Module)`，含 `gamma`、`beta`、`moving_mean`、`moving_var` 参数
+
+- 框架 API：`nn.BatchNorm1d(num_features)`（全连接层）、`nn.BatchNorm2d(num_features)`（卷积层）
+
+## 7.6. 残差网络（ResNet）
+
+### 7.6.1. 核心思想
+
+深层网络需保证函数类嵌套性（$\mathcal{F} \subseteq \mathcal{F}'$），确保增加层数能提升性能
+
+核心创新：残差块（residual block），使新增层易于拟合恒等映射（$f(\mathbf{x}) = \mathbf{x}$）
+
+残差映射（$f(\mathbf{x}) - \mathbf{x}$）比直接拟合映射更易优化
+
+### 7.6.2. 残差块
+
+结构：2 个 $3 \times 3$ 卷积层，每层后接批量规范化和 ReLU
+
+跨层残差连接：输入直接加在第二个卷积层输出前，再经 ReLU
+
+通道数变化时：用 $1 \times 1$ 卷积调整输入形状后再相加
+
+```py
+class Residual(nn.Module):
+    def __init__(self, input_channels, num_channels, use_1x1conv=False, strides=1):
+        super().__init__()
+        self.conv1 = nn.Conv2d(input_channels, num_channels, kernel_size=3, padding=1, stride=strides)
+        self.conv2 = nn.Conv2d(num_channels, num_channels, kernel_size=3, padding=1)
+        self.conv3 = nn.Conv2d(input_channels, num_channels, kernel_size=1, stride=strides) if use_1x1conv else None
+        self.bn1 = nn.BatchNorm2d(num_channels)
+        self.bn2 = nn.BatchNorm2d(num_channels)
+    
+    def forward(self, X):
+        Y = F.relu(self.bn1(self.conv1(X)))
+        Y = self.bn2(self.conv2(Y))
+        if self.conv3:
+            X = self.conv3(X)
+        Y += X
+        return F.relu(Y)
+```
+
+### 7.6.3. ResNet 模型结构
+
+1. 初始层：$7 \times 7$ 卷积（64 通道，步幅 2）→ BatchNorm → ReLU → $3 \times 3$ 最大池化（步幅 2）
+
+2. 4 个残差模块：
+
+    - 每个模块含多个残差块，通道数依次为 64、128、256、512
+
+    - 非首个模块的第一个残差块用 $1 \times 1$ 卷积翻倍通道数并减半尺寸
+
+3. 输出层：全局平均池化 → 全连接层（10 类输出）
+
+```py
+# 模块构建
+def resnet_block(input_channels, num_channels, num_residuals, first_block=False):
+    blk = []
+    for i in range(num_residuals):
+        if i == 0 and not first_block:
+            blk.append(Residual(input_channels, num_channels, use_1x1conv=True, strides=2))
+        else:
+            blk.append(Residual(num_channels, num_channels))
+    return blk
+
+# 完整网络（ResNet-18）
+b1 = nn.Sequential(nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3),
+                   nn.BatchNorm2d(64), nn.ReLU(),
+                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
+b2 = nn.Sequential(*resnet_block(64, 64, 2, first_block=True))
+b3 = nn.Sequential(*resnet_block(64, 128, 2))
+b4 = nn.Sequential(*resnet_block(128, 256, 2))
+b5 = nn.Sequential(*resnet_block(256, 512, 2))
+net = nn.Sequential(b1, b2, b3, b4, b5,
+                    nn.AdaptiveAvgPool2d((1,1)),
+                    nn.Flatten(), nn.Linear(512, 10))
+```
+
+## 7.7. 稠密连接网络（DenseNet）
+
+### 7.7.1. 核心思想
+
+与 ResNet 的残差连接（相加）不同，DenseNet 采用稠密连接，通过通道维度上的连结融合特征
+
+函数映射形式：$\mathbf{x} \to [\mathbf{x}, f_1(\mathbf{x}), f_2([\mathbf{x}, f_1(\mathbf{x})]), \ldots]$
+
+### 7.7.2. 主要组件
+
+1. 卷积块
+
+    ```py
+    def conv_block(input_channels, num_channels):
+        return nn.Sequential(
+            nn.BatchNorm2d(input_channels), nn.ReLU(),
+            nn.Conv2d(input_channels, num_channels, kernel_size=3, padding=1)
+        )
+    ```
+
+2. **稠密块（dense block）**
+
+    ```py
+    class DenseBlock(nn.Module):
+        def __init__(self, num_convs, input_channels, num_channels):
+            super().__init__()
+            layer = []
+            for i in range(num_convs):
+                layer.append(conv_block(num_channels*i + input_channels, num_channels))
+            self.net = nn.Sequential(*layer)
+        def forward(self, X):
+            for blk in self.net:
+                Y = blk(X)
+                X = torch.cat((X, Y), dim=1)  # 通道维度连结
+            return X
+    ```
+
+3. **过渡层（transition layer）**
+
+    控制模型复杂度，减少通道数并减半空间维度
+
+    ```py
+    def transition_block(input_channels, num_channels):
+        return nn.Sequential(
+            nn.BatchNorm2d(input_channels), nn.ReLU(),
+            nn.Conv2d(input_channels, num_channels, kernel_size=1),
+            nn.AvgPool2d(kernel_size=2, stride=2)
+        )
+    ```
+
+### 7.7.3. 网络结构
+
+1. 初始模块：7×7 卷积（64 通道）+ 3×3 最大池化
+
+2. 4 个稠密块（每个含 4 个卷积层，增长率 32）
+
+3. 稠密块间通过过渡层连接（通道数减半）
+
+4. 最终：全局平均池化 + 全连接层（10 类输出）
+
+### 7.7.4. 训练配置
+
+学习率 0.1，轮次 10，批次大小 256
+
+输入图像大小调整为 96×96

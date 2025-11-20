@@ -26,4 +26,6 @@ author: Pianfan
 
 - [7. 现代卷积神经网络](https://pianfan.github.io/d2l_convolutional-modern/)
 
+- [8. 循环神经网络](https://pianfan.github.io/d2l_recurrent-neural-networks/)
+
 后续章节持续更新中……

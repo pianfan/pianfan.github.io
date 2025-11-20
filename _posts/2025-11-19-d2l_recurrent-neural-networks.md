@@ -18,19 +18,31 @@ author: Pianfan
 
 ### 8.1.1. 统计工具
 
-1. **自回归模型（autoregressive models）**：使用过去 τ 个时间步的观测值 $x_{t-1},...,x_{t-τ}$ 预测 $x_t$，参数数量固定
+**自回归模型（autoregressive models）**：使用过去 τ 个时间步的观测值 $x_{t-1},...,x_{t-τ}$ 预测 $x_t$，参数数量固定
 
-2. **隐变量自回归模型（latent autoregressive models）**：保留过去观测的总结 $h_t$，通过 $\hat{x}_t = P(x_t \mid h_t) 和 h_t = g(h_{t-1}, x_{t-1})$ 更新
+**隐变量自回归模型（latent autoregressive models）**：保留过去观测的总结 $h_t$，通过 
 
-3. **马尔可夫模型（first-order Markov model）**：满足马尔可夫条件（仅需近期历史），一阶模型满足 $P(x_1,...,x_T) = \prod_{t=1}^T P(x_t \mid x_{t-1})$（$P(x_1 \mid x_0) = P(x_1)$）
+$$
+\hat{x}_t = P(x_t \mid h_t)\\
+h_t = g(h_{t-1}, x_{t-1})
+$$
 
-4. **因果关系**：时间具有方向性，未来不影响过去，$P(x_{t+1} \mid x_t)$ 比 $P(x_t \mid x_{t+1})$ 更容易解释
+更新
+
+**马尔可夫模型（first-order Markov model）**：满足马尔可夫条件（仅需近期历史），一阶模型满足 $P(x_1,...,x_T) = \prod_{t=1}^T P(x_t \mid x_{t-1})$（$P(x_1 \mid x_0) = P(x_1)$）
+
+**因果关系**：时间具有方向性，未来不影响过去，$P(x_{t+1} \mid x_t)$ 比 $P(x_t \mid x_{t+1})$ 更容易解释
 
 ### 8.1.2. 训练
 
 1. **数据生成**：生成带噪声的正弦序列作为示例数据
 
-2. **特征标签构造**：基于 τ，构建特征和标签 $\mathbf{x}_t = [x_{t-\tau}, \ldots, x_{t-1}], y_t = x_t$
+2. **特征标签构造**：基于 τ，构建特征和标签
+
+    $$
+    \mathbf{x}_t = [x_{t-\tau}, \ldots, x_{t-1}]\\
+    y_t = x_t
+    $$
 
 3. **模型架构**：简单多层感知机（2 个全连接层 + ReLU 激活）
 
@@ -49,7 +61,7 @@ author: Pianfan
 
 1. **单步预测（one-step-ahead prediction）**：直接预测下一个时间步的值
 
-2. **$k$ 步预测（$k$-step-ahead prediction）**：使用自身预测结果作为输入进行后续预测，$\hat{x}_{t+1},...,\hat{x}_{t+k-1} => \hat{x}_{t+k}$
+2. **$k$ 步预测（$k$-step-ahead prediction）**：使用自身预测结果作为输入进行后续预测
 
 3. 预测误差随步数增加而累积
 
@@ -144,7 +156,7 @@ author: Pianfan
 
 ### 8.3.1. 自然语言统计
 
-**词频特性**：遵循齐普夫定律（Zipf's law）
+**词频特性**：遵循齐普夫定律
 
 - 公式：$n_i \propto \frac{1}{i^\alpha}$ 或 $\log n_i = -\alpha \log i + c$
 
@@ -220,9 +232,17 @@ def load_data_time_machine(batch_size, num_steps, use_random_iter=False, max_tok
 
 ### 8.4.2. 有隐状态的循环神经网络
 
-**隐状态计算**：$\mathbf{H}_t = \phi(\mathbf{X}_t \mathbf{W}_{xh} + \mathbf{H}_{t-1} \mathbf{W}_{hh}  + \mathbf{b}_h), \mathbf{X}_t \in \mathbb{R}^{n \times d}, \mathbf{H}_t \in \mathbb{R}^{n \times h}, \mathbf{W}_{hh} \in \mathbb{R}^{h \times h}$
+**隐状态计算**：
 
-**输出计算**：$\mathbf{O}_t = \mathbf{H}_t \mathbf{W}_{hq} + \mathbf{b}_q$
+$$
+\mathbf{H}_t = \phi(\mathbf{X}_t \mathbf{W}_{xh} + \mathbf{H}_{t-1} \mathbf{W}_{hh}  + \mathbf{b}_h), \mathbf{X}_t \in \mathbb{R}^{n \times d}, \mathbf{H}_t \in \mathbb{R}^{n \times h}, \mathbf{W}_{hh} \in \mathbb{R}^{h \times h}
+$$
+
+**输出计算**：
+
+$$
+\mathbf{O}_t = \mathbf{H}_t \mathbf{W}_{hq} + \mathbf{b}_q
+$$
 
 **参数特性**：参数在不同时间步共享，参数数量不随时间步增加
 

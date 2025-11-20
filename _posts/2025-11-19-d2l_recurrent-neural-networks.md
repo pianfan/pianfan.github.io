@@ -235,7 +235,13 @@ def load_data_time_machine(batch_size, num_steps, use_random_iter=False, max_tok
 **隐状态计算**：
 
 $$
-\mathbf{H}_t = \phi(\mathbf{X}_t \mathbf{W}_{xh} + \mathbf{H}_{t-1} \mathbf{W}_{hh}  + \mathbf{b}_h), \mathbf{X}_t \in \mathbb{R}^{n \times d}, \mathbf{H}_t \in \mathbb{R}^{n \times h}, \mathbf{W}_{hh} \in \mathbb{R}^{h \times h}
+\mathbf{H}_t = \phi(\mathbf{X}_t \mathbf{W}_{xh} + \mathbf{H}_{t-1} \mathbf{W}_{hh}  + \mathbf{b}_h)
+$$
+
+其中
+
+$$
+\mathbf{X}_t \in \mathbb{R}^{n \times d}, \mathbf{H}_t \in \mathbb{R}^{n \times h}, \mathbf{W}_{hh} \in \mathbb{R}^{h \times h}
 $$
 
 **输出计算**：

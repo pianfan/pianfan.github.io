@@ -20,23 +20,39 @@ author: Pianfan
 
 1. **重置门（$\mathbf{R}_t$）**
 
-    公式：$\mathbf{R}_t = \sigma(\mathbf{X}_t \mathbf{W}_{xr} + \mathbf{H}_{t-1} \mathbf{W}_{hr} + \mathbf{b}_r)$
+    公式：
+
+    $$
+    \mathbf{R}_t = \sigma(\mathbf{X}_t \mathbf{W}_{xr} + \mathbf{H}_{t-1} \mathbf{W}_{hr} + \mathbf{b}_r)
+    $$
 
     作用：控制保留多少过去状态，帮助捕获短期依赖
 
 2. **更新门（$\mathbf{Z}_t$）**
 
-    公式：$\mathbf{Z}_t = \sigma(\mathbf{X}_t \mathbf{W}_{xz} + \mathbf{H}_{t-1} \mathbf{W}_{hz} + \mathbf{b}_z)$
+    公式：
+
+    $$
+    \mathbf{Z}_t = \sigma(\mathbf{X}_t \mathbf{W}_{xz} + \mathbf{H}_{t-1} \mathbf{W}_{hz} + \mathbf{b}_z)
+    $$
 
     作用：控制新旧状态的融合比例，帮助捕获长期依赖
 
 3. **候选隐状态（$\tilde{\mathbf{H}}_t$）**
 
-    公式：$\tilde{\mathbf{H}}_t = \tanh(\mathbf{X}_t \mathbf{W}_{xh} + (\mathbf{R}_t \odot \mathbf{H}_{t-1}) \mathbf{W}_{hh} + \mathbf{b}_h)$
+    公式：
+
+    $$
+    \tilde{\mathbf{H}}_t = \tanh(\mathbf{X}_t \mathbf{W}_{xh} + (\mathbf{R}_t \odot \mathbf{H}_{t-1}) \mathbf{W}_{hh} + \mathbf{b}_h)
+    $$
 
 4. **最终隐状态（$\mathbf{H}_t$）**
 
-    公式：$\mathbf{H}_t = \mathbf{Z}_t \odot \mathbf{H}_{t-1}  + (1 - \mathbf{Z}_t) \odot \tilde{\mathbf{H}}_t$
+    公式：
+
+    $$
+    \mathbf{H}_t = \mathbf{Z}_t \odot \mathbf{H}_{t-1}  + (1 - \mathbf{Z}_t) \odot \tilde{\mathbf{H}}_t
+    $$
 
 ### 9.1.2. PyTorch 实现要点
 
@@ -82,29 +98,41 @@ author: Pianfan
 
 1. **输入门（$\mathbf{I}_t$）**：控制新数据进入记忆元的量
 
-    - $\mathbf{I}_t = \sigma(\mathbf{X}_t \mathbf{W}_{xi} + \mathbf{H}_{t-1} \mathbf{W}_{hi} + \mathbf{b}_i)$
+    $$
+    \mathbf{I}_t = \sigma(\mathbf{X}_t \mathbf{W}_{xi} + \mathbf{H}_{t-1} \mathbf{W}_{hi} + \mathbf{b}_i)
+    $$
 
 2. **遗忘门（$\mathbf{F}_t$）**：控制保留过去记忆元内容的量
 
-    - $\mathbf{F}_t = \sigma(\mathbf{X}_t \mathbf{W}_{xf} + \mathbf{H}_{t-1} \mathbf{W}_{hf} + \mathbf{b}_f)$
+    $$
+    \mathbf{F}_t = \sigma(\mathbf{X}_t \mathbf{W}_{xf} + \mathbf{H}_{t-1} \mathbf{W}_{hf} + \mathbf{b}_f)
+    $$
 
 3. **输出门（$\mathbf{O}_t$）**：控制从记忆元读取信息的量
 
-    - $\mathbf{O}_t = \sigma(\mathbf{X}_t \mathbf{W}_{xo} + \mathbf{H}_{t-1} \mathbf{W}_{ho} + \mathbf{b}_o)$
+    $$
+    \mathbf{O}_t = \sigma(\mathbf{X}_t \mathbf{W}_{xo} + \mathbf{H}_{t-1} \mathbf{W}_{ho} + \mathbf{b}_o)
+    $$
 
 #### 9.2.1.2. 记忆元计算
 
 1. **候选记忆元（$\tilde{C}_t$）**
 
-    - $\tilde{\mathbf{C}}_t = \text{tanh}(\mathbf{X}_t \mathbf{W}_{xc} + \mathbf{H}_{t-1} \mathbf{W}_{hc} + \mathbf{b}_c)$
+    $$
+    \tilde{\mathbf{C}}_t = \text{tanh}(\mathbf{X}_t \mathbf{W}_{xc} + \mathbf{H}_{t-1} \mathbf{W}_{hc} + \mathbf{b}_c)
+    $$
 
 2. **记忆元更新**
 
-    - $\mathbf{C}_t = \mathbf{F}_t \odot \mathbf{C}_{t-1} + \mathbf{I}_t \odot \tilde{\mathbf{C}}_t$
+    $$
+    \mathbf{C}_t = \mathbf{F}_t \odot \mathbf{C}_{t-1} + \mathbf{I}_t \odot \tilde{\mathbf{C}}_t
+    $$
 
 3. **隐状态计算**
 
-    - $\mathbf{H}_t = \mathbf{O}_t \odot \tanh(\mathbf{C}_t)$
+    $$
+    \mathbf{H}_t = \mathbf{O}_t \odot \tanh(\mathbf{C}_t)
+    $$
 
 ### 9.2.2. PyTorch 实现要点
 
@@ -148,9 +176,23 @@ author: Pianfan
 
 设时间步 $t$ 输入为 $\mathbf{X}_t \in \mathbb{R}^{n \times d}$，第 $l$ 层隐状态为 $\mathbf{H}_t^{(l)} \in \mathbb{R}^{n \times h}$
 
-层间关系：$\mathbf{H}_t^{(l)} = \phi_l(\mathbf{H}_t^{(l-1)} \mathbf{W}_{xh}^{(l)} + \mathbf{H}_{t-1}^{(l)} \mathbf{W}_{hh}^{(l)} + \mathbf{b}_h^{(l)})$，其中 $\mathbf{H}_t^{(0)} = \mathbf{X}_t$
+层间关系：
 
-输出层计算：$\mathbf{O}_t = \mathbf{H}_t^{(L)} \mathbf{W}_{hq} + \mathbf{b}_q$
+$$
+\mathbf{H}_t^{(l)} = \phi_l(\mathbf{H}_t^{(l-1)} \mathbf{W}_{xh}^{(l)} + \mathbf{H}_{t-1}^{(l)} \mathbf{W}_{hh}^{(l)} + \mathbf{b}_h^{(l)})
+$$
+
+其中
+
+$$
+\mathbf{H}_t^{(0)} = \mathbf{X}_t
+$$
+
+输出层计算：
+
+$$
+\mathbf{O}_t = \mathbf{H}_t^{(L)} \mathbf{W}_{hq} + \mathbf{b}_q
+$$
 
 ### 9.3.2. PyTorch 实现要点
 
@@ -187,13 +229,25 @@ author: Pianfan
 
 ### 9.4.1. 结构定义
 
-前向隐状态更新：$\overrightarrow{\mathbf{H}}_t = \phi(\mathbf{X}_t \mathbf{W}_{xh}^{(f)} + \overrightarrow{\mathbf{H}}_{t-1} \mathbf{W}_{hh}^{(f)}  + \mathbf{b}_h^{(f)})$
+前向隐状态更新：
 
-后向隐状态更新：$\overleftarrow{\mathbf{H}}_t = \phi(\mathbf{X}_t \mathbf{W}_{xh}^{(b)} + \overleftarrow{\mathbf{H}}_{t+1} \mathbf{W}_{hh}^{(b)}  + \mathbf{b}_h^{(b)})$
+$$
+\overrightarrow{\mathbf{H}}_t = \phi(\mathbf{X}_t \mathbf{W}_{xh}^{(f)} + \overrightarrow{\mathbf{H}}_{t-1} \mathbf{W}_{hh}^{(f)}  + \mathbf{b}_h^{(f)})
+$$
+
+后向隐状态更新：
+
+$$
+\overleftarrow{\mathbf{H}}_t = \phi(\mathbf{X}_t \mathbf{W}_{xh}^{(b)} + \overleftarrow{\mathbf{H}}_{t+1} \mathbf{W}_{hh}^{(b)}  + \mathbf{b}_h^{(b)})
+$$
 
 隐状态拼接：$\mathbf{H}_t$ 由 $\overrightarrow{\mathbf{H}}_t$ 和 $\overleftarrow{\mathbf{H}}_t$ 拼接而成（维度为 $n \times 2h$）
 
-输出层计算：$\mathbf{O}_t = \mathbf{H}_t \mathbf{W}_{hq} + \mathbf{b}_q$
+输出层计算：
+
+$$
+\mathbf{O}_t = \mathbf{H}_t \mathbf{W}_{hq} + \mathbf{b}_q
+$$
 
 ### 9.4.2. 关键特性
 
@@ -443,7 +497,7 @@ def predict_seq2seq(net, src_sentence, src_vocab, tgt_vocab, num_steps, device, 
 
 ## 9.8. 束搜索
 
-目标：从所有可能的输出序列（$\mathcal{O}(|\mathcal{Y}|^{T'})$ 种，$|\mathcal{Y}|$ 为词表大小，$T'$ 为最大长度）中寻找理想输出
+目标：从所有可能的输出序列（$\mathcal{O}(\vert\mathcal{Y}\vert^{T'})$ 种，$\vert\mathcal{Y}\vert$ 为词表大小，$T'$ 为最大长度）中寻找理想输出
 
 输出序列需考虑 `<eos>` 终止符，其后部分会被丢弃
 
@@ -451,9 +505,13 @@ def predict_seq2seq(net, src_sentence, src_vocab, tgt_vocab, num_steps, device, 
 
 1. **贪心搜索（greedy search）**
 
-    策略：每个时间步 $t'$ 选择条件概率最高的词元：$y_{t'} = \operatorname*{argmax}_{y \in \mathcal{Y}} P(y \mid y_1, \ldots, y_{t'-1}, \mathbf{c})$
+    策略：每个时间步 $t'$ 选择条件概率最高的词元：
 
-    计算量：$\mathcal{O}(|\mathcal{Y}|T')$
+    $$
+    y_{t'} = \operatorname*{argmax}_{y \in \mathcal{Y}} P(y \mid y_1, \ldots, y_{t'-1}, \mathbf{c})
+    $$
+
+    计算量：$\mathcal{O}(\vert\mathcal{Y}\vert T')$
 
     缺点：无法保证得到最优序列（最优序列需最大化 $\prod_{t'=1}^{T'} P(y_{t'} \mid y_1, \ldots, y_{t'-1}, \mathbf{c})$）
 
@@ -461,7 +519,7 @@ def predict_seq2seq(net, src_sentence, src_vocab, tgt_vocab, num_steps, device, 
 
     策略：列举所有可能序列，选择条件概率最高的序列
 
-    计算量：$\mathcal{O}(|\mathcal{Y}|^{T'})$（计算成本极高）
+    计算量：$\mathcal{O}(\vert\mathcal{Y}\vert^{T'})$（计算成本极高）
 
     优点：能获得最优序列
 
@@ -473,10 +531,10 @@ def predict_seq2seq(net, src_sentence, src_vocab, tgt_vocab, num_steps, device, 
 
     - 时间步 1：选择 $k$ 个最高条件概率的词元作为候选序列起点
 
-    - 后续时间步：基于上一步的 $k$ 个候选，从 $k|\mathcal{Y}|$ 个可能选择中保留 $k$ 个最高条件概率的候选序列
+    - 后续时间步：基于上一步的 $k$ 个候选，从 $k\vert\mathcal{Y}\vert$ 个可能选择中保留 $k$ 个最高条件概率的候选序列
 
     评分公式：$\frac{1}{L^\alpha} \sum_{t'=1}^L \log P(y_{t'} \mid y_1, \ldots, y_{t'-1}, \mathbf{c})$（$L$ 为序列长度，$\alpha$ 通常取 0.75，用于惩罚长序列）
 
-    计算量：$\mathcal{O}(k|\mathcal{Y}|T')$（介于贪心和穷举之间）
+    计算量：$\mathcal{O}(k\vert\mathcal{Y}\vert T')$（介于贪心和穷举之间）
 
     特点：贪心搜索是束宽 $k=1$ 的特殊情况，通过调整 $k$ 权衡正确率和计算代价

@@ -28,4 +28,6 @@ author: Pianfan
 
 - [8. 循环神经网络](https://pianfan.github.io/d2l_recurrent-neural-networks/)
 
+- [9. 现代循环神经网络](https://pianfan.github.io/d2l_recurrent-modern/)
+
 后续章节持续更新中……

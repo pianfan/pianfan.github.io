@@ -30,4 +30,6 @@ author: Pianfan
 
 - [9. 现代循环神经网络](https://pianfan.github.io/d2l_recurrent-modern/)
 
+- [10. 注意力机制](https://pianfan.github.io/d2l_attention-mechanisms/)
+
 后续章节持续更新中……

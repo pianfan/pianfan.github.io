@@ -405,7 +405,13 @@ Adadelta 是 AdaGrad 的变体，减少学习率对坐标的适应性
 
 - $\mathbf{s}_t = \rho \mathbf{s}_{t-1} + (1 - \rho) \mathbf{g}_t^2$（$\rho$ 为超参数）
 
-- 调整梯度：$\mathbf{g}_t' = \frac{\sqrt{\Delta\mathbf{x}_{t-1} + \epsilon}}{\sqrt{{\mathbf{s}_t + \epsilon}}} \odot \mathbf{g}_t$（$\epsilon$ 为小值，如 1e-5，保证数值稳定）
+- 调整梯度：
+
+    $$
+    \mathbf{g}_t' = \frac{\sqrt{\Delta\mathbf{x}_{t-1} + \epsilon}}{\sqrt{{\mathbf{s}_t + \epsilon}}} \odot \mathbf{g}_t
+    $$
+
+    （$\epsilon$ 为小值，如 1e-5，保证数值稳定）
 
 - 参数更新：$\mathbf{x}_t = \mathbf{x}_{t-1} - \mathbf{g}_t'$
 

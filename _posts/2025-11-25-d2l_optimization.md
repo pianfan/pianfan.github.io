@@ -408,7 +408,7 @@ Adadelta 是 AdaGrad 的变体，减少学习率对坐标的适应性
 - 调整梯度：
 
     $$
-    \mathbf{g}_t' = \frac{\sqrt{\Delta\mathbf{x}_{t-1} + \epsilon}}{\sqrt{{\mathbf{s}_t + \epsilon}}} \odot \mathbf{g}_t
+    \mathbf{g}_t' = \frac{\sqrt{\Delta\mathbf{x}_{t-1} + \epsilon}}{\sqrt{\mathbf{s}_t + \epsilon}} \odot \mathbf{g}_t
     $$
 
     （$\epsilon$ 为小值，如 1e-5，保证数值稳定）

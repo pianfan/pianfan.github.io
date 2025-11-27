@@ -22,7 +22,7 @@ author: Pianfan
 
 隐藏层输出称为**隐藏变量（hidden variable）**
 
-#### 4.1.1.2. 关键公式
+#### 4.1.1.2. 公式
 
 含隐藏层的 MLP 计算（无激活函数）：
 
@@ -54,7 +54,7 @@ $$
 
 导数：输入为负时 0，输入为正时 1，0 处取左导数 0
 
-PyTorch 实现：`torch.relu(x)`
+实现：`torch.relu(x)`
 
 #### 4.1.2.2. sigmoid 函数
 
@@ -62,7 +62,7 @@ PyTorch 实现：`torch.relu(x)`
 
 导数：$\operatorname{sigmoid}(x)\left(1-\operatorname{sigmoid}(x)\right)$
 
-PyTorch 实现：`torch.sigmoid(x)`
+实现：`torch.sigmoid(x)`
 
 #### 4.1.2.3. tanh 函数
 
@@ -70,7 +70,7 @@ PyTorch 实现：`torch.sigmoid(x)`
 
 导数：$1 - \operatorname{tanh}^2(x)$
 
-PyTorch 实现：`torch.tanh(x)`
+实现：`torch.tanh(x)`
 
 ## 4.2. 多层感知机的从零开始实现
 
@@ -279,7 +279,7 @@ $$
 
 测试时无需规范化处理
 
-### 4.6.4. PyTorch 实现
+### 4.6.4. 实现
 
 1. 手动实现 dropout 层：
 
@@ -352,7 +352,7 @@ $L_2$ 正则化项：$s = \frac{\lambda}{2} \left(\|\mathbf{W}^{(1)}\|_F^2 + \|\
 
 正则化损失（目标函数）：$J = L + s$
 
-### 4.7.2. 反向传播关键梯度计算
+### 4.7.2. 反向传播梯度计算
 
 目标函数对损失项和正则项梯度：$\frac{\partial J}{\partial L} = 1,\;\frac{\partial J}{\partial s} = 1$
 

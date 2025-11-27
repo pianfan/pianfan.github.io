@@ -32,7 +32,7 @@ author: Pianfan
 
 正则化：引入 dropout（LeNet 仅用权重衰减）
 
-#### 7.1.2.2. 核心架构（PyTorch 实现）
+#### 7.1.2.2. 核心架构
 
 ```py
 net = nn.Sequential(
@@ -83,7 +83,7 @@ net = nn.Sequential(
 
 池化层：$2×2$ 核，stride=2（分辨率减半）
 
-PyTorch 实现：
+实现：
 
 ```py
 def vgg_block(num_convs, in_channels, out_channels):
@@ -112,7 +112,7 @@ def vgg_block(num_convs, in_channels, out_channels):
 
 - 输出层为 10 类（针对 Fashion-MNIST）
 
-PyTorch 实现：
+实现：
 
 ```py
 def vgg(conv_arch):
@@ -285,7 +285,7 @@ $$
 
 卷积层：在通道维度计算均值和方差（含所有空间位置），形状为 (1, num_features, 1, 1)
 
-PyTorch 实现：
+实现：
 
 - 自定义层：`class BatchNorm(nn.Module)`，含 `gamma`、`beta`、`moving_mean`、`moving_var` 参数
 
@@ -297,7 +297,7 @@ PyTorch 实现：
 
 深层网络需保证函数类嵌套性（$\mathcal{F} \subseteq \mathcal{F}'$），确保增加层数能提升性能
 
-核心创新：残差块（residual block），使新增层易于拟合恒等映射（$f(\mathbf{x}) = \mathbf{x}$）
+**残差块（residual block）**使新增层易于拟合恒等映射（$f(\mathbf{x}) = \mathbf{x}$）
 
 残差映射（$f(\mathbf{x}) - \mathbf{x}$）比直接拟合映射更易优化
 

@@ -64,7 +64,7 @@ def corr2d(X, K):
 
 参数：核（weight）和偏置（bias），训练时随机初始化
 
-PyTorch 自定义实现：
+自定义实现：
 
 ```py
 class Conv2D(nn.Module):
@@ -80,7 +80,7 @@ class Conv2D(nn.Module):
 
 可通过数据学习核参数，使用平方误差损失
 
-PyTorch 内置卷积层：`nn.Conv2d(in_channels, out_channels, kernel_size, ...)`
+内置卷积层：`nn.Conv2d(in_channels, out_channels, kernel_size, ...)`
 
 输入输出格式：(批量大小，通道数，高度，宽度)
 
@@ -124,7 +124,7 @@ PyTorch 内置卷积层：`nn.Conv2d(in_channels, out_channels, kernel_size, ...
 
     当 $p_h = k_h - 1$ 且 $p_w = k_w - 1$ 时，输入输出尺寸相同（假设步幅为 1）
 
-### 6.3.3. PyTorch 实现要点
+### 6.3.3. 实现要点
 
 卷积层类：`nn.Conv2d(in_channels, out_channels, kernel_size, padding=0, stride=1)`
 
@@ -223,7 +223,7 @@ def corr2d_multi_in_out_1x1(X, K):
 
 输出通道数与输入通道数相同
 
-### 6.5.4. PyTorch 实现要点
+### 6.5.4. 实现要点
 
 - 最大汇聚层：`nn.MaxPool2d(kernel_size, stride=None, padding=0)`
 

@@ -54,7 +54,7 @@ author: Pianfan
     \mathbf{H}_t = \mathbf{Z}_t \odot \mathbf{H}_{t-1}  + (1 - \mathbf{Z}_t) \odot \tilde{\mathbf{H}}_t
     $$
 
-### 9.1.2. PyTorch 实现要点
+### 9.1.2. 实现
 
 1. **参数初始化**
 
@@ -134,7 +134,7 @@ author: Pianfan
     \mathbf{H}_t = \mathbf{O}_t \odot \tanh(\mathbf{C}_t)
     $$
 
-### 9.2.2. PyTorch 实现要点
+### 9.2.2. 实现
 
 1. **参数初始化**
 
@@ -194,7 +194,7 @@ $$
 \mathbf{O}_t = \mathbf{H}_t^{(L)} \mathbf{W}_{hq} + \mathbf{b}_q
 $$
 
-### 9.3.2. PyTorch 实现要点
+### 9.3.2. 实现
 
 1. 数据加载
 
@@ -257,7 +257,7 @@ $$
 
 计算成本高：前向传播需双向递归，反向传播依赖前向结果，梯度链长
 
-### 9.4.3. PyTorch 实现要点
+### 9.4.3. 实现要点
 
 定义双向 LSTM：`nn.LSTM(num_inputs, num_hiddens, num_layers, bidirectional=True)`
 
@@ -313,7 +313,7 @@ $$
 
     - 记录序列有效长度（排除填充词元）
 
-### 9.5.3. PyTorch 相关代码框架
+### 9.5.3. 相关代码框架
 
 ```py
 # 数据读取与预处理
@@ -355,7 +355,7 @@ train_iter, src_vocab, tgt_vocab = load_data_nmt(batch_size, num_steps)
 
 - 解码器：将固定形状的编码状态映射为长度可变的输出序列
 
-### 9.6.1. PyTorch 实现接口
+### 9.6.1. 实现接口
 
 **编码器**
 

@@ -39,7 +39,7 @@ author: Pianfan
 
 注意力汇聚是加权平均总和，权重通过查询与不同键计算得出
 
-PyTorch 相关代码：
+代码：
 
 ```py
 # 显示矩阵热图函数
@@ -144,7 +144,7 @@ $$
 
 功能：过滤超出有效长度的位置，使这些位置在 softmax 计算中输出为 0
 
-PyTorch 实现：
+实现：
 
 ```py
 def masked_softmax(X, valid_lens):
@@ -166,7 +166,7 @@ def masked_softmax(X, valid_lens):
 
 评分函数：$a(\mathbf q, \mathbf k) = \mathbf w_v^\top \text{tanh}(\mathbf W_q\mathbf q + \mathbf W_k \mathbf k)$，其中 $\mathbf W_q\in\mathbb R^{h\times q}$、$\mathbf W_k\in\mathbb R^{h\times k}$、$\mathbf w_v\in\mathbb R^{h}$
 
-PyTorch 实现：
+实现：
 
 ```py
 class AdditiveAttention(nn.Module):
@@ -194,7 +194,7 @@ class AdditiveAttention(nn.Module):
 
 批量计算：$\mathrm{softmax}\left(\frac{\mathbf Q \mathbf K^\top }{\sqrt{d}}\right) \mathbf V$，其中 $\mathbf Q\in\mathbb R^{n\times d}$、$\mathbf K\in\mathbb R^{m\times d}$、$\mathbf V\in\mathbb R^{m\times v}$
 
-PyTorch 实现：
+实现：
 
 ```py
 class DotProductAttention(nn.Module):
@@ -322,7 +322,7 @@ $$
 
 输入输出形状：`(批量大小, 序列长度, 隐藏维度)`，输入输出形状相同
 
-PyTorch 实现示例：
+实现示例：
 
 ```py
 num_hiddens, num_heads = 100, 5
@@ -349,7 +349,7 @@ $$
 \begin{split}\begin{aligned} p_{i, 2j} &= \sin\left(\frac{i}{10000^{2j/d}}\right)\\p_{i, 2j+1} &= \cos\left(\frac{i}{10000^{2j/d}}\right)\end{aligned}\end{split}
 $$
 
-PyTorch 实现：
+实现：
 
 ```py
 class PositionalEncoding(nn.Module):
@@ -423,7 +423,7 @@ class PositionalEncoding(nn.Module):
 
     编码器－解码器注意力：查询来自解码器，键/值来自编码器输出
 
-### 10.7.3. 核心实现（PyTorch）
+### 10.7.3. 核心实现
 
 `TransformerEncoder`：包含嵌入层、位置编码、编码器块序列
 

@@ -44,7 +44,7 @@ author: Pianfan
 
 2. **凸性和二阶导数**：
 
-    一维二次可微函数：凸函数当且仅当 $f''(x) \geq 0$
+    一维二次可微函数：凸函数当且仅当 $f^{\prime\prime}(x) \geq 0$
 
     多维二次可微函数：凸函数当且仅当 Hessian 矩阵 $\nabla^2 f \succeq 0$（半正定）
 
@@ -58,7 +58,11 @@ author: Pianfan
 
 3. **惩罚**：通过添加惩罚近似满足约束
 
-4. **投影（projections）**：凸集 $\mathcal{X}$ 上的投影定义为 $\mathrm{Proj}_\mathcal{X}(\mathbf{x}) = \mathop{\mathrm{argmin}}_{\mathbf{x}' \in \mathcal{X}} \|\mathbf{x} - \mathbf{x}'\|$
+4. **投影（projections）**：凸集 $\mathcal{X}$ 上的投影定义为
+
+$$
+\mathrm{Proj}_\mathcal{X}(\mathbf{x}) = \mathop{\mathrm{argmin}}_{\mathbf{x}' \in \mathcal{X}} \|\mathbf{x} - \mathbf{x}'\|
+$$
 
 ## 11.3. 梯度下降
 
@@ -150,7 +154,7 @@ author: Pianfan
 
 计算效率：依托向量化，减少框架开销，利用 CPU/GPU 缓存和内存 locality
 
-统计效率：梯度基于小批量计算（$\mathbf{g}_t = \partial_{\mathbf{w}} \frac{1}{|\mathcal{B}_t|} \sum_{i \in \mathcal{B}_t} f(\mathbf{x}_{i}, \mathbf{w})$），方差随批量大小增大而降低
+统计效率：梯度基于小批量计算，方差随批量大小增大而降低
 
 小批量选择：需足够大以保证计算效率，且适合 GPU 内存
 
@@ -225,7 +229,7 @@ $$
 
 **特殊情况**：$\beta = 0$ 时退化为普通梯度下降
 
-**动量含义**：$\mathbf{v}_t$ 是过去梯度的加权和，$\mathbf{v}_t = \sum_{\tau = 0}^{t-1} \beta^{\tau} \mathbf{g}_{t-\tau, t-\tau-1}$，$\beta$ 越大，平均过去梯度的范围越广
+**动量含义**：$\mathbf{v}_t$ 是过去梯度的加权和，$\beta$ 越大，平均过去梯度的范围越广
 
 ### 11.6.2. 理论分析
 
@@ -248,7 +252,7 @@ $$
 
 - **标量函数**：
 
-    - 函数 $f(x) = \frac{\lambda}{2}x^2$，梯度下降更新：$x_{t+1} = (1 - \eta\lambda)x_t$，收敛条件 $|1 - \eta \lambda| < 1$
+    - 函数 $f(x) = \frac{\lambda}{2}x^2$，梯度下降更新：$x_{t+1} = (1 - \eta\lambda)x_t$，收敛条件 $\vert 1 - \eta \lambda \vert < 1$
 
     - 动量法更新矩阵：$\begin{bmatrix} v_{t+1} \\ x_{t+1} \end{bmatrix} = \mathbf{R}(\beta, \eta, \lambda) \begin{bmatrix} v_t \\ x_t \end{bmatrix}$，收敛条件 $0 < \eta \lambda < 2 + 2 \beta$（比梯度下降的 $0 < \eta\lambda < 2$ 范围更大）
 
@@ -286,11 +290,25 @@ $$
 
 ### 11.7.2. 公式
 
-梯度计算：$\mathbf{g}_t = \partial_{\mathbf{w}} l(y_t, f(\mathbf{x}_t, \mathbf{w}))$
+梯度计算：
 
-梯度平方累加：$\mathbf{s}_t = \mathbf{s}_{t-1} + \mathbf{g}_t^2$（按坐标平方累加）
+$$
+\mathbf{g}_t = \partial_{\mathbf{w}} l(y_t, f(\mathbf{x}_t, \mathbf{w}))
+$$
 
-参数更新：$\mathbf{w}_t = \mathbf{w}_{t-1} - \frac{\eta}{\sqrt{\mathbf{s}_t + \epsilon}} \cdot \mathbf{g}_t$（$\eta$ 为学习率，$\epsilon$ 为数值稳定项，避免除零）
+梯度平方累加（按坐标平方累加）：
+
+$$
+\mathbf{s}_t = \mathbf{s}_{t-1} + \mathbf{g}_t^2
+$$
+
+参数更新：
+
+$$
+\mathbf{w}_t = \mathbf{w}_{t-1} - \frac{\eta}{\sqrt{\mathbf{s}_t + \epsilon}} \cdot \mathbf{g}_t
+$$
+
+- $\eta$ 为学习率，$\epsilon$ 为数值稳定项，避免除零
 
 初始化：$\mathbf{s}_0 = \mathbf{0}$
 
@@ -399,23 +417,31 @@ Adadelta 是 AdaGrad 的变体，减少学习率对坐标的适应性
 
 ### 11.9.1. 公式
 
-**状态变量**：2 个，$\mathbf{s}_t$（梯度二阶矩的泄露平均值）、$\Delta\mathbf{x}_t$（参数变化二阶矩的泄露平均值）
+- **状态变量**：2 个，$\mathbf{s}_t$（梯度二阶矩的泄露平均值）、$\Delta\mathbf{x}_t$（参数变化二阶矩的泄露平均值）
 
-**更新公式**：
-
-- $\mathbf{s}_t = \rho \mathbf{s}_{t-1} + (1 - \rho) \mathbf{g}_t^2$（$\rho$ 为超参数）
-
-- 调整梯度：
+- **更新公式**：
 
     $$
-    \mathbf{g}_t' = \frac{\sqrt{\Delta\mathbf{x}_{t-1} + \epsilon}}{\sqrt{\mathbf{s}_t + \epsilon}} \odot \mathbf{g}_t
+    \mathbf{s}_t = \rho \mathbf{s}_{t-1} + (1 - \rho) \mathbf{g}_t^2
     $$
 
-    （$\epsilon$ 为小值，如 1e-5，保证数值稳定）
+    - 调整梯度：
 
-- 参数更新：$\mathbf{x}_t = \mathbf{x}_{t-1} - \mathbf{g}_t'$
+        $$
+        \mathbf{g}_t' = \frac{\sqrt{\Delta\mathbf{x}_{t-1} + \epsilon}}{\sqrt{\mathbf{s}_t + \epsilon}} \odot \mathbf{g}_t
+        $$
 
-- $\Delta \mathbf{x}_t = \rho \Delta\mathbf{x}_{t-1} + (1 - \rho) {\mathbf{g}_t'}^2$
+        （$\epsilon$ 为小值，如 1e-5，保证数值稳定）
+
+    - 参数更新：
+
+        $$
+        \mathbf{x}_t = \mathbf{x}_{t-1} - \mathbf{g}_t'
+        $$
+
+    $$
+    \Delta \mathbf{x}_t = \rho \Delta\mathbf{x}_{t-1} + (1 - \rho) {\mathbf{g}_t'}^2
+    $$
 
 ### 11.9.2. 实现
 
@@ -454,9 +480,17 @@ def adadelta(params, states, hyperparams):
 
 1. **状态变量更新**（$\beta_1 = 0.9$，$\beta_2 = 0.999$）：
 
-    - 动量估计：$\mathbf{v}_t \leftarrow \beta_1 \mathbf{v}_{t-1} + (1 - \beta_1) \mathbf{g}_t$
+    - 动量估计：
 
-    - 二次矩估计：$\mathbf{s}_t \leftarrow \beta_2 \mathbf{s}_{t-1} + (1 - \beta_2) \mathbf{g}_t^2$
+        $$
+        \mathbf{v}_t \leftarrow \beta_1 \mathbf{v}_{t-1} + (1 - \beta_1) \mathbf{g}_t
+        $$
+
+    - 二次矩估计：
+
+        $$
+        \mathbf{s}_t \leftarrow \beta_2 \mathbf{s}_{t-1} + (1 - \beta_2) \mathbf{g}_t^2
+        $$
 
 2. **偏差校正**（解决初始值为 0 的偏差）：
 
@@ -466,7 +500,9 @@ def adadelta(params, states, hyperparams):
 
 3. **参数更新**（$\epsilon = 10^{-6}$）：
 
-    - $\mathbf{x}_t \leftarrow \mathbf{x}_{t-1} - \frac{\eta \hat{\mathbf{v}}_t}{\sqrt{\hat{\mathbf{s}}_t} + \epsilon}$
+    $$
+    \mathbf{x}_t \leftarrow \mathbf{x}_{t-1} - \frac{\eta \hat{\mathbf{v}}_t}{\sqrt{\hat{\mathbf{s}}_t} + \epsilon}
+    $$
 
 ### 11.10.2. 实现
 
@@ -511,7 +547,9 @@ def adadelta(params, states, hyperparams):
 
 **改进**：修改二次矩更新，避免更新幅度依赖偏差量：
 
-- $\mathbf{s}_t \leftarrow \mathbf{s}_{t-1} + (1 - \beta_2) \mathbf{g}_t^2 \odot \mathop{\mathrm{sgn}}(\mathbf{g}_t^2 - \mathbf{s}_{t-1})$
+$$
+\mathbf{s}_t \leftarrow \mathbf{s}_{t-1} + (1 - \beta_2) \mathbf{g}_t^2 \odot \mathop{\mathrm{sgn}}(\mathbf{g}_t^2 - \mathbf{s}_{t-1})
+$$
 
 **实现**：修改 `s` 的更新逻辑，其余同 Adam
 

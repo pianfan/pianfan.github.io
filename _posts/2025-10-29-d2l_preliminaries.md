@@ -5,7 +5,7 @@ date: 2025-10-29
 tags: [AI, notes]
 toc: true
 comments: true
-author: Pianfan
+author: Marco
 ---
 
 要学习深度学习，首先需要先掌握一些基本技能，如数据处理、线性代数、微积分和概率<!-- more -->

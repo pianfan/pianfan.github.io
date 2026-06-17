@@ -5,7 +5,7 @@ date: 2025-11-17
 tags: [AI, notes]
 toc: true
 comments: true
-author: Pianfan
+author: Marco
 ---
 
 本章将介绍现代的卷积神经网络架构，许多现代卷积神经网络的研究都是建立在这些模型的基础上的。本章中的每一个模型都曾一度占据主导地位，其中许多模型都是 ImageNet 竞赛的优胜者<!-- more -->

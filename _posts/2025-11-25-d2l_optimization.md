@@ -5,7 +5,7 @@ date: 2025-11-25
 tags: [AI, notes]
 toc: true
 comments: true
-author: Pianfan
+author: Marco
 ---
 
 优化算法对于深度学习非常重要。一方面，优化算法的性能直接影响模型的训练效率。另一方面，理解不同优化算法的原理及其超参数的作用将使我们能够以有针对性的方式调整超参数，以提高深度学习模型的性能<!-- more -->

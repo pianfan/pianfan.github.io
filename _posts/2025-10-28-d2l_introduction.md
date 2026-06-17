@@ -5,7 +5,7 @@ date: 2025-10-28
 tags: [AI, notes]
 toc: true
 comments: true
-author: Pianfan
+author: Marco
 ---
 
 ## 1.1. 核心概念与定义

@@ -1,43 +1,80 @@
 ---
 layout: default
 ---
-<div class="search-container">
-  <input type="text" id="search-input" placeholder="search blog posts..." style="width: 90%;
-    height: 35px;
-    background-color: rgba(227,231,236,.2);
-    line-height: 35px;
-    margin-top: 20px;
-    padding:10px 16px;
-    border: 1px solid #c0c0c0;
-    font-size: 16px;
-    border-radius: 17px;
-    outline: none;
-    box-sizing: border-box;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);">
-  <ul id="results-container"></ul>
-</div>
+<section class="home-hero">
+  <div class="home-hero__content">
+    <p class="eyebrow">Marco / snomaster</p>
+    <h1>把低空视觉、深度学习和个人学习系统一点点做扎实。</h1>
+    <p class="hero-lead">
+      我是 Marco，软件工程本科背景，正在准备进入低空技术工程硕士阶段。这里记录我从计算机视觉基础、遥感与无人机影像方向，到 AI 影像创作和 Obsidian + AI 学习系统的长期实践。
+    </p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="{{ site.baseurl }}/research/">看研究路线</a>
+      <a class="button" href="{{ site.baseurl }}/projects/">看项目作品</a>
+    </div>
+  </div>
+  <div class="home-hero__visual">
+    <img src="{{ site.baseurl }}/images/avatar.png" alt="Marco avatar">
+    <div class="signal-list">
+      <span>低空视觉</span>
+      <span>计算机视觉</span>
+      <span>AI 影像</span>
+      <span>第二大脑</span>
+    </div>
+  </div>
+</section>
 
-<!--script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script-->
-<script src="{{ site.baseurl }}/js/simple-jekyll-search.min.js"></script>
+<section class="section-block">
+  <div class="section-heading">
+    <p class="eyebrow">Focus</p>
+    <h2>现在主要写这些</h2>
+  </div>
+  <div class="feature-grid">
+    <a class="feature-card" href="{{ site.baseurl }}/research/">
+      <span class="feature-card__label">Research</span>
+      <h3>低空视觉与深度学习</h3>
+      <p>从 Python、PyTorch、D2L 笔记开始，逐步靠近无人机影像、遥感图像处理、目标检测和语义分割。</p>
+    </a>
+    <a class="feature-card" href="{{ site.baseurl }}/projects/">
+      <span class="feature-card__label">Projects</span>
+      <h3>可展示项目作品</h3>
+      <p>记录能复现、能解释、能展示的项目：数据、模型、实验结果、复盘和下一步。</p>
+    </a>
+    <a class="feature-card" href="{{ site.baseurl }}/notes/">
+      <span class="feature-card__label">System</span>
+      <h3>Obsidian + AI 学习系统</h3>
+      <p>把论文阅读、术语积累、项目推进和每日复盘沉淀成可维护的第二大脑。</p>
+    </a>
+    <a class="feature-card" href="{{ site.baseurl }}/now/">
+      <span class="feature-card__label">Now</span>
+      <h3>当前阶段</h3>
+      <p>公开记录入学前最重要的几件事：补基础、做项目、练英语、确认研究方向。</p>
+    </a>
+  </div>
+</section>
 
-<script>
-	window.simpleJekyllSearch = new SimpleJekyllSearch({
-	searchInput: document.getElementById('search-input'),
-	resultsContainer: document.getElementById('results-container'),
-	json: '{{ site.baseurl }}/search.json',
-	searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>',
-	noResultsText: 'No results found',
-	limit: 10,
-	fuzzy: false,
-	exclude: ['Welcome']
-  })
-</script>
- 
-{% if site.posts.size == 0 %}
-  <h2>No post found</h2>
-{% endif %}
+<section class="section-block">
+  <div class="section-heading">
+    <p class="eyebrow">Search</p>
+    <h2>搜索文章</h2>
+  </div>
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="搜索深度学习、视觉、Obsidian、AI 影像..." aria-label="搜索文章">
+    <ul id="results-container"></ul>
+  </div>
+</section>
 
-<div class="posts">
+<section class="section-block">
+  <div class="section-heading">
+    <p class="eyebrow">Writing</p>
+    <h2>近期文章</h2>
+  </div>
+
+  {% if site.posts.size == 0 %}
+    <h2>No post found</h2>
+  {% endif %}
+
+  <div class="posts">
   {% for post in paginator.posts %}
   {% unless post.draft %}
     <article class="post">
@@ -65,11 +102,27 @@ layout: default
         {{ post.excerpt | truncate: 200 }}
       </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">继续阅读</a>
     </article>
   {% endunless %}
   {% endfor %}
-</div>
+  </div>
+</section>
+
+<script src="{{ site.baseurl }}/js/simple-jekyll-search.min.js"></script>
+
+<script>
+  window.simpleJekyllSearch = new SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '{{ site.baseurl }}/search.json',
+    searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>',
+    noResultsText: '没有找到相关内容',
+    limit: 10,
+    fuzzy: false,
+    exclude: ['Welcome']
+  })
+</script>
 
 <div class="pagination">
   {% if paginator.previous_page %}

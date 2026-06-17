@@ -5,7 +5,7 @@ date: 2025-11-19
 tags: [AI, notes]
 toc: true
 comments: true
-author: Pianfan
+author: Marco
 ---
 
 如果说卷积神经网络可以有效地处理空间信息，那么本章的**循环神经网络（recurrent neural network，RNN）**则可以更好地处理序列信息。循环神经网络通过引入状态变量存储过去的信息和当前的输入，从而可以确定当前的输出<!-- more -->

@@ -5,7 +5,7 @@ date: 2025-11-11
 tags: [AI, notes]
 toc: true
 comments: true
-author: Pianfan
+author: Marco
 ---
 
 在本章中，我们将深入探索深度学习计算的关键组件，即模型构建、参数访问与初始化、设计自定义层和块、将模型读写到磁盘，以及利用 GPU 实现显著的加速<!-- more -->

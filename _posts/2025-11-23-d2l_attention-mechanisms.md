@@ -5,7 +5,7 @@ date: 2025-11-23
 tags: [AI, notes]
 toc: true
 comments: true
-author: Pianfan
+author: Marco
 ---
 
 意识的聚集和专注使灵长类动物能够在复杂的视觉环境中将注意力引向感兴趣的物体，例如猎物和天敌。只关注一小部分信息的能力对进化更加有意义，使人类得以生存和成功<!-- more -->

@@ -5,7 +5,7 @@ date: 2025-11-21
 tags: [AI, notes]
 toc: true
 comments: true
-author: Pianfan
+author: Marco
 ---
 
 我们将引入两个广泛使用的网络，即**门控循环单元（gated recurrent unit，GRU）**和**长短期记忆网络（long short-term memory，LSTM）**。然后，我们将基于一个单向隐藏层来扩展循环神经网络架构<!-- more -->

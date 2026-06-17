@@ -17,24 +17,33 @@
 
 html {
   font-size: $base-font-size;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: $background-color;
+  background:
+    radial-gradient(circle at top right, rgba(26, 188, 156, 0.08), transparent 34%),
+    linear-gradient(180deg, var(--oc-gray-0) 0%, #ffffff 52%, var(--oc-gray-1) 100%);
   font-family: $base-font;
   color: $base-color;
   line-height: 1.7em;
 }
 
 .container {
-  margin: 40px 0;
-  max-width: 1000px;
-  padding: 0 20px;
+  margin: 44px 0;
+  max-width: 980px;
+  padding: 0 32px;
   width: 100%;
+
+  @include mobile {
+    box-sizing: border-box;
+    margin: 28px auto;
+    padding: 0 18px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 2em;
+  line-height: 1.35em;
   margin: 1em 0 16px;
   padding: 0;
 
@@ -48,7 +57,7 @@ h1, h2, h3, h5 {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 34px;
   a {
     color: inherit;
   }
@@ -333,7 +342,7 @@ img {
 //
 
 .wrapper-sidebar {
-  width: 25%;
+  width: 280px;
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-color: $background-color;
@@ -364,7 +373,8 @@ img {
 
 .site-info {
   text-align:center;
-  margin: 100px auto 0;
+  margin: 72px auto 0;
+  padding: 0 24px;
 
   @include mobile {
     float: none;
@@ -375,8 +385,8 @@ img {
   .site-avatar {
     margin:0 auto;
     display: block;
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 132px;
+    max-height: 132px;
 
     @include mobile {
       max-width: 120px;
@@ -385,7 +395,8 @@ img {
 
     img {
       display: inline-block;
-      border-radius: 2px;
+      border-radius: 8px;
+      box-shadow: 0 14px 34px rgba(34, 42, 53, 0.16);
     }
   }
 }
@@ -403,7 +414,8 @@ img {
 .site-description {
   margin: 15px auto;
   color: $base-lighten-color;
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.6;
 
   @include mobile {
     margin: 10px auto;
@@ -416,10 +428,10 @@ img {
 
 nav {
   display: block;
-  margin-top: 23px; // @TODO: Vertically middle align
+  margin-top: 22px;
   font-family: $base-font;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 15px;
 
   @include mobile {
     margin-top: 9px;
@@ -427,14 +439,22 @@ nav {
   }
 
   a {
-    margin: 0 10px;
-    text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
+    display: block;
+    margin: 7px 38px;
+    padding: 7px 10px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0;
+    border-radius: 6px;
 
     @include mobile {
-      margin: 0 10px;
+      display: inline-block;
+      margin: 4px 6px;
       color: $link-color;
+    }
+
+    &:hover {
+      background: $link-bghv-color;
     }
   }
 }
@@ -443,7 +463,7 @@ nav {
 
 .wrapper-content {
   float: right;
-  width: 70%;
+  width: calc(100% - 320px);
 
   @include mobile {
     float: none;
@@ -485,7 +505,7 @@ nav {
 }
 
 .posts > .post {
-  padding-bottom: 2em;
+  padding: 22px 0 26px;
   border-bottom: 1px solid $divider-color;
 }
 
@@ -831,50 +851,6 @@ body.dark-mode {
     }
   }
 
-  // Gitalk 评论区适配
-  .gt-container {
-    --gt-bg-color: var(--oc-gray-1);
-    --gt-text-color: var(--oc-gray-8);
-    color: var(--oc-gray-8);
-  }
-
-  .gt-container .gt-header-textarea,
-  .gt-container .gt-header-preview {
-    background-color: var(--oc-gray-2);
-    border-color: var(--oc-gray-3);
-    color: var(--oc-gray-8);
-  }
-
-  .gt-container .gt-comment-content {
-    background-color: var(--oc-gray-2);
-    border-color: var(--oc-gray-3);
-    color: var(--oc-gray-8);
-  }
-  .gt-container .gt-comment-content:hover {
-    -webkit-box-shadow: 0 0.425em 1.75em 0 #949494;
-            box-shadow: 0 0.425em 1.75em 0 #949494;
-  }
-
-  .gt-container .gt-popup {
-    background-color: var(--oc-gray-1);
-    border-color: var(--oc-gray-3);
-  }
-
-  .gt-container a.is--active {
-    color: #ddd;
-    cursor: default !important;
-  }
-  .gt-container a.is--active:hover {
-    color: #ddd;
-  }
-
-  // 代码块适配
-  .gt-container .highlight pre,
-  .gt-container pre {
-    background-color: var(--oc-gray-1);
-    color: var(--oc-gray-9);
-  }
-
   // 代码高亮基础样式调整
   .highlight {
     background: var(--oc-gray-1) !important;
@@ -946,6 +922,224 @@ body.dark-mode {
     color: #e5e7eb !important;
     border: 1px solid var(--oc-gray-3) !important;
   }
+}
+
+// Home page and refreshed content surfaces
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) 260px;
+  gap: 28px;
+  align-items: stretch;
+  padding: 34px;
+  border: 1px solid rgba(73, 80, 87, 0.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(232, 247, 255, 0.9), rgba(255, 255, 255, 0.94)),
+    linear-gradient(90deg, rgba(26, 188, 156, 0.08), rgba(255, 193, 7, 0.08));
+  box-shadow: 0 20px 45px rgba(33, 37, 41, 0.08);
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+}
+
+.home-hero h1 {
+  margin-top: 6px;
+  margin-bottom: 14px;
+  font-size: 38px;
+  letter-spacing: 0;
+
+  @include mobile {
+    font-size: 30px;
+  }
+}
+
+.hero-lead {
+  max-width: 680px;
+  font-size: 17px;
+  color: var(--oc-gray-7);
+}
+
+.eyebrow {
+  margin: 0;
+  color: #0f766e;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--oc-gray-3);
+  border-radius: 6px;
+  color: var(--oc-gray-8);
+  background: rgba(255, 255, 255, 0.75);
+  font-weight: 700;
+}
+
+.button:hover {
+  background: #fff;
+  color: #0f766e;
+  border-color: rgba(15, 118, 110, 0.35);
+}
+
+.button-primary {
+  color: #fff;
+  background: #0f766e;
+  border-color: #0f766e;
+}
+
+.button-primary:hover {
+  color: #fff;
+  background: #115e59;
+}
+
+.home-hero__visual {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+}
+
+.home-hero__visual img {
+  width: 142px;
+  height: 142px;
+  margin: 0 0 18px auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.18);
+
+  @include mobile {
+    margin: 0 0 18px;
+  }
+}
+
+.signal-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+
+  @include mobile {
+    justify-content: flex-start;
+  }
+}
+
+.signal-list span {
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #2f3a45;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(73, 80, 87, 0.12);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.section-block {
+  margin-top: 42px;
+}
+
+.section-heading {
+  margin-bottom: 18px;
+}
+
+.section-heading h2 {
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  display: block;
+  min-height: 178px;
+  padding: 20px;
+  border: 1px solid rgba(73, 80, 87, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 10px 24px rgba(33, 37, 41, 0.05);
+}
+
+.feature-card:hover {
+  color: inherit;
+  border-color: rgba(15, 118, 110, 0.28);
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.feature-card__label {
+  color: #b45309;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.feature-card h3 {
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  margin-bottom: 0;
+  color: var(--oc-gray-7);
+}
+
+.search-container input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 44px;
+  padding: 10px 14px;
+  border: 1px solid rgba(73, 80, 87, 0.18);
+  border-radius: 6px;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--oc-gray-8);
+  font-size: 15px;
+}
+
+.search-container input:focus {
+  border-color: rgba(15, 118, 110, 0.48);
+  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.08);
+}
+
+#results-container {
+  margin-top: 12px;
+  padding-left: 0;
+}
+
+#results-container li {
+  margin-left: 0;
+  list-style: none;
+}
+
+#results-container li:before {
+  content: "";
+}
+
+.page .entry > h2:first-child {
+  margin-top: 0;
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS

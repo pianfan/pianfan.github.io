@@ -1,7 +1,10 @@
-name: Build and Test
+name: Build
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -10,21 +13,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
-      
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v4.0.1
-      with:
-        node-version: 20
-        
-    - run: npm install -g bats
-    
-    - run: bats -v
-      
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4.3.0
-      with:
-        name: 'my-blog'
-        path: '_site'
-        
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build site
+        run: bundle exec jekyll build
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site
+          retention-days: 7

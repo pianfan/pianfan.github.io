@@ -2,44 +2,30 @@
 layout: default
 ---
 <div class="search-container">
-  <input type="text" id="search-input" placeholder="search blog posts..." style="width: 90%;
-    height: 35px;
-    background-color: rgba(227,231,236,.2);
-    line-height: 35px;
-    margin-top: 20px;
-    padding:10px 16px;
-    border: 1px solid #c0c0c0;
-    font-size: 16px;
-    border-radius: 17px;
-    outline: none;
-    box-sizing: border-box;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);">
+  <input type="search" id="search-input" placeholder="搜索文章…" aria-label="搜索文章">
   <ul id="results-container"></ul>
 </div>
 
-<!--script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script-->
 <script src="{{ site.baseurl }}/js/simple-jekyll-search.min.js"></script>
 
 <script>
-	window.simpleJekyllSearch = new SimpleJekyllSearch({
-	searchInput: document.getElementById('search-input'),
-	resultsContainer: document.getElementById('results-container'),
-	json: '{{ site.baseurl }}/search.json',
-	searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>',
-	noResultsText: 'No results found',
-	limit: 10,
-	fuzzy: false,
-	exclude: ['Welcome']
+  window.simpleJekyllSearch = new SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '{{ site.baseurl }}/search.json',
+    searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
+    noResultsText: '未找到相关文章',
+    limit: 10,
+    fuzzy: false
   })
 </script>
- 
+
 {% if site.posts.size == 0 %}
   <h2>No post found</h2>
 {% endif %}
 
 <div class="posts">
   {% for post in paginator.posts %}
-  {% unless post.draft %}
     <article class="post">
       <h1>
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
@@ -53,7 +39,7 @@ layout: default
         <ul class="tag">
           {% for tag in post.tags %}
           <li>
-            <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
+            <a href="{{ site.baseurl }}/tags#{{ tag }}">
               {{ tag }}
             </a>
           </li>
@@ -65,9 +51,8 @@ layout: default
         {{ post.excerpt | truncate: 200 }}
       </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">阅读全文</a>
     </article>
-  {% endunless %}
   {% endfor %}
 </div>
 
@@ -81,7 +66,7 @@ layout: default
   {% endif %}
   {% if paginator.next_page %}
     <span class="next">
-      <a href="{{ site.baseurl}}{{ paginator.next_page_path }}" class="next">
+      <a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="next">
         下一页 →
       </a>
     </span>

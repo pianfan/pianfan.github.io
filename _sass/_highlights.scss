@@ -4,8 +4,8 @@ pre, code {
 
 code.highlighter-rouge {
   font-size: 90%;
-  color: $oc-indigo-9;
-  background-color: $oc-gray-1;
+  color: var(--oc-indigo-9);
+  background-color: var(--oc-gray-1);
   padding: .1em .2em;
   border-radius: 3px;
 }
@@ -13,13 +13,13 @@ code.highlighter-rouge {
 pre.highlight {
   font-size: $small-font-size;
   padding: .45em .45em .45em .625em;
-  border: 1px solid $oc-gray-3;
+  border: 1px solid var(--oc-gray-3);
   border-radius: 3px;
   margin: 1em 0;
-  overflow: scroll;
+  overflow: auto;
 }
 
-.highlight  { background: $oc-gray-0; }
+.highlight  { background: var(--oc-gray-0); }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
 .highlight .k { font-weight: bold } /* Keyword */
@@ -79,3 +79,24 @@ pre.highlight {
 .highlight .vg { color: #008080 } /* Name.Variable.Global */
 .highlight .vi { color: #008080 } /* Name.Variable.Instance */
 .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+
+html.dark-mode {
+  .highlight {
+    background: var(--oc-gray-1);
+
+    .c, .cm, .c1, .cs { color: #8a9199; }
+    .k, .o, .kc, .kd, .kp, .kr, .kt { color: #ff7b72; font-weight: normal; }
+    .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1, .ss { color: #a5d6ff; }
+    .m, .mf, .mh, .mi, .mo, .il { color: #79d3b3; }
+    .na, .nb, .nc, .no, .ni, .ne, .nf, .nn, .nt, .nv, .vc, .vg, .vi { color: #d2a8ff; }
+    .err { color: #fff; background-color: #f87171; }
+    .gd { color: #f87171; background-color: #3f1d1d; }
+    .gi { color: #4ade80; background-color: #1a3320; }
+  }
+
+  code.highlighter-rouge {
+    background-color: var(--oc-gray-2);
+    color: #e5e7eb;
+    border: 1px solid var(--oc-gray-3);
+  }
+}

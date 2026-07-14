@@ -1,71 +1,72 @@
 name: "Pianfan's blog"
+title: "Pianfan's blog"
 description: "翩帆的个人技术博客"
 
-avatar: https://pianfan.github.io/images/avatar.png
-favicon: https://pianfan.github.io/images/favicon.ico
+avatar: /images/avatar.png
+favicon: /images/favicon.ico
 
 navigation:
   - name: 首页
     url: /
   - name: 关于
-    url: /about
+    url: /about/
   - name: 分类
-    url: /tags
+    url: /tags/
 
 paginate: 8
 
 excerpt_separator: <!-- more -->
 
 footer-links:
-  zhihu: 
+  zhihu:
   email: yunhan.xiong@foxmail.com
   facebook:
   github: pianfan
   rss: welcome!
-  twitter: 
+  twitter:
   youtube:
 
 footer-text: Copyright (c) 2026 Pianfan
 
 url: https://pianfan.github.io
+baseurl: ""
 
 permalink: /:title/
 paginate_path: /page:num/
 
-# Gitalk
-gitalk:
-  clientID: cba98a0db83eb062c0f8
-  clientSecret: 46400b2614fb5c4189f6c5f662baee088712b316
-  repo: pianfan.github.io
-  owner: pianfan
+# Giscus comments — fill repo-id / category-id from https://giscus.app
+# Prerequisites: enable Discussions on the repo, then configure giscus.app
+giscus:
+  repo: pianfan/pianfan.github.io
+  repo-id: R_kgDOLJQ7fQ
+  category: Announcements
+  category-id: DIC_kwDOLJQ7fc4CcrSF
+  mapping: pathname
+  reactions-enabled: "1"
+  emit-metadata: "0"
+  input-position: bottom
+  theme: preferred_color_scheme
+  lang: zh-CN
 
-# The release of Jekyll Now
-version: v1.2.0
-
-# Jekyll 3 now only supports Kramdown for Markdown
 kramdown:
-  # Use GitHub flavored markdown, including triple backtick fenced code blocks
   input: GFM
-  # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
   syntax_highlighter: rouge
   syntax_highlighter_opts:
-    # Use existing pygments syntax highlighting css
     css_class: 'highlight'
 
-# Set the Sass partials directory, as we're using @imports
 sass:
-  style: :expanded # You might prefer to minify using :compressed
+  style: compressed
 
-# Use the following plug-ins
 plugins:
-  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
-  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+  - jekyll-sitemap
+  - jekyll-feed
   - jekyll-paginate
 
-# Exclude these files from your production _site
 exclude:
   - Gemfile
   - Gemfile.lock
   - LICENSE
   - README.md
-
+  - vendor
+  - .github
+  - .gitignore

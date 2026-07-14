@@ -1,15 +1,13 @@
-<!-- 主题切换按钮 -->
-<div class="theme-toggle" id="themeToggle">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+<button type="button" class="theme-toggle" id="themeToggle" aria-label="切换主题" aria-haspopup="true" aria-expanded="false" aria-controls="themeMenu">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
     <path id="themeIcon" d="M12,18c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S15.3,18,12,18zM12,8c-2.2,0-4,1.8-4,4s1.8,4,4,4s4-1.8,4-4S14.2,8,12,8z M12,2 c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z"/>
   </svg>
-</div>
+</button>
 
-<!-- 主题选择菜单 -->
-<div class="theme-menu" id="themeMenu">
-  <div class="theme-option" data-theme="system">跟随系统主题</div>
-  <div class="theme-option" data-theme="light">浅色模式</div>
-  <div class="theme-option" data-theme="dark">深色模式</div>
+<div class="theme-menu" id="themeMenu" role="menu" hidden>
+  <button type="button" class="theme-option" role="menuitem" data-theme="system">跟随系统主题</button>
+  <button type="button" class="theme-option" role="menuitem" data-theme="light">浅色模式</button>
+  <button type="button" class="theme-option" role="menuitem" data-theme="dark">深色模式</button>
 </div>
 
 <script>
@@ -20,42 +18,54 @@
       this.themeIcon = document.getElementById('themeIcon');
       this.themeMenu = document.getElementById('themeMenu');
       this.themeOptions = document.querySelectorAll('.theme-option');
-      this.body = document.body;
+      this.root = document.documentElement;
 
-      // 初始隐藏菜单
-      this.themeMenu.style.display = 'none';
-
+      this.hideMenu();
       this.bindEvents();
       this.initTheme();
     },
 
+    showMenu() {
+      this.themeMenu.hidden = false;
+      this.themeMenu.style.display = 'block';
+      this.themeToggle.setAttribute('aria-expanded', 'true');
+      this.highlightActiveOption();
+    },
+
+    hideMenu() {
+      this.themeMenu.hidden = true;
+      this.themeMenu.style.display = 'none';
+      this.themeToggle.setAttribute('aria-expanded', 'false');
+    },
+
     bindEvents() {
-      // 点击切换按钮显示/隐藏菜单
       this.themeToggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        const currentDisplay = this.themeMenu.style.display;
-        this.themeMenu.style.display = currentDisplay === 'block' ? 'none' : 'block';
-        this.highlightActiveOption();
-      }, { once: false });
-
-      // 点击选项切换主题
-      this.themeOptions.forEach(option => {
-        option.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const theme = option.getAttribute('data-theme');
-          this.setTheme(theme);
-          this.themeMenu.style.display = 'none';
-        });
-      });
-
-      // 点击页面其他区域隐藏菜单
-      document.addEventListener('click', (e) => {
-        if (!this.themeMenu.contains(e.target) && e.target !== this.themeToggle) {
-          this.themeMenu.style.display = 'none';
+        if (this.themeMenu.hidden) {
+          this.showMenu();
+        } else {
+          this.hideMenu();
         }
       });
 
-      // 监听系统主题变化（仅在跟随系统模式下生效）
+      this.themeOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.setTheme(option.getAttribute('data-theme'));
+          this.hideMenu();
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!this.themeMenu.contains(e.target) && !this.themeToggle.contains(e.target)) {
+          this.hideMenu();
+        }
+      });
+
+      this.themeToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') this.hideMenu();
+      });
+
       this.systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
       this.systemThemeQuery.addEventListener('change', () => {
         const currentTheme = localStorage.getItem('theme') || 'system';
@@ -65,81 +75,53 @@
       });
     },
 
-    // 初始化主题
+    applyDark(isDark) {
+      this.root.classList.toggle('dark-mode', isDark);
+      this.updateIcon(isDark);
+    },
+
     initTheme() {
       try {
         const savedTheme = localStorage.getItem('theme') || 'system';
-        const prefersDark = this.systemThemeQuery.matches;
-        
-        // 根据保存的主题设置页面
         if (savedTheme === 'system') {
-          // 跟随系统
-          this.body.classList.toggle('dark-mode', prefersDark);
-          this.updateIcon(prefersDark);
-        } else if (savedTheme === 'dark') {
-          // 深色主题
-          this.body.classList.add('dark-mode');
-          this.updateIcon(true);
+          this.applyDark(this.systemThemeQuery.matches);
         } else {
-          // 浅色主题
-          this.body.classList.remove('dark-mode');
-          this.updateIcon(false);
+          this.applyDark(savedTheme === 'dark');
         }
-
         this.highlightActiveOption();
       } catch (e) {
         console.error('初始化主题失败:', e);
       }
     },
 
-    // 设置主题
     setTheme(theme) {
       localStorage.setItem('theme', theme);
-      
       if (theme === 'system') {
-        // 跟随系统
-        const prefersDark = this.systemThemeQuery.matches;
-        this.body.classList.toggle('dark-mode', prefersDark);
-        this.updateIcon(prefersDark);
-      } else if (theme === 'dark') {
-        // 深色主题
-        this.body.classList.add('dark-mode');
-        this.updateIcon(true);
+        this.applyDark(this.systemThemeQuery.matches);
       } else {
-        // 浅色主题
-        this.body.classList.remove('dark-mode');
-        this.updateIcon(false);
+        this.applyDark(theme === 'dark');
       }
-
       this.highlightActiveOption();
     },
 
-    // 更新图标
     updateIcon(isDark) {
       try {
         const darkPath = "M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A9,9 0 0,0 21,12A9,9 0 0,0 12,3M12,19A7,7 0 0,1 5,12A7,7 0 0,1 12,5A7,7 0 0,1 19,12A7,7 0 0,1 12,19Z";
         const lightPath = "M12,18c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S15.3,18,12,18zM12,8c-2.2,0-4,1.8-4,4s1.8,4,4,4s4-1.8,4-4S14.2,8,12,8z M12,2 c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z";
-        
         this.themeIcon.setAttribute('d', isDark ? darkPath : lightPath);
       } catch (e) {
         console.error('更新图标失败:', e);
       }
     },
 
-    // 高亮当前选中的选项
     highlightActiveOption() {
       const currentTheme = localStorage.getItem('theme') || 'system';
       this.themeOptions.forEach(option => {
-        if (option.getAttribute('data-theme') === currentTheme) {
-          option.classList.add('active');
-        } else {
-          option.classList.remove('active');
-        }
+        option.classList.toggle('active', option.getAttribute('data-theme') === currentTheme);
       });
     }
   };
 
-  // 启动初始化
   ThemeManager.init();
 })();
 </script>

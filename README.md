@@ -1,3 +1,3 @@
 # pianfan.github.io
 
-My Personal Blog via GitHub
+翩帆的个人技术博客，基于 GitHub Pages + Jekyll（Jekyll Now 衍生主题）。

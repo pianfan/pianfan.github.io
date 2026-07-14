@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
   {% include head.html %}
   <body>
     {% include nav.html %}
@@ -10,26 +10,20 @@
       </aside>
     {% endif %}
 
-    <div id="main" role="main" class="wrapper-content">
+    <div id="main" role="main" class="wrapper-content{% if page.toc==true %} withtoc{% endif %}">
       <div class="container">
         {{ content }}
       </div>
     </div>
 
     {% include analytics.html %}
+
+    <div class="wrapper-footer-mobile">
+      <footer class="footer">
+        {% include footer.html %}
+      </footer>
+    </div>
+
+    {% include theme-toggle.html %}
   </body>
-
-  {% if page.toc==true %}
-  <script>
-    document.getElementById("main").classList.add("withtoc");
-  </script>
-  {% endif %}
-
-  <div class="wrapper-footer-mobile">
-    <footer class="footer">
-      {% include footer.html %}
-    </footer>
-  </div>
-  {% include theme-toggle.html %}
-
 </html>

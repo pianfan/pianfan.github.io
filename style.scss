@@ -283,18 +283,11 @@ img {
   border-radius: 5px;
 }
 
-// Fixes images in popup boxes from Google Translate
-.gmnoprint img {
-  max-width: none;
-}
-
 // Specify the color of the selection
 ::-moz-selection {
-//  color: $selection-color;
   background: $selection-background-color;
 }
 ::selection {
-//  color: $selection-color;
   background: $selection-background-color;
 }
 
@@ -308,20 +301,6 @@ img {
 
 .clearfix:after {
     clear: both;
-}
-
-// Alignment
-.center {
-  text-align: center;
-
-  &-image {
-    margin: 0 auto;
-    display: block;
-  }
-}
-
-.right {
-  text-align: right
 }
 
 /*********************/
@@ -518,15 +497,40 @@ nav {
   }
 }
 
-.page {
-//  margin: 40px;
+.search-container {
+  margin-bottom: 1.5em;
 
-  @include mobile {
-//    margin: 24px;
+  input {
+    width: 90%;
+    height: 35px;
+    background-color: var(--oc-gray-1);
+    color: var(--text-color);
+    line-height: 35px;
+    margin-top: 20px;
+    padding: 10px 16px;
+    border: 1px solid var(--oc-gray-4);
+    font-size: 16px;
+    border-radius: 17px;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+
+    &:focus {
+      border-color: var(--oc-blue-6);
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    }
+  }
+
+  #results-container {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+
+    li {
+      margin: 0.4em 0;
+    }
   }
 }
-
-
 
 // TOC
 
@@ -744,6 +748,7 @@ footer {
   z-index: 9999;
   width: 40px;
   height: 40px;
+  padding: 0;
   border-radius: 50%;
   background-color: $background-color;
   border: 1px solid $divider-color;
@@ -753,6 +758,9 @@ footer {
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
+  appearance: none;
+  font: inherit;
+  color: inherit;
 
   &:hover {
     background-color: $link-bghv-color;
@@ -765,45 +773,50 @@ footer {
   }
 }
 
-/* 主题菜单样式 */
 .theme-menu {
   position: fixed;
   bottom: 70px;
   left: 20px;
   z-index: 9998;
   background-color: $background-color;
-  opacity: 0.7;
+  opacity: 0.95;
   border: 1px solid var(--divider-color);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   display: none;
+  overflow: hidden;
 }
 
-/* 选项样式 */
 .theme-option {
+  display: block;
+  width: 100%;
   padding: 10px 16px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
   cursor: pointer;
   transition: background-color 0.2s;
+  appearance: none;
+
+  &:hover,
+  &.active {
+    background-color: $link-bghv-color;
+  }
+
+  &.active {
+    font-weight: bold;
+  }
 }
 
-.theme-option:hover {
-  background-color: $link-bghv-color;
-}
+html.dark-mode {
+  body {
+    background-color: var(--oc-gray-0);
+    color: var(--oc-gray-8);
+  }
 
-.theme-option.active {
-  background-color: $link-bghv-color;
-  font-weight: bold;
-}
-
-// 黑夜模式样式
-body.dark-mode {
-  --text-color: #e0e0e0;
-  --divider-color: #333;
-  
-  background-color: var(--oc-gray-0);
-  color: var(--oc-gray-8);
-
-  // 链接样式
   a {
     color: var(--oc-blue-6);
     &:hover {
@@ -811,19 +824,16 @@ body.dark-mode {
     }
   }
 
-  // 侧边栏
   .wrapper-sidebar {
     background-color: var(--oc-gray-0);
     border-right-color: var(--oc-gray-2);
   }
 
-  // 文章卡片和搜索框
   .post, .sidebar, .search-container input {
     color: var(--text-color);
     border-color: var(--divider-color);
   }
 
-  // 表格
   table {
     border-color: var(--oc-gray-3);
     tbody tr:nth-child(odd) td {
@@ -831,123 +841,9 @@ body.dark-mode {
     }
   }
 
-  // Gitalk 评论区适配
-  .gt-container {
-    --gt-bg-color: var(--oc-gray-1);
-    --gt-text-color: var(--oc-gray-8);
-    color: var(--oc-gray-8);
-  }
-
-  .gt-container .gt-header-textarea,
-  .gt-container .gt-header-preview {
-    background-color: var(--oc-gray-2);
-    border-color: var(--oc-gray-3);
-    color: var(--oc-gray-8);
-  }
-
-  .gt-container .gt-comment-content {
-    background-color: var(--oc-gray-2);
-    border-color: var(--oc-gray-3);
-    color: var(--oc-gray-8);
-  }
-  .gt-container .gt-comment-content:hover {
-    -webkit-box-shadow: 0 0.425em 1.75em 0 #949494;
-            box-shadow: 0 0.425em 1.75em 0 #949494;
-  }
-
-  .gt-container .gt-popup {
-    background-color: var(--oc-gray-1);
-    border-color: var(--oc-gray-3);
-  }
-
-  .gt-container a.is--active {
-    color: #ddd;
-    cursor: default !important;
-  }
-  .gt-container a.is--active:hover {
-    color: #ddd;
-  }
-
-  // 代码块适配
-  .gt-container .highlight pre,
-  .gt-container pre {
-    background-color: var(--oc-gray-1);
-    color: var(--oc-gray-9);
-  }
-
-  // 代码高亮基础样式调整
-  .highlight {
-    background: var(--oc-gray-1) !important;
-    
-    .c, .cm, .c1, .cs { // 注释
-      color: #8a9199 !important;
-    }
-    .k, .o, .kc, .kd, .kp, .kr, .kt { // 关键字
-      color: #ff7b72 !important;
-    }
-    .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1, .ss { // 字符串
-      color: #a5d6ff !important;
-    }
-    .m, .mf, .mh, .mi, .mo, .il { // 数字
-      color: #79d3b3 !important;
-    }
-    .na, .nb, .nc, .no, .ni, .ne, .nf, .nn, .nt, .nv, .vc, .vg, .vi { // 名称
-      color: #d2a8ff !important;
-    }
-    .err { // 错误
-      color: #ffffff !important;
-      background-color: #f87171 !important;
-    }
-    .gd { // 删除
-      color: #f87171 !important;
-      background-color: #fee2e2 !important;
-    }
-    .gi { // 插入
-      color: #4ade80 !important;
-      background-color: #dcfce7 !important;
-    }
-  }
-
-  // Markdown代码块适配
-  .markdown-body {
-    code {
-      color: var(--oc-gray-0) !important;
-    }
-    pre {
-      color: var(--oc-gray-0) !important;
-      border-color: var(--oc-gray-3) !important;
-    }
-    .pl-c { color: #8a9199 !important; }
-    .pl-c1, .pl-s .pl-v { color: #7dd3fc !important; }
-    .pl-e, .pl-en { color: #d2a8ff !important; }
-    .pl-smi, .pl-s .pl-s1 { color: #e5e7eb !important; }
-    .pl-ent { color: #a7f3d0 !important; }
-    .pl-k { color: #ff7b72 !important; }
-    .pl-s, .pl-pds { color: #a5d6ff !important; }
-    .pl-v, .pl-smw { color: #fcd34d !important; }
-    .pl-bu { color: #f87171 !important; }
-    .pl-ii { 
-      color: #111827 !important;
-      background-color: #f87171 !important;
-    }
-    .pl-c2 { 
-      color: #111827 !important;
-      background-color: #f87171 !important;
-    }
-    .pl-sr .pl-cce { color: #a7f3d0 !important; }
-    .pl-ml { color: #fbbf24 !important; }
-    .pl-mh, .pl-mh .pl-en, .pl-ms { color: #7dd3fc !important; }
-    .pl-mi { color: #e5e7eb !important; }
-  }
-
-  // 行内代码样式增强
-  code.highlighter-rouge {
-    background-color: var(--oc-gray-2) !important;
-    color: #e5e7eb !important;
-    border: 1px solid var(--oc-gray-3) !important;
+  .giscus {
+    color-scheme: dark;
   }
 }
 
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";

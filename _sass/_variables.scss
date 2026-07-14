@@ -1,11 +1,8 @@
-
 //
 // VARIABLES
 //
 
-// 基础主题切换变量
 :root {
-  // 浅色模式变量
   --oc-gray-0: #f8f9fa;
   --oc-gray-1: #f1f3f5;
   --oc-gray-2: #e9ecef;
@@ -16,15 +13,17 @@
   --oc-gray-7: #495057;
   --oc-gray-8: #343a40;
   --oc-gray-9: #212529;
-  
+
   --oc-blue-0: #e8f7ff;
   --oc-blue-6: #228ae6;
   --oc-blue-8: #1b6ec2;
   --oc-indigo-9: #364fc7;
+
+  --divider-color: #e9ecef;
+  --text-color: #343a40;
 }
 
-// 深色模式变量
-body.dark-mode {
+html.dark-mode {
   --oc-gray-0: #212529;
   --oc-gray-1: #343a40;
   --oc-gray-2: #495057;
@@ -35,28 +34,15 @@ body.dark-mode {
   --oc-gray-7: #e9ecef;
   --oc-gray-8: #f1f3f5;
   --oc-gray-9: #f8f9fa;
-  
+
   --oc-blue-0: #444d56;
   --oc-blue-6: #80acff;
   --oc-blue-8: #81a6ed;
   --oc-indigo-9: #9775fa;
+
+  --divider-color: #333;
+  --text-color: #e0e0e0;
 }
-
-// Colors
-$blue: var(--oc-blue-8);
-
-// Grays
-$black: #000;
-$darkerGray: #222;
-$darkGray: #333;
-$gray: #666;
-$lightGray: #eee;
-$white: #fff;
-
-// Font stacks
-$helvetica: Helvetica, Arial, sans-serif;
-$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$georgia: Georgia, serif;
 
 // Fonts
 $base-font: 'Noto Serif', 'PT Serif', source-han-serif-sc, 'Source Han Serif', 'Songti SC', serif;
@@ -69,18 +55,14 @@ $small-font-size: 14px;
 // Colors
 $base-color: var(--oc-gray-8);
 $base-lighten-color: var(--oc-gray-6);
-$base-lightener-color: var(--oc-gray-4);
 
 $background-color: var(--oc-gray-0);
-$background-lighten-color: #f8f9fa6b;
 
 $text-color: var(--oc-gray-8);
 $link-color: var(--oc-blue-8);
 $link-lighten-color: var(--oc-blue-6);
 $link-bghv-color: var(--oc-blue-0);
 $divider-color: var(--oc-gray-2);
-
-$error-color: var(--oc-blue-8);
 
 $table-border-color: var(--oc-gray-2);
 $table-background-color: var(--oc-gray-1);

@@ -1,0 +1,15 @@
+{
+  "files.associations": {
+    "style.scss": "plaintext",
+    "search.json": "plaintext"
+  },
+  "files.exclude": {
+    "**/_site": true
+  },
+  "files.watcherExclude": {
+    "**/_site/**": true
+  },
+  "search.exclude": {
+    "**/_site": true
+  }
+}

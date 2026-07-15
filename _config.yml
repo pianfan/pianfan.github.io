@@ -1,9 +1,9 @@
-name: "Pianfan's blog"
 title: "Pianfan's blog"
 description: "翩帆的个人技术博客"
 
 avatar: /images/avatar.png
 favicon: /images/favicon.ico
+favicon_dark: /images/favicon-dark.ico
 
 navigation:
   - name: 首页
@@ -22,14 +22,13 @@ footer-links:
   email: yunhan.xiong@foxmail.com
   facebook:
   github: pianfan
-  rss: welcome!
+  rss: welcome! # just type anything here for a working RSS icon
   twitter:
   youtube:
 
 footer-text: Copyright (c) 2026 Pianfan
 
 url: https://pianfan.github.io
-baseurl: ""
 
 permalink: /:title/
 paginate_path: /page:num/

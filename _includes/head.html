@@ -1,5 +1,5 @@
 <head>
-  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
+  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }}</title>
 
   {% include meta.html %}
 
@@ -10,13 +10,24 @@
         var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         var isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
         document.documentElement.classList.toggle('dark-mode', isDark);
+        window.__faviconLight = '{{ site.baseurl }}{{ site.favicon }}';
+        window.__faviconDark = '{{ site.baseurl }}{{ site.favicon_dark | default: site.favicon }}';
+        window.__isDarkMode = isDark;
       } catch (e) {}
     })();
   </script>
 
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-  <link rel="shortcut icon" href="{{ site.baseurl }}{{ site.favicon }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+  <link rel="icon" id="siteFavicon" href="{{ site.baseurl }}{{ site.favicon }}">
+  <script>
+    (function () {
+      var link = document.getElementById('siteFavicon');
+      if (link && window.__isDarkMode && window.__faviconDark) {
+        link.href = window.__faviconDark;
+      }
+    })();
+  </script>
   <script>
     (function(d) {
       var config = {

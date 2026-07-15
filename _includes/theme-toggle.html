@@ -78,6 +78,24 @@
     applyDark(isDark) {
       this.root.classList.toggle('dark-mode', isDark);
       this.updateIcon(isDark);
+      this.updateFavicon(isDark);
+    },
+
+    updateFavicon(isDark) {
+      const lightHref = window.__faviconLight || '{{ site.baseurl }}{{ site.favicon }}';
+      const darkHref = window.__faviconDark || '{{ site.baseurl }}{{ site.favicon_dark | default: site.favicon }}';
+      const href = isDark ? darkHref : lightHref;
+      const existing = document.getElementById('siteFavicon')
+        || document.querySelector("link[rel='icon'], link[rel='shortcut icon']");
+      const fresh = document.createElement('link');
+      fresh.id = 'siteFavicon';
+      fresh.rel = 'icon';
+      fresh.href = href;
+      if (existing) {
+        existing.parentNode.replaceChild(fresh, existing);
+      } else {
+        document.head.appendChild(fresh);
+      }
     },
 
     initTheme() {

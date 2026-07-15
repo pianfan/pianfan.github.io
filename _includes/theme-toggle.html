@@ -73,11 +73,34 @@
           this.initTheme();
         }
       });
+
+      // Sync once Giscus iframe is injected (lazy load).
+      if (document.getElementById('giscus')) {
+        const observer = new MutationObserver(() => {
+          if (document.querySelector('iframe.giscus-frame')) {
+            this.syncGiscus(this.root.classList.contains('dark-mode'));
+            observer.disconnect();
+          }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
     },
 
     applyDark(isDark) {
       this.root.classList.toggle('dark-mode', isDark);
       this.updateIcon(isDark);
+      this.syncGiscus(isDark);
+    },
+
+    syncGiscus(isDark) {
+      var theme = isDark ? 'dark' : 'light';
+      var iframe = document.querySelector('iframe.giscus-frame');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage(
+          { giscus: { setConfig: { theme: theme } } },
+          'https://giscus.app'
+        );
+      }
     },
 
     initTheme() {

@@ -2,22 +2,46 @@
 layout: default
 ---
 <div class="search-container">
-  <input type="search" id="search-input" placeholder="搜索文章…" aria-label="搜索文章">
+  <input type="search" id="search-input" placeholder="搜索文章…" aria-label="搜索文章" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
   <ul id="results-container"></ul>
 </div>
 
 <script src="{{ site.baseurl }}/js/simple-jekyll-search.min.js"></script>
 
 <script>
-  window.simpleJekyllSearch = new SimpleJekyllSearch({
-    searchInput: document.getElementById('search-input'),
-    resultsContainer: document.getElementById('results-container'),
-    json: '{{ site.baseurl }}/search.json',
-    searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
-    noResultsText: '未找到相关文章',
-    limit: 10,
-    fuzzy: false
-  })
+  (function () {
+    var input = document.getElementById('search-input');
+    var results = document.getElementById('results-container');
+
+    var sjs = new SimpleJekyllSearch({
+      searchInput: input,
+      resultsContainer: results,
+      json: '{{ site.baseurl }}/search.json',
+      searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
+      noResultsText: '未找到相关文章',
+      limit: 10,
+      fuzzy: false
+    });
+
+    function runSearch() {
+      results.innerHTML = '';
+      var q = input.value;
+      if (q && q.length) {
+        sjs.search(q);
+      }
+    }
+
+    // iOS Safari often skips reliable keyup during typing / IME; input + search are reliable.
+    input.addEventListener('input', runSearch);
+    input.addEventListener('search', runSearch);
+    input.addEventListener('compositionend', runSearch);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        runSearch();
+      }
+    });
+  })();
 </script>
 
 {% if site.posts.size == 0 %}

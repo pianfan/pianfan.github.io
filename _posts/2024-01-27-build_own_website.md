@@ -56,7 +56,7 @@ author: Pianfan
 
         ![头像和 logo](/images/build_own_website/avatar&favicon.png)
 
-        avatar 代表头像，后面的链接是你想显示在页面的头像图片的 url。favicon 指网站图标，即显示在浏览器标签页和收藏夹里的 logo，通常以 32 * 32 像素大小的 .ico 图片为宜，也可以不设置。
+        avatar 代表头像，后面的链接是你想显示在页面的头像图片的 url。favicon 和 favicon_dark 分别是浏览器处于浅色和深色模式时的网站图标，即显示在浏览器标签页上的 logo，通常以 32×32 像素大小的 ICO 图片为宜，也可以不设置。
 
         咱博客网站里的所有图片不是上传到 GitHub 仓库里就可以显示到页面上了，需要用到图床。我用的是 [PicGo](https://docs.picgo.app/zh/gui/)，只要与 GitHub 仓库绑定就可以实现上传。
 
@@ -75,6 +75,8 @@ author: Pianfan
     - **Giscus 配置信息**
 
         本站使用 [Giscus](https://giscus.app)（基于 GitHub Discussions）提供评论。请先在仓库开启 Discussions，再到 giscus.app 生成配置，将 `repo`、`repo-id`、`category`、`category-id` 填入 `_config.yml` 的 `giscus:` 段。
+
+        ![Giscus 配置](/images/build_own_website/giscus.png)
 
 - ### 清空 _posts 文件夹
 
@@ -97,7 +99,7 @@ author: Pianfan
 文章文件名请按照下面的例子呈现的格式命名：
 
 ```
-2024-01-25-letter_to_you.md
+2024-01-27-build_own_website.md
 ```
 
 还有一点需要注意，每篇文章开头记得附上说明，格式如下：
@@ -107,7 +109,7 @@ author: Pianfan
 layout: post
 title: "文章标题"
 date: 2024-01-27
-tags: [xx]
+tags: [tag1, tag2]
 toc: true
 comments: false
 author: xxx

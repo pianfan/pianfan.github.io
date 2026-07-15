@@ -10,9 +10,6 @@
         var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         var isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
         document.documentElement.classList.toggle('dark-mode', isDark);
-        window.__faviconLight = '{{ site.baseurl }}{{ site.favicon }}';
-        window.__faviconDark = '{{ site.baseurl }}{{ site.favicon_dark | default: site.favicon }}';
-        window.__isDarkMode = isDark;
       } catch (e) {}
     })();
   </script>
@@ -22,10 +19,29 @@
   <link rel="icon" id="siteFavicon" href="{{ site.baseurl }}{{ site.favicon }}">
   <script>
     (function () {
-      var link = document.getElementById('siteFavicon');
-      if (link && window.__isDarkMode && window.__faviconDark) {
-        link.href = window.__faviconDark;
+      var lightHref = '{{ site.baseurl }}{{ site.favicon }}';
+      var darkHref = '{{ site.baseurl }}{{ site.favicon_dark | default: site.favicon }}';
+      var mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function applyFavicon(isSystemDark) {
+        var href = isSystemDark ? darkHref : lightHref;
+        var existing = document.getElementById('siteFavicon')
+          || document.querySelector("link[rel='icon'], link[rel='shortcut icon']");
+        var fresh = document.createElement('link');
+        fresh.id = 'siteFavicon';
+        fresh.rel = 'icon';
+        fresh.href = href;
+        if (existing) {
+          existing.parentNode.replaceChild(fresh, existing);
+        } else {
+          document.head.appendChild(fresh);
+        }
       }
+
+      applyFavicon(mq.matches);
+      mq.addEventListener('change', function (e) {
+        applyFavicon(e.matches);
+      });
     })();
   </script>
   <script>

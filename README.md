@@ -6,7 +6,7 @@
 
 ## 功能特性
 
-- 文章列表分页（每页 8 篇）、按标签分类浏览
+- 文章列表分页、按标签分类浏览
 - 站内搜索（基于 [Simple-Jekyll-Search](https://github.com/christian-fei/Simple-Jekyll-Search)）
 - 明暗主题切换
 - 文章目录（TOC）侧边栏
@@ -39,7 +39,7 @@ date: 2026-07-16
 tags: [example]
 toc: false
 comments: true
-author: 小明
+author: 张三
 ---
 
 文章摘要部分……

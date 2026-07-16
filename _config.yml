@@ -9,9 +9,9 @@ navigation:
   - name: 首页
     url: /
   - name: 关于
-    url: /about/
+    url: /about
   - name: 分类
-    url: /tags/
+    url: /tags
 
 paginate: 8
 

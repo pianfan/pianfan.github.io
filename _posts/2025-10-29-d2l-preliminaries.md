@@ -274,7 +274,7 @@ $$
 
 ### 2.3.10. 范数
 
-性质：$f(\alpha \mathbf{x}) = |\alpha| f(\mathbf{x})$；$f(\mathbf{x} + \mathbf{y}) \leq f(\mathbf{x}) + f(\mathbf{y})$；$f(\mathbf{x}) \geq 0$；$\forall i, [\mathbf{x}]_i = 0 \Leftrightarrow f(\mathbf{x})=0$
+性质：$f(\alpha \mathbf{x}) = |\alpha| f(\mathbf{x})；f(\mathbf{x} + \mathbf{y}) \leq f(\mathbf{x}) + f(\mathbf{y})；f(\mathbf{x}) \geq 0；\forall i, [\mathbf{x}]_i = 0 \Leftrightarrow f(\mathbf{x})=0$
 
 $L_2$ 范数：$\Vert\mathbf{x}\Vert_2 = \sqrt{\sum_{i=1}^n x_i^2}$，代码 `torch.norm(u)`
 

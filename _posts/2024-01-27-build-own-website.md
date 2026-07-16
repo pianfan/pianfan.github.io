@@ -48,7 +48,7 @@ author: Pianfan
 
 - ### 清空 images 文件夹
 
-    images 文件夹里放的是需要显示在网站上的图片。与 _posts 文件夹一样，这个文件夹也需要清空（删除文件夹并重建）。后续要在文章中插入图片，在 images 文件夹中上传图片后使用 Markdown 格式引用相对路径即可，例如 `![替代文本](/images/image-file-name.png)`。
+    images 文件夹里放的是需要显示在网站上的图片。与 _posts 文件夹一样，这个文件夹也需要清空（删除文件夹并重建）。后续要在文章中插入图片，在 images 文件夹中上传图片后使用 Markdown 格式引用相对路径即可，例如 `![替代文本](/images/path-to-the-image.png)`。
 
 - ### 修改 _config.yml 文件
 
@@ -64,7 +64,7 @@ author: Pianfan
 
         ![头像和 logo](/images/build-own-website/avatar-and-favicon.png)
 
-        avatar 代表头像，后面是你想显示在页面的头像图片的相对路径。favicon 和 favicon_dark 分别是浏览器处于浅色和深色模式时的网站图标，即显示在浏览器标签页上的 logo，通常以 32×32 像素大小的 ICO 图片为宜，也可以不设置。
+        `avatar` 代表头像，后面是你想显示在页面的头像图片的相对路径。`favicon` 和 `favicon_dark` 分别是浏览器处于浅色和深色模式时的网站图标，即显示在浏览器标签页上的 logo，通常以 32×32 像素大小的 ICO 图片为宜，也可以不设置。
 
     - **个人社交链接**
 

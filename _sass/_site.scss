@@ -536,7 +536,8 @@ nav {
   width: 320px;
   height: 100%;
   overflow-y: auto;
-  right: 0%;
+  right: 0;
+  top: 0;
   position: fixed;
   z-index: 4;
   padding: 20px;
@@ -556,7 +557,62 @@ nav {
   }
 
   @include mobile{
-    display:none;
+    display: block;
+    width: 50%;
+    z-index: 10000;
+    background-color: $background-color;
+    border-left: 1px solid $divider-color;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.08);
+    transform: translateX(100%);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+
+    &.is-open {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+}
+
+.toc-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10001;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid $divider-color;
+  border-radius: 8px;
+  background-color: $background-color;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+  -webkit-appearance: none;
+  appearance: none;
+  font: inherit;
+  color: inherit;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+
+  @include mobile {
+    display: flex;
+  }
+
+  &:hover,
+  &.is-active {
+    background-color: $link-bghv-color;
+  }
+
+  img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
   }
 }
 

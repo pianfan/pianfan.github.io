@@ -5,7 +5,7 @@
     {% include nav.html %}
 
     {% if page.toc==true %}
-      <aside class="toc">
+      <aside class="toc" id="pageToc">
         {% include toc.html html=content %}
       </aside>
     {% endif %}
@@ -25,5 +25,8 @@
     </div>
 
     {% include theme-toggle.html %}
+    {% if page.toc==true %}
+      {% include toc-toggle.html %}
+    {% endif %}
   </body>
 </html>

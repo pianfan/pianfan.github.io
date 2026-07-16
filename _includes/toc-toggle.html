@@ -1,0 +1,41 @@
+<button type="button" class="toc-toggle" id="tocToggle" aria-label="切换目录" aria-expanded="false" aria-controls="pageToc">
+  <img src="{{ site.baseurl }}/images/contents.png" alt="" width="24" height="24" aria-hidden="true">
+</button>
+
+<script>
+(function () {
+  var mq = window.matchMedia('(max-width: 1200px)');
+  var toc = document.getElementById('pageToc');
+  var btn = document.getElementById('tocToggle');
+  if (!toc || !btn) return;
+
+  function setOpen(open) {
+    toc.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.classList.toggle('is-active', open);
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    setOpen(!toc.classList.contains('is-open'));
+  });
+
+  toc.addEventListener('click', function (e) {
+    if (e.target.closest('a')) setOpen(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  function syncForViewport() {
+    if (!mq.matches) setOpen(false);
+  }
+
+  if (mq.addEventListener) {
+    mq.addEventListener('change', syncForViewport);
+  } else if (mq.addListener) {
+    mq.addListener(syncForViewport);
+  }
+})();
+</script>

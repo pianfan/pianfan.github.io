@@ -558,7 +558,7 @@ nav {
 
   @include mobile{
     display: block;
-    width: 50%;
+    width: 320px;
     z-index: 10000;
     background-color: $background-color;
     border-left: 1px solid $divider-color;
@@ -582,8 +582,8 @@ nav {
   top: 16px;
   right: 16px;
   z-index: 10001;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   margin: 0;
   border: 1px solid $divider-color;
@@ -593,6 +593,7 @@ nav {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   align-items: center;
   justify-content: center;
+  line-height: 0;
   -webkit-appearance: none;
   appearance: none;
   font: inherit;
@@ -608,11 +609,16 @@ nav {
     background-color: $link-bghv-color;
   }
 
-  img {
+  .toc-toggle-icon {
     display: block;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .toc-toggle-icon-dark {
+    display: none;
   }
 }
 
@@ -888,6 +894,16 @@ html.dark-mode {
   .post, .sidebar, .search-container input {
     color: var(--text-color);
     border-color: var(--divider-color);
+  }
+
+  .toc-toggle {
+    .toc-toggle-icon-light {
+      display: none;
+    }
+
+    .toc-toggle-icon-dark {
+      display: block;
+    }
   }
 
   table {

@@ -3,7 +3,6 @@
 //
 
 @import "reset";
-@import "open-color";
 @import "variables";
 
 // Syntax highlighting @import is at the bottom of this file
@@ -485,11 +484,6 @@ nav {
     margin-bottom: .1em;
   }
 
-
-  .comments {
-    margin-top: 10px;
-  }
-
   .read-more {
     font-size: 15px;
   }
@@ -576,6 +570,12 @@ nav {
   }
 }
 
+// While the mobile TOC drawer is open, let taps on embedded iframes
+// (Giscus comments, etc.) reach the parent page so the drawer can dismiss.
+body.toc-drawer-open iframe {
+  pointer-events: none;
+}
+
 .toc-toggle {
   display: none;
   position: fixed;
@@ -609,16 +609,18 @@ nav {
     background-color: $link-bghv-color;
   }
 
-  .toc-toggle-icon {
+  svg {
+    width: 24px;
+    height: 24px;
     display: block;
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    flex-shrink: 0;
   }
 
-  .toc-toggle-icon-dark {
-    display: none;
+  .toc-icon-plate {
+    fill: #90caf9;
+  }
+
+  .toc-icon-detail {
+    fill: $base-color;
   }
 }
 
@@ -780,22 +782,10 @@ footer {
       height: 20px;
       width: 20px;
       fill: $base-lighten-color;
-      
+
       &:hover {
         fill: $link-lighten-color;
       }
-    }
-
-    em {
-      font-size: 18px;
-      line-height: 1.5;
-      margin-top: -.75em;
-      position: absolute;
-      text-align: center;
-      top: 50%;
-      right: 0;
-      bottom: 0;
-      left: 0;
     }
   }
 }
@@ -896,14 +886,8 @@ html.dark-mode {
     border-color: var(--divider-color);
   }
 
-  .toc-toggle {
-    .toc-toggle-icon-light {
-      display: none;
-    }
-
-    .toc-toggle-icon-dark {
-      display: block;
-    }
+  .toc-toggle .toc-icon-detail {
+    fill: var(--oc-gray-9);
   }
 
   table {
@@ -911,10 +895,6 @@ html.dark-mode {
     tbody tr:nth-child(odd) td {
       background-color: var(--oc-gray-2);
     }
-  }
-
-  .giscus {
-    color-scheme: dark;
   }
 }
 

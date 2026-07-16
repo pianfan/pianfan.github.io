@@ -1,7 +1,7 @@
 title: "Pianfan's blog"
 description: "翩帆的个人技术博客"
 
-avatar: /images/avatar.png
+avatar: /images/avatar.jpg
 favicon: /images/favicon.ico
 favicon_dark: /images/favicon-dark.ico
 
@@ -22,7 +22,7 @@ footer-links:
   email: yunhan.xiong@foxmail.com
   facebook:
   github: pianfan
-  rss: welcome! # just type anything here for a working RSS icon
+  rss: true # just type anything here for a working RSS icon
   twitter:
   youtube:
 
@@ -44,9 +44,9 @@ giscus:
   reactions-enabled: "1"
   emit-metadata: "0"
   input-position: bottom
-  # Initial theme is overridden by page script to match site dark/light mode
-  theme: light
   lang: zh-CN
+
+google_analytics: G-PR69HMXJDX
 
 kramdown:
   input: GFM
@@ -68,5 +68,3 @@ exclude:
   - LICENSE
   - README.md
   - vendor
-  - .github
-  - .gitignore

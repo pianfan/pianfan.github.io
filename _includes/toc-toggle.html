@@ -1,6 +1,15 @@
 <button type="button" class="toc-toggle" id="tocToggle" aria-label="切换目录" aria-expanded="false" aria-controls="pageToc">
-  <img class="toc-toggle-icon toc-toggle-icon-light" src="{{ site.baseurl }}/images/contents.png" alt="" width="32" height="32" aria-hidden="true">
-  <img class="toc-toggle-icon toc-toggle-icon-dark" src="{{ site.baseurl }}/images/contents-dark.png" alt="" width="32" height="32" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+    <rect class="toc-icon-plate" x="5" y="11" width="17" height="11" rx="2"/>
+    <g class="toc-icon-detail">
+      <circle cx="4" cy="6" r="1.2"/>
+      <rect x="6.5" y="5" width="14" height="2" rx="1"/>
+      <circle cx="4" cy="11" r="1.2"/>
+      <rect x="6.5" y="10" width="14" height="2" rx="1"/>
+      <circle cx="4" cy="16" r="1.2"/>
+      <rect x="6.5" y="15" width="11" height="2" rx="1"/>
+    </g>
+  </svg>
 </button>
 
 <script>
@@ -10,10 +19,21 @@
   var btn = document.getElementById('tocToggle');
   if (!toc || !btn) return;
 
+  var TAP_MAX_MS = 500;
+  var pressStart = 0;
+  var pressTarget = null;
+
   function setOpen(open) {
     toc.classList.toggle('is-open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     btn.classList.toggle('is-active', open);
+    // Let pointer events pass through comment iframes (e.g. Giscus)
+    // so taps there can dismiss the drawer like the rest of the page.
+    document.body.classList.toggle('toc-drawer-open', open);
+  }
+
+  function isTapDismissTarget(node) {
+    return node && !node.closest('#pageToc, #tocToggle');
   }
 
   btn.addEventListener('click', function (e) {
@@ -27,6 +47,33 @@
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') setOpen(false);
+  });
+
+  function onPressStart(e) {
+    if (!mq.matches || !toc.classList.contains('is-open')) return;
+    if (!isTapDismissTarget(e.target)) return;
+    pressStart = Date.now();
+    pressTarget = e.target;
+  }
+
+  function onPressEnd(e) {
+    if (!pressStart) return;
+    var duration = Date.now() - pressStart;
+    var target = pressTarget;
+    pressStart = 0;
+    pressTarget = null;
+
+    if (!mq.matches || !toc.classList.contains('is-open')) return;
+    if (duration > TAP_MAX_MS) return;
+    if (!isTapDismissTarget(target)) return;
+    setOpen(false);
+  }
+
+  document.addEventListener('pointerdown', onPressStart);
+  document.addEventListener('pointerup', onPressEnd);
+  document.addEventListener('pointercancel', function () {
+    pressStart = 0;
+    pressTarget = null;
   });
 
   function syncForViewport() {

@@ -1,8 +1,3 @@
-{% comment %}
-  Optional analytics. Universal Analytics is retired; if you enable this,
-  set google_analytics to a GA4 measurement ID and replace the snippet below
-  with the current gtag.js loader from Google Analytics.
-{% endcomment %}
 {% if site.google_analytics %}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
 <script>

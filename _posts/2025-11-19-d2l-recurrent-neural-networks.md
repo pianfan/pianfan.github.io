@@ -318,7 +318,7 @@ $$
 
 ### 8.5.5. 关键技术
 
-梯度裁剪：将梯度投影到半径为 1 的球内，防止梯度爆炸（公式：$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{\|\mathbf{g}\|}\right) \mathbf{g}$）
+梯度裁剪：将梯度投影到半径为 $\theta$ 的球内，防止梯度爆炸（公式：$\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{\|\mathbf{g}\|}\right) \mathbf{g}$）
 
 隐状态处理：顺序划分时需分离隐状态梯度以减少计算量，随机抽样时重新初始化状态
 

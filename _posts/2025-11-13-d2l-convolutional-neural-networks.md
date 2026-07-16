@@ -176,7 +176,7 @@ def corr2d_multi_in_out(X, K):
 
 作用：调整通道数、控制模型复杂度
 
-参数数量：$c_o\times c_i$（含偏置）
+参数数量：$c_o\times c_i$（权重）；含偏置时为 $c_o\times c_i + c_o$
 
 ```py
 # 1x1卷积等价实现

@@ -300,6 +300,7 @@ $$
     class Net(nn.Module):
         def __init__(self, num_inputs, num_outputs, num_hiddens1, num_hiddens2):
             super(Net, self).__init__()
+            self.num_inputs = num_inputs
             self.lin1 = nn.Linear(num_inputs, num_hiddens1)
             self.lin2 = nn.Linear(num_hiddens1, num_hiddens2)
             self.lin3 = nn.Linear(num_hiddens2, num_outputs)

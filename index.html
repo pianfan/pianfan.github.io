@@ -31,8 +31,6 @@ layout: default
       }
     }
 
-    // iOS Safari often skips reliable keyup during typing / IME; input + search are reliable.
-    input.addEventListener('input', runSearch);
     input.addEventListener('search', runSearch);
     input.addEventListener('compositionend', runSearch);
     input.addEventListener('keydown', function (e) {
@@ -72,7 +70,7 @@ layout: default
       </div>
 
       <div class="entry">
-        {{ post.excerpt | truncate: 200 }}
+        {{ post.excerpt | strip_html | truncate: 200 }}
       </div>
 
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">阅读全文</a>

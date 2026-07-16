@@ -52,7 +52,7 @@ author: Pianfan
 
 ### 3.1.3. 正态分布与平方损失
 
-假设噪声 $\epsilon \sim \mathcal{N}(0, \sigma^2)$时，最小化平方损失等价于最大化似然估计
+假设噪声 $\epsilon \sim \mathcal{N}(0, \sigma^2)$时，最小化平方损失等价于最大似然估计
 
 正态分布概率密度：$p(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\left(-\frac{1}{2 \sigma^2} (x - \mu)^2\right)$
 
@@ -410,7 +410,7 @@ def evaluate_accuracy(net, data_iter):
             else:
                 l.sum().backward()
                 updater(X.shape[0])
-                metric.add(float(l.sum()), accuracy(y_hat, y), y.numel())
+            metric.add(float(l.sum()), accuracy(y_hat, y), y.numel())
         return metric[0] / metric[2], metric[1] / metric[2]
     ```
 

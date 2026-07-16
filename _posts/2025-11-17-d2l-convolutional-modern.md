@@ -209,7 +209,7 @@ net = nn.Sequential(
 ```py
 class Inception(nn.Module):
     def __init__(self, in_channels, c1, c2, c3, c4, **kwargs):
-        super().__init__(** kwargs)
+        super().__init__(**kwargs)
         self.p1_1 = nn.Conv2d(in_channels, c1, kernel_size=1)  # 路径1
         self.p2_1 = nn.Conv2d(in_channels, c2[0], kernel_size=1)  # 路径2-1
         self.p2_2 = nn.Conv2d(c2[0], c2[1], kernel_size=3, padding=1)  # 路径2-2
@@ -236,7 +236,7 @@ b3 模块：2 个 Inception 块 → 3×3 最大池化
 
 b4 模块：5 个 Inception 块 → 3×3 最大池化
 
-b5 模块：2 个 Inception 块 → 自适应最大池化 → 展平
+b5 模块：2 个 Inception 块 → 自适应平均池化 → 展平
 
 ```py
 net = nn.Sequential(
@@ -305,7 +305,7 @@ $$
 
 结构：2 个 $3 \times 3$ 卷积层，每层后接批量规范化和 ReLU
 
-跨层残差连接：输入直接加在第二个卷积层输出前，再经 ReLU
+跨层残差连接：输入直接加在最后的 ReLU 激活函数前
 
 通道数变化时：用 $1 \times 1$ 卷积调整输入形状后再相加
 

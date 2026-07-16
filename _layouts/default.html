@@ -16,7 +16,9 @@
       </div>
     </div>
 
-    {% include analytics.html %}
+    {% if site.google_analytics %}
+      {% include analytics.html %}
+    {% endif %}
 
     <div class="wrapper-footer-mobile">
       <footer class="footer">

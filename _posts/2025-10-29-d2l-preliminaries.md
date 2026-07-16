@@ -8,7 +8,7 @@ comments: true
 author: Pianfan
 ---
 
-要学习深度学习，首先需要先掌握一些基本技能，如数据处理、线性代数、微积分和概率。<!-- more -->
+要学习深度学习，需要先掌握一些基本技能，如数据处理、线性代数、微积分和概率。<!-- more -->
 
 ## 2.1. 数据操作
 
@@ -65,7 +65,7 @@ torch.cat((X, Y), dim=0)  # 沿轴0（行）拼接
 torch.cat((X, Y), dim=1)  # 沿轴1（列）拼接
 ```
 
-**逻辑运算符**：构建二元张量，如 `X == Y` 会生成一个新张量，元素为 1（相等）或 0（不等）
+**逻辑运算符**：构建二元张量，如 `X == Y` 会生成一个新张量，元素为 `True`（相等）或 `False`（不等）
 
 张量求和：对所有元素求和得到单元素张量
 
@@ -98,7 +98,7 @@ X += Y        # 复合赋值运算符原地更新X
 
 ### 2.1.6. 转换为其他 Python 对象
 
-张量与 NumPy 数组转换：`X.numpy()`（张量转 NumPy 数组）、`torch.tensor(A)`（NumPy 数组转张量），转换后共享内存
+张量与 NumPy 数组转换：`X.numpy()`（张量转 NumPy 数组）、`torch.tensor(A)`（NumPy 数组转张量）
 
 大小为 1 的张量转 Python 标量：使用 `item()` 函数或强制类型转换（如 `float(a)`、`int(a)`）
 
@@ -274,8 +274,7 @@ $$
 
 ### 2.3.10. 范数
 
-性质：$f(\alpha \mathbf{x}) = |\alpha| f(\mathbf{x})$；$f(\mathbf{x} + \mathbf{y}) \leq f(\mathbf{x}) + f(\mathbf{y})$；$
-f(\mathbf{x}) \geq 0$；$\forall i, [\mathbf{x}]_i = 0 \Leftrightarrow f(\mathbf{x})=0$
+性质：$f(\alpha \mathbf{x}) = |\alpha| f(\mathbf{x})$；$f(\mathbf{x} + \mathbf{y}) \leq f(\mathbf{x}) + f(\mathbf{y})$；$f(\mathbf{x}) \geq 0$；$\forall i, [\mathbf{x}]_i = 0 \Leftrightarrow f(\mathbf{x})=0$
 
 $L_2$ 范数：$\Vert\mathbf{x}\Vert_2 = \sqrt{\sum_{i=1}^n x_i^2}$，代码 `torch.norm(u)`
 
@@ -393,7 +392,7 @@ $$
 \frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}
 $$
 
-多变量函数场景：设可微函数 $y$ 依赖变量 $u_1, u_2, \ldots, u_m$，每个可微函数 $u_i$ 依赖变量 $x_1, x_2, \ldots, x_n$（即 $y$ 是 $x_1, x_2， \ldots, x_n$ 的函数），则对任意 $i = 1, 2, \ldots, n$：
+多变量函数场景：设可微函数 $y$ 依赖变量 $u_1, u_2, \ldots, u_m$，每个可微函数 $u_i$ 依赖变量 $x_1, x_2, \ldots, x_n$（即 $y$ 是 $x_1, x_2, \ldots, x_n$ 的函数），则对任意 $i = 1, 2, \ldots, n$：
 
 $$
 \frac{\partial y}{\partial x_i} = \frac{\partial y}{\partial u_1} \frac{\partial u_1}{\partial x_i} + \frac{\partial y}{\partial u_2} \frac{\partial u_2}{\partial x_i} + \cdots + \frac{\partial y}{\partial u_m} \frac{\partial u_m}{\partial x_i}

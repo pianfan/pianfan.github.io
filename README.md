@@ -29,7 +29,7 @@ bundle exec jekyll serve
 
 ## 撰写文章
 
-在 `_posts/` 目录下新建 Markdown 文件，文件名格式为 `YYYY-MM-DD-title.md`，并添加 Front Matter，例如：
+在 `_posts/` 目录下新建 Markdown 文件，文件名格式为 `YYYY-MM-DD-post-title.md`，并添加 Front Matter，例如：
 
 ```markdown
 ---
@@ -50,7 +50,7 @@ author: 张三
 ```
 
 - `<!-- more -->` 之前的内容会作为首页摘要显示，如果不加这个标记，则显示正文前约 200 个字符（含结尾的“...”省略号）
-- 文章配图建议放在 `images/<文章名>/` 目录下，方便按照文章进行管理
+- 文章配图建议放在 `images/<文章名>/` 目录下，方便按文章进行管理
 
 ## 目录结构
 

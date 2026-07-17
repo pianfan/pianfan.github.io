@@ -6,7 +6,7 @@ permalink: /about
 
 ## 关于我
 
-你好，我是翩帆，目前是一名计算机科学与技术专业的硕士研究生，研究兴趣为[计算机图形学](https://en.wikipedia.org/wiki/Computer_graphics)、[程序化生成](https://en.wikipedia.org/wiki/Procedural_generation)与[人机交互](https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction)。
+你好，我是翩帆，目前是一名计算机科学与技术专业的硕士研究生，研究兴趣为[计算机图形学](https://en.wikipedia.org/wiki/Computer_graphics_(computer_science))与[程序化生成](https://en.wikipedia.org/wiki/Procedural_generation)。
 
 这是我基于 GitHub Pages 平台创建的个人博客，用于记录我的学习与心得，或者介绍我做过的项目。
 

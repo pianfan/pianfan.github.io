@@ -6,8 +6,6 @@ favicon: /images/favicon.ico
 favicon_dark: /images/favicon-dark.ico
 
 navigation:
-  - name: 首页
-    url: /
   - name: 分类
     url: /tags
   - name: 关于
@@ -23,7 +21,7 @@ footer-links:
   facebook:
   github: pianfan
   rss: true # just type anything here for a working RSS icon
-  twitter:
+  x:
   youtube:
 
 footer-text: Copyright (c) 2026 Pianfan
